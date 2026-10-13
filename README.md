@@ -5,6 +5,7 @@ Android developer, QA engineer, and independent builder based in Bangkok. I crea
 [![Website](https://img.shields.io/badge/Website-sudarshantechlabs.com-0A66C2?style=flat-square)](https://sudarshantechlabs.com/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Sudarshan_Chaudhari-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/in/sudarshan-chaudhari)
 [![Location](https://img.shields.io/badge/Bangkok-Thailand-EF3340?style=flat-square)](https://www.google.com/maps/place/Bangkok)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-Support_my_work-FF5E5B?style=flat-square&logo=ko-fi&logoColor=white)](https://ko-fi.com/sudarshanchaudhari)
 
 ## What I build
 
@@ -47,3 +48,4 @@ I bring more than 13 years of software-testing and engineering experience to pro
 - Portfolio: [sudarshantechlabs.com](https://sudarshantechlabs.com/)
 - LinkedIn: [Sudarshan Chaudhari](https://linkedin.com/in/sudarshan-chaudhari)
 - Email: [sunny.sudarshan@gmail.com](mailto:sunny.sudarshan@gmail.com)
+- Support my work: [ko-fi.com/sudarshanchaudhari](https://ko-fi.com/sudarshanchaudhari)
