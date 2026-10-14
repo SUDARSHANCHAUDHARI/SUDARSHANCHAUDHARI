@@ -7,6 +7,15 @@ Android developer, QA engineer, and independent builder based in Bangkok. I crea
 [![Location](https://img.shields.io/badge/Bangkok-Thailand-EF3340?style=flat-square)](https://www.google.com/maps/place/Bangkok)
 [![Ko-fi](https://img.shields.io/badge/Ko--fi-Support_my_work-FF5E5B?style=flat-square&logo=ko-fi&logoColor=white)](https://ko-fi.com/sudarshanchaudhari)
 
+<div align="center">
+  <a href="https://commit-history.com/SUDARSHANCHAUDHARI">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://commit-history.com/embed/SUDARSHANCHAUDHARI?theme=dark" />
+      <img alt="SUDARSHANCHAUDHARI's commit history" src="https://commit-history.com/embed/SUDARSHANCHAUDHARI" />
+    </picture>
+  </a>
+</div>
+
 ## What I build
 
 - Android products with Kotlin, Jetpack Compose, MVVM, and Clean Architecture
