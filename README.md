@@ -27,19 +27,17 @@ Android developer, QA engineer, and independent builder based in Bangkok. I crea
 
 | Project | What it demonstrates |
 |---|---|
+| [OrbiAgents](https://github.com/SUDARSHANCHAUDHARI/OrbiAgents) | Visual multi-agent workflow orchestration, execution, and replay — the largest codebase here, with 274 test files |
+| [QACraft](https://github.com/SUDARSHANCHAUDHARI/QACraft) | Reusable QA skills and deterministic behaviour evaluations, with adapters for Codex, Claude Code, Copilot, and Gemini CLI |
+| [RepoMem](https://github.com/SUDARSHANCHAUDHARI/RepoMem) | Persistent, local-first memory for AI coding agents using SQLite and FTS5, with zero dependencies |
+| [SaveMyTerminal](https://github.com/SUDARSHANCHAUDHARI/SaveMyTerminal) | Local, privacy-safe observability for terminal-based AI agents — Rust, published on crates.io |
+| [TemporalThread](https://github.com/SUDARSHANCHAUDHARI/TemporalThread) | Local-first MCP server that gives AI agents a persistent sense of time, with no network port and no telemetry |
 | [RepoGuardAI](https://github.com/SUDARSHANCHAUDHARI/RepoGuardAI) | Agent-independent security and code auditing with deterministic scanners and structured reports |
-| [RepoMem](https://github.com/SUDARSHANCHAUDHARI/RepoMem) | Persistent, local-first memory for AI coding agents using SQLite and FTS5 |
-| [DroidForge](https://github.com/SUDARSHANCHAUDHARI/DroidForge) | Android development automation for signing, Gradle, versioning, and scaffolding |
-| [KotlinSense](https://github.com/SUDARSHANCHAUDHARI/KotlinSense) | Kotlin language-server tooling for diagnostics, imports, and code navigation |
-| [PlayCraft](https://github.com/SUDARSHANCHAUDHARI/PlayCraft) | Google Play publishing, store-listing, policy, and release automation |
-| [MyMentorAI](https://github.com/SUDARSHANCHAUDHARI/MyMentorAI) | Portfolio-ready API testing with Postman, Newman, Playwright, and TypeScript |
 
 ## Current footprint
 
-As verified from GitHub on **August 12, 2026**:
-
-- **358 repositories** — 167 public and 191 private
-- **0 forks** — the portfolio is original work
+- **411 repositories** — 172 public and 239 private
+- **1 fork** — everything else is original work
 - Projects across Android, iOS, macOS, web, Rust, AI systems, QA, cybersecurity, and developer tooling
 
 The public repositories provide reviewable examples. The private portfolio includes production applications, internal automation, experiments, and category catalogs maintained under SudarshanTechLabs.
