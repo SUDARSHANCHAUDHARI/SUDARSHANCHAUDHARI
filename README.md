@@ -33,6 +33,7 @@ Android developer, QA engineer, and independent builder based in Bangkok. I crea
 | [SaveMyTerminal](https://github.com/SUDARSHANCHAUDHARI/SaveMyTerminal) | Local, privacy-safe observability for terminal-based AI agents — Rust, published on crates.io |
 | [TemporalThread](https://github.com/SUDARSHANCHAUDHARI/TemporalThread) | Local-first MCP server that gives AI agents a persistent sense of time, with no network port and no telemetry |
 | [RepoGuardAI](https://github.com/SUDARSHANCHAUDHARI/RepoGuardAI) | Agent-independent security and code auditing with deterministic scanners and structured reports |
+| [BarStripeLab](https://github.com/SUDARSHANCHAUDHARI/BarStripeLab) | Free in-browser barcode generator that shapes EAN, UPC and Code 128 codes while keeping them scannable — GS1 sizing, decode checks and exact-size SVG/PDF export ([live](https://barstripelab.sudarshantechlabs.com)) |
 
 ## Current footprint
 
