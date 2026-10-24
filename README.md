@@ -34,6 +34,7 @@ Android developer, QA engineer, and independent builder based in Bangkok. I crea
 | [TemporalThread](https://github.com/SUDARSHANCHAUDHARI/TemporalThread) | Local-first MCP server that gives AI agents a persistent sense of time, with no network port and no telemetry |
 | [RepoGuardAI](https://github.com/SUDARSHANCHAUDHARI/RepoGuardAI) | Agent-independent security and code auditing with deterministic scanners and structured reports |
 | [BarStripeLab](https://github.com/SUDARSHANCHAUDHARI/BarStripeLab) | Free in-browser barcode generator that shapes EAN, UPC and Code 128 codes while keeping them scannable — GS1 sizing, decode checks and exact-size SVG/PDF export ([live](https://barstripelab.sudarshantechlabs.com)) |
+| [MyWindChimes](https://mywindchimes.sudarshantechlabs.com) | Interactive wind chimes from seven Asian countries on handmade paper — photoreal chime tops, a physics-driven curtain of each country's script, crossfading journeys and procedural sound ([live](https://mywindchimes.sudarshantechlabs.com)) |
 
 ## Current footprint
 
