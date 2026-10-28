@@ -16,6 +16,13 @@ Android developer, QA engineer, and independent builder based in Bangkok. I crea
   </a>
 </div>
 
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=SUDARSHANCHAUDHARI&theme=github_dark" />
+    <img alt="SUDARSHANCHAUDHARI's GitHub profile summary" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=SUDARSHANCHAUDHARI&theme=github" />
+  </picture>
+</div>
+
 ## What I build
 
 - Android products with Kotlin, Jetpack Compose, MVVM, and Clean Architecture
