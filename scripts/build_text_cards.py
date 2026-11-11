@@ -6,8 +6,16 @@ Reads the embedded @font-face block from hero.svg so every card carries the same
 import sys, re, textwrap, pathlib
 from xml.sax.saxutils import escape
 
+if len(sys.argv) < 2:
+    sys.exit("build_text_cards.py: usage: build_text_cards.py <cards-dir>")
 cards = pathlib.Path(sys.argv[1])
-fonts = re.search(r"@font-face\{font-family:'SLOrb'.*?\n", cards.joinpath("hero.svg").read_text(), re.S).group(0)
+hero = cards / "hero.svg"
+if not hero.is_file():
+    sys.exit(f"build_text_cards.py: no such file: {hero}")
+fonts = re.search(r"@font-face\{font-family:'SLOrb'.*?\n", hero.read_text(), re.S)
+if not fonts:
+    sys.exit("build_text_cards.py: no embedded fonts in hero.svg")
+fonts = fonts.group(0)
 
 RED, RED2, PINK, MUTED, TEXT, SOFT = "#ff2e4d", "#ff6b7d", "#ffb3bc", "#a8828a", "#fff1f2", "#e8c9cd"
 MONO_PX = 8.1  # Share Tech Mono advance at 15px
