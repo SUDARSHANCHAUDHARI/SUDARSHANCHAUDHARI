@@ -32,6 +32,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
+      - name: Red/black village
+        continue-on-error: true # a missing village must not block publishing the charts
+        run: python3 scripts/recolor_village.py profile-3d-contrib/profile-night-view.svg
       - name: Red/black commit-history chart
         continue-on-error: true # a commit-history.com outage must not block the village
         env:
