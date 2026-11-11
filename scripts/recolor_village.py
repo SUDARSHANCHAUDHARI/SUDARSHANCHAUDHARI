@@ -43,12 +43,13 @@ def drop_bottom_stats(svg):
 def ticks_on_top(svg):
     """Move the radar scale labels after the radar polygon so the line does not cover them."""
     ticks = re.findall(r'<text[^>]*class="fill-weak">(?:1|10|100|1K|10K)</text>', svg)
-    poly = re.search(r'<polygon class="radar"[^>]*?(?:/>|>\s*</polygon>)', svg)
+    # The polygon carries an <animate> child, so it has to be matched to its closing tag.
+    poly = re.search(r'<polygon class="radar"[^>]*/>|<polygon class="radar".*?</polygon>', svg, re.S)
     if not ticks or not poly:
         return svg
     for t in ticks:
         svg = svg.replace(t, "", 1)
-    poly = re.search(r'<polygon class="radar"[^>]*?(?:/>|>\s*</polygon>)', svg)
+    poly = re.search(r'<polygon class="radar"[^>]*/>|<polygon class="radar".*?</polygon>', svg, re.S)
     return svg[:poly.end()] + "".join(ticks) + svg[poly.end():]
 
 
