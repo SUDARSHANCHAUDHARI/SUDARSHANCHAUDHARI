@@ -34,7 +34,7 @@
 
 <br/><br/>
 
-![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=flat-square&logo=kotlin&logoColor=white) ![Jetpack Compose](https://img.shields.io/badge/Jetpack_Compose-4285F4?style=flat-square&logo=jetpackcompose&logoColor=white) ![Android](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB) ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white) ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![Rust](https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white) ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white) ![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=flat-square) ![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=flat-square&logo=selenium&logoColor=white) ![Appium](https://img.shields.io/badge/Appium-EE376D?style=flat-square&logo=appium&logoColor=white) ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=postman&logoColor=white) ![Firebase](https://img.shields.io/badge/Firebase-DD2C00?style=flat-square&logo=firebase&logoColor=white) ![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=flat-square&logo=cloudflare&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white) ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
+<img src="./assets/cards/tools.svg?v=1" alt="Inventory: Kotlin, Jetpack Compose, Android, TypeScript, React, Next.js, Python, Rust, SQLite, Playwright, Selenium, Appium, Postman, Firebase, Cloudflare, GitHub Actions, Git" width="100%"/>
 
 </div>
 
@@ -44,15 +44,15 @@
 
 <div align="center">
 
-<img src="./profile-3d-contrib/stats.svg" alt="GitHub stats" width="49%"/>
-<img src="./profile-3d-contrib/repos.svg" alt="Repositories: public, private and total" width="49%"/>
+<img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/stats.svg" alt="GitHub stats" width="49%"/>
+<img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/repos.svg" alt="Repositories: public, private and total" width="49%"/>
 
-<img src="./profile-3d-contrib/most-commit-language.svg" alt="Top languages by commit" width="49%"/>
-<img src="./profile-3d-contrib/repos-per-language.svg" alt="Top languages by repo" width="49%"/>
+<img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/most-commit-language.svg" alt="Top languages by commit" width="49%"/>
+<img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/repos-per-language.svg" alt="Top languages by repo" width="49%"/>
 
 <img src="https://streak-stats.demolab.com/?user=SUDARSHANCHAUDHARI&background=050102&border=ff2e4d&stroke=3a0d14&ring=ff2e4d&fire=ff2e4d&currStreakNum=fff1f2&sideNums=fff1f2&currStreakLabel=ff6b7d&sideLabels=ff6b7d&dates=a8828a" alt="Total contributions and streak" width="99%"/>
 
-<img src="./profile-3d-contrib/weekly.svg" alt="Contributions per week, last 52 weeks" width="99%"/>
+<img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/weekly.svg" alt="Contributions per week, last 52 weeks" width="99%"/>
 
 <br/><br/>
 
@@ -66,7 +66,7 @@
 
 <div align="center">
 
-<img src="./profile-3d-contrib/trophies.svg" alt="GitHub trophies" width="100%"/>
+<img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/trophies.svg" alt="GitHub trophies" width="100%"/>
 
 </div>
 
@@ -98,7 +98,7 @@
 
 *Every commit raises another building — rebuilt automatically every day.*
 
-<img src="./profile-3d-contrib/profile-night-view.svg" alt="3D contribution village" width="100%"/>
+<img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/profile-night-view.svg" alt="3D contribution village" width="100%"/>
 
 <br/><br/>
 
@@ -109,9 +109,9 @@
 
 <br/><br/>
 
-<a href="https://commit-history.com/SUDARSHANCHAUDHARI"><img src="./profile-3d-contrib/commit-history.svg" alt="All of SUDARSHANCHAUDHARI's GitHub contributions over time" width="100%"/></a>
+<a href="https://commit-history.com/SUDARSHANCHAUDHARI"><img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/commit-history.svg" alt="All of SUDARSHANCHAUDHARI's GitHub contributions over time" width="100%"/></a>
 
-<img src="./profile-3d-contrib/profile-details.svg" alt="GitHub profile summary" width="100%"/>
+<img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/profile-details.svg" alt="GitHub profile summary" width="100%"/>
 
 </div>
 
