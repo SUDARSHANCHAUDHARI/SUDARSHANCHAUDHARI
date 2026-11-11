@@ -9,13 +9,14 @@ Env:
   GITHUB_TOKEN        optional, raises the REST rate limit for the public repo count
   REPO_COUNT_TOKEN    optional PAT that can see the user's private repos; when set,
                       the private count is live instead of PRIVATE_REPOS
-  PRIVATE_REPOS       fallback private repo count (default 239, from the README)
+  PRIVATE_REPOS       fallback private repo count (default 248, counted 2026-11-11)
 """
 import datetime as dt
 import json
 import os
 import re
 import sys
+import urllib.error
 import urllib.request
 from collections import OrderedDict
 from xml.sax.saxutils import escape
@@ -38,12 +39,20 @@ def public_repo_count(user):
 
 
 def private_repo_count():
+    # An empty secret is indistinguishable from an unset one, and a rejected token used to
+    # die inside fetch(), so both cases warn on stderr instead of falling back silently.
     token = os.environ.get("REPO_COUNT_TOKEN")
+    fallback = int(os.environ.get("PRIVATE_REPOS", "248"))
     if not token:
-        return int(os.environ.get("PRIVATE_REPOS", "239")), False
+        print("::warning::REPO_COUNT_TOKEN not set; private repo count is the fixed fallback", file=sys.stderr)
+        return fallback, False
     n, page = 0, 1
     while True:
-        batch = json.loads(fetch(f"https://api.github.com/user/repos?visibility=private&affiliation=owner&per_page=100&page={page}", token))
+        try:
+            batch = json.loads(fetch(f"https://api.github.com/user/repos?visibility=private&affiliation=owner&per_page=100&page={page}", token))
+        except urllib.error.HTTPError as e:
+            print(f"::warning::REPO_COUNT_TOKEN rejected (HTTP {e.code}); private repo count is the fixed fallback", file=sys.stderr)
+            return fallback, False
         n += len(batch)
         if len(batch) < 100:
             return n, True
