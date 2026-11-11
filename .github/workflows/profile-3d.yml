@@ -42,8 +42,10 @@ jobs:
         run: |
           curl -fsSL "https://commit-history.com/embed/${OWNER}?theme=dark" -o /tmp/commit-history.svg
           python3 - <<'PY'
-          import pathlib
+          import pathlib, re
           src = pathlib.Path("/tmp/commit-history.svg").read_text()
+          # drop the "N contributions" total: the streak card is the single source for it
+          src = re.sub(r'<text[^>]*>[\d,]+ contributions</text>', "", src)
           for old, new in {"#0d1117": "#050102", "#16a34a": "#ff2e4d", "#8b949e": "#a8828a",
                            "#30363d": "#3a0d14", "#c9d1d9": "#fff1f2", "#ffd43b": "#ff8a3d"}.items():
               src = src.replace(old, new)
