@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths-ignore:
-      - "profile-3d-contrib/**"
 
+# main requires pull requests, so the generated SVGs live on their own branch (output-3d)
+# and the README links them via raw.githubusercontent.com. The snake keeps the output branch.
 permissions:
   contents: write
 
@@ -22,6 +22,12 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Restore yesterday's charts
+        continue-on-error: true # first run: the branch does not exist yet
+        run: |
+          mkdir -p profile-3d-contrib
+          git fetch --depth=1 origin output-3d
+          git --work-tree=profile-3d-contrib checkout FETCH_HEAD -- .
       - uses: yoshi389111/github-profile-3d-contrib@7d95e7d4cdc028dd1e1cbd957d65f35efb12ae39 # v0.9.3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -48,11 +54,11 @@ jobs:
           REPO_COUNT_TOKEN: ${{ secrets.REPO_COUNT_TOKEN }}
           OWNER: ${{ github.repository_owner }}
         run: python3 scripts/profile_cards.py "${OWNER}" profile-3d-contrib
-      - name: Commit and push
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add profile-3d-contrib
-          if git commit -m "chore: regenerate 3D contribution village"; then
-            git push
-          fi
+      - name: Publish to output-3d branch
+        uses: crazy-max/ghaction-github-pages@1d6ee9b181a81033a16bd707a1401afa978daab4 # v5.0.0
+        with:
+          target_branch: output-3d
+          build_dir: profile-3d-contrib
+          keep_history: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
