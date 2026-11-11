@@ -1,0 +1,58 @@
+name: 3D contribution village
+
+on:
+  schedule:
+    - cron: "0 18 * * *" # daily, 01:00 Bangkok
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "profile-3d-contrib/**"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-3d
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: yoshi389111/github-profile-3d-contrib@7d95e7d4cdc028dd1e1cbd957d65f35efb12ae39 # v0.9.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+      - name: Red/black commit-history chart
+        continue-on-error: true # a commit-history.com outage must not block the village
+        env:
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          curl -fsSL "https://commit-history.com/embed/${OWNER}?theme=dark" -o /tmp/commit-history.svg
+          python3 - <<'PY'
+          import pathlib
+          src = pathlib.Path("/tmp/commit-history.svg").read_text()
+          for old, new in {"#0d1117": "#050102", "#16a34a": "#ff2e4d", "#8b949e": "#a8828a",
+                           "#30363d": "#3a0d14", "#c9d1d9": "#fff1f2", "#ffd43b": "#ff8a3d"}.items():
+              src = src.replace(old, new)
+          pathlib.Path("profile-3d-contrib").mkdir(exist_ok=True)
+          pathlib.Path("profile-3d-contrib/commit-history.svg").write_text(src)
+          PY
+      - name: Red/black stats charts
+        continue-on-error: true # a card-service outage keeps yesterday's charts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_COUNT_TOKEN: ${{ secrets.REPO_COUNT_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+        run: python3 scripts/profile_cards.py "${OWNER}" profile-3d-contrib
+      - name: Commit and push
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add profile-3d-contrib
+          if git commit -m "chore: regenerate 3D contribution village"; then
+            git push
+          fi
