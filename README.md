@@ -98,7 +98,7 @@
 
 *Every commit raises another building — rebuilt automatically every day.*
 
-<img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/profile-night-view.svg" alt="3D contribution village" width="100%"/>
+<img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/profile-night-view.svg?v=2" alt="3D contribution village" width="100%"/>
 
 <br/><br/>
 
