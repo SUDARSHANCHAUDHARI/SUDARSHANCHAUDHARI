@@ -91,19 +91,12 @@ h = y + 14
 cards.joinpath("profile.svg").write_text(frame("profile", h, "PLAYER PROFILE", "CLASS: QUALITY ENGINEER", "\n".join(parts),
     "Player profile: " + " ".join(paras)))
 
-# 3. Dungeon record (Current footprint, verbatim numbers from the README)
-stats = [("411", "REPOSITORIES"), ("172", "PUBLIC"), ("239", "PRIVATE"), ("1", "FORK")]
-parts = []
-for i, (num, lab) in enumerate(stats):
-    x = 76 + i * 290
-    parts.append(f'<g class="row" style="animation-delay:{0.3+i*0.15:.2f}s"><rect x="{x}" y="88" width="266" height="110" rx="5" fill="{RED}" fill-opacity=".07" stroke="{RED}" stroke-opacity=".55"/>'
-                 f'<text x="{x+133}" y="152" class="sans" font-size="46" font-weight="900" fill="{TEXT}" text-anchor="middle" filter="url(#glow)">{num}</text>'
-                 f'<text x="{x+133}" y="182" class="mono" font-size="13" fill="{RED2}" text-anchor="middle" letter-spacing="3">{lab}</text></g>')
-s1, y = para("Projects across Android, iOS, macOS, web, Rust, AI systems, QA, cybersecurity, and developer tooling.", 76, 236, 1128, fill=TEXT, delay=1.0)
-s2, y = para("The public repositories provide reviewable examples. The private portfolio includes production applications, internal automation, experiments, and category catalogs maintained under SudarshanTechLabs.", 76, y + 10, 1128, fill=MUTED, delay=1.2)
+# 3. Dungeon record (no counters: the Repositories card carries the live counts)
+s1, y = para("Projects across Android, iOS, macOS, web, Rust, AI systems, QA, cybersecurity, and developer tooling.", 76, 104, 1128, fill=TEXT, delay=0.3)
+s2, y = para("The public repositories provide reviewable examples. The private portfolio includes production applications, internal automation, experiments, and category catalogs maintained under SudarshanTechLabs.", 76, y + 10, 1128, fill=MUTED, delay=0.5)
 h = y + 14
-cards.joinpath("record.svg").write_text(frame("record", h, "DUNGEON RECORD", "CURRENT FOOTPRINT", "\n".join(parts) + "\n" + s1 + "\n" + s2,
-    "Dungeon record: 411 repositories, 172 public and 239 private, 1 fork; projects across Android, iOS, macOS, web, Rust, AI systems, QA, cybersecurity and developer tooling."))
+cards.joinpath("record.svg").write_text(frame("record", h, "DUNGEON RECORD", "CURRENT FOOTPRINT", s1 + "\n" + s2,
+    "Dungeon record: projects across Android, iOS, macOS, web, Rust, AI systems, QA, cybersecurity and developer tooling; the public repositories provide reviewable examples, and the private portfolio includes production applications, internal automation, experiments and category catalogs maintained under SudarshanTechLabs."))
 
 # 4. System message: six dev and QA quotes, one every 5 s
 quotes = [("Program testing can be used to show the presence of bugs, but never to show their absence.", "Edsger W. Dijkstra"),

@@ -119,7 +119,7 @@
 
 <div align="center">
 
-<img src="./assets/cards/record.svg?v=1" alt="Dungeon record: 411 repositories, 172 public and 239 private, 1 fork" width="100%"/>
+<img src="./assets/cards/record.svg?v=2" alt="Dungeon record: projects across Android, iOS, macOS, web, Rust, AI systems, QA, cybersecurity and developer tooling" width="100%"/>
 
 </div>
 
