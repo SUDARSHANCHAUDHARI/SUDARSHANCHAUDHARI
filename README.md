@@ -1,67 +1,192 @@
-# Hi, I'm Sudarshan Chaudhari
+<img src="./assets/cards/title.svg?v=1" alt="Solo Leveling" width="100%"/>
 
-Android developer, QA engineer, and independent builder based in Bangkok. I create production mobile apps, AI-agent infrastructure, developer tools, and release automation under **SudarshanTechLabs**.
+# 💫 About Me
 
-[![Website](https://img.shields.io/badge/Website-sudarshantechlabs.com-0A66C2?style=flat-square)](https://sudarshantechlabs.com/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Sudarshan_Chaudhari-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/in/sudarshan-chaudhari)
-[![Location](https://img.shields.io/badge/Bangkok-Thailand-EF3340?style=flat-square)](https://www.google.com/maps/place/Bangkok)
-[![Ko-fi](https://img.shields.io/badge/Ko--fi-Support_my_work-FF5E5B?style=flat-square&logo=ko-fi&logoColor=white)](https://ko-fi.com/sudarshanchaudhari)
+<img src="./assets/gifs/mario.gif" alt="Pixel-art coder at a desk" width="100%"/>
 
 <div align="center">
-  <a href="https://commit-history.com/SUDARSHANCHAUDHARI">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://commit-history.com/embed/SUDARSHANCHAUDHARI?theme=dark" />
-      <img alt="SUDARSHANCHAUDHARI's commit history" src="https://commit-history.com/embed/SUDARSHANCHAUDHARI" />
-    </picture>
-  </a>
+
+<img src="./assets/cards/hero.svg?v=1" alt="System window: a new player has awakened — Sudarshan Chaudhari, Senior Quality Engineer, Test Automation Specialist, AI Systems Builder, Android Developer" width="100%"/>
+
 </div>
 
 <div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=SUDARSHANCHAUDHARI&theme=github_dark" />
-    <img alt="SUDARSHANCHAUDHARI's GitHub profile summary" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=SUDARSHANCHAUDHARI&theme=github" />
-  </picture>
+
+<img src="./assets/cards/log.svg?v=1" alt="Player log: building AI-agent tooling and Android apps; open to collaborate on QA automation, AI agents and developer tooling; exploring Rust and Three.js; ask about test automation, release quality and MCP servers; 13+ years in QA" width="100%"/>
+
 </div>
 
-## What I build
+<div align="center">
 
-- Android products with Kotlin, Jetpack Compose, MVVM, and Clean Architecture
-- AI-agent memory, orchestration, evaluation, and repository-intelligence systems
-- QA, security, release, and developer-productivity tooling
-- Local-first utilities that keep developers in control of their data
+<img src="./assets/cards/quest.svg?v=2" alt="Daily quest: Android products, AI-agent systems, QA and release tooling, local-first utilities" width="100%"/>
 
-## Selected work
+</div>
 
-| Project | What it demonstrates |
-|---|---|
-| [OrbiAgents](https://github.com/SUDARSHANCHAUDHARI/OrbiAgents) | Visual multi-agent workflow orchestration, execution, and replay — the largest codebase here, with 274 test files |
-| [QACraft](https://github.com/SUDARSHANCHAUDHARI/QACraft) | Reusable QA skills and deterministic behaviour evaluations, with adapters for Codex, Claude Code, Copilot, and Gemini CLI |
-| [RepoMem](https://github.com/SUDARSHANCHAUDHARI/RepoMem) | Persistent, local-first memory for AI coding agents using SQLite and FTS5, with zero dependencies |
-| [SaveMyTerminal](https://github.com/SUDARSHANCHAUDHARI/SaveMyTerminal) | Local, privacy-safe observability for terminal-based AI agents — Rust, published on crates.io |
-| [TemporalThread](https://github.com/SUDARSHANCHAUDHARI/TemporalThread) | Local-first MCP server that gives AI agents a persistent sense of time, with no network port and no telemetry |
-| [RepoGuardAI](https://github.com/SUDARSHANCHAUDHARI/RepoGuardAI) | Agent-independent security and code auditing with deterministic scanners and structured reports |
-| [BarStripeLab](https://github.com/SUDARSHANCHAUDHARI/BarStripeLab) | Free in-browser barcode generator that shapes EAN, UPC and Code 128 codes while keeping them scannable — GS1 sizing, decode checks and exact-size SVG/PDF export ([live](https://barstripelab.sudarshantechlabs.com)) |
-| [MyWindChimes](https://mywindchimes.sudarshantechlabs.com) | Interactive wind chimes from seven Asian countries on handmade paper — photoreal chime tops, a physics-driven curtain of each country's script, crossfading journeys and procedural sound ([live](https://mywindchimes.sudarshantechlabs.com)) |
+<div align="center"><img src="./assets/gifs/deadline.gif" alt="Grim reaper chasing a coder along a deadline progress bar" width="600"/></div>
 
-## Current footprint
+# 💻 Tech Stack
 
-- **411 repositories** — 172 public and 239 private
-- **1 fork** — everything else is original work
-- Projects across Android, iOS, macOS, web, Rust, AI systems, QA, cybersecurity, and developer tooling
+<img src="./assets/img/red-throne.jpg" alt="Shadow monarch before a throne of skulls under a red moon" width="100%"/>
 
-The public repositories provide reviewable examples. The private portfolio includes production applications, internal automation, experiments, and category catalogs maintained under SudarshanTechLabs.
+<div align="center">
 
-## Core technologies
+<img src="./assets/cards/skills.svg?v=2" alt="Skills window: six skill areas — QA automation, mobile, AI systems, web platforms, developer tooling, security" width="100%"/>
 
-`Kotlin` · `Jetpack Compose` · `Android` · `TypeScript` · `React` · `Next.js` · `Python` · `Rust` · `SQLite` · `Postman` · `Playwright` · `GitHub`
+<br/><br/>
 
-## Background
+![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=flat-square&logo=kotlin&logoColor=white) ![Jetpack Compose](https://img.shields.io/badge/Jetpack_Compose-4285F4?style=flat-square&logo=jetpackcompose&logoColor=white) ![Android](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB) ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white) ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![Rust](https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white) ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white) ![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=flat-square) ![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=flat-square&logo=selenium&logoColor=white) ![Appium](https://img.shields.io/badge/Appium-EE376D?style=flat-square&logo=appium&logoColor=white) ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=postman&logoColor=white) ![Firebase](https://img.shields.io/badge/Firebase-DD2C00?style=flat-square&logo=firebase&logoColor=white) ![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=flat-square&logo=cloudflare&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white) ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
 
-I bring more than 13 years of software-testing and engineering experience to product development. That QA foundation shapes how I build: observable behavior, explicit failure handling, repeatable verification, privacy-aware design, and release discipline are part of the product—not afterthoughts.
+</div>
 
-## Connect
+# 📊 GitHub Stats
 
-- Portfolio: [sudarshantechlabs.com](https://sudarshantechlabs.com/)
-- LinkedIn: [Sudarshan Chaudhari](https://linkedin.com/in/sudarshan-chaudhari)
-- Email: [sunny.sudarshan@gmail.com](mailto:sunny.sudarshan@gmail.com)
-- Support my work: [ko-fi.com/sudarshanchaudhari](https://ko-fi.com/sudarshanchaudhari)
+<img src="./assets/img/igris-duel.jpg" alt="Jinwoo clashing blades with Igris, the red knight" width="100%"/>
+
+<div align="center">
+
+<img src="./profile-3d-contrib/stats.svg" alt="GitHub stats" width="49%"/>
+<img src="./profile-3d-contrib/repos.svg" alt="Repositories: public, private and total" width="49%"/>
+
+<img src="./profile-3d-contrib/most-commit-language.svg" alt="Top languages by commit" width="49%"/>
+<img src="./profile-3d-contrib/repos-per-language.svg" alt="Top languages by repo" width="49%"/>
+
+<img src="https://streak-stats.demolab.com/?user=SUDARSHANCHAUDHARI&background=050102&border=ff2e4d&stroke=3a0d14&ring=ff2e4d&fire=ff2e4d&currStreakNum=fff1f2&sideNums=fff1f2&currStreakLabel=ff6b7d&sideLabels=ff6b7d&dates=a8828a" alt="Total contributions and streak" width="99%"/>
+
+<img src="./profile-3d-contrib/weekly.svg" alt="Contributions per week, last 52 weeks" width="99%"/>
+
+<br/><br/>
+
+<img src="./assets/cards/status.svg?v=1" alt="Status window: player ID card and seven abilities" width="100%"/>
+
+</div>
+
+## 🏆 GitHub Trophies
+
+<img src="./assets/img/red-army.jpg" alt="Shadow soldiers with glowing eyes in red fire" width="100%"/>
+
+<div align="center">
+
+<img src="./profile-3d-contrib/trophies.svg" alt="GitHub trophies" width="100%"/>
+
+</div>
+
+## ⚔️ S-Rank Missions
+
+<img src="./assets/img/red-blue.jpg" alt="Shadow monarch split between red and blue flames" width="100%"/>
+
+<table>
+<tr><th>Mission</th><th>What it is</th><th>Built with</th><th align="center">⭐</th></tr>
+<tr><td><a href="https://github.com/SUDARSHANCHAUDHARI/OrbiAgents"><b>OrbiAgents</b></a></td><td>Visual multi-agent workflow orchestration, execution, and replay — the largest codebase here, with 274 test files</td><td><code>TypeScript</code></td><td align="center"><img src="https://img.shields.io/github/stars/SUDARSHANCHAUDHARI/OrbiAgents?style=flat-square&label=" alt="stars"/></td></tr>
+<tr><td><a href="https://github.com/SUDARSHANCHAUDHARI/QACraft"><b>QACraft</b></a></td><td>Reusable QA skills and deterministic behaviour evaluations, with adapters for Codex, Claude Code, Copilot, and Gemini CLI</td><td><code>HTML</code></td><td align="center"><img src="https://img.shields.io/github/stars/SUDARSHANCHAUDHARI/QACraft?style=flat-square&label=" alt="stars"/></td></tr>
+<tr><td><a href="https://github.com/SUDARSHANCHAUDHARI/RepoMem"><b>RepoMem</b></a></td><td>Persistent, local-first memory for AI coding agents using SQLite and FTS5, with zero dependencies</td><td><code>Python</code></td><td align="center"><img src="https://img.shields.io/github/stars/SUDARSHANCHAUDHARI/RepoMem?style=flat-square&label=" alt="stars"/></td></tr>
+<tr><td><a href="https://github.com/SUDARSHANCHAUDHARI/SaveMyTerminal"><b>SaveMyTerminal</b></a></td><td>Local, privacy-safe observability for terminal-based AI agents — published on crates.io</td><td><code>Rust</code></td><td align="center"><img src="https://img.shields.io/github/stars/SUDARSHANCHAUDHARI/SaveMyTerminal?style=flat-square&label=" alt="stars"/></td></tr>
+<tr><td><a href="https://github.com/SUDARSHANCHAUDHARI/TemporalThread"><b>TemporalThread</b></a></td><td>Local-first MCP server that gives AI agents a persistent sense of time, with no network port and no telemetry</td><td><code>TypeScript</code></td><td align="center"><img src="https://img.shields.io/github/stars/SUDARSHANCHAUDHARI/TemporalThread?style=flat-square&label=" alt="stars"/></td></tr>
+<tr><td><a href="https://github.com/SUDARSHANCHAUDHARI/RepoGuardAI"><b>RepoGuardAI</b></a></td><td>Agent-independent security and code auditing with deterministic scanners and structured reports</td><td><code>JavaScript</code></td><td align="center"><img src="https://img.shields.io/github/stars/SUDARSHANCHAUDHARI/RepoGuardAI?style=flat-square&label=" alt="stars"/></td></tr>
+<tr><td><a href="https://github.com/SUDARSHANCHAUDHARI/BarStripeLab"><b>BarStripeLab</b></a></td><td>Free in-browser barcode generator that shapes EAN, UPC and Code 128 codes while keeping them scannable — GS1 sizing, decode checks and exact-size SVG/PDF export (<a href="https://barstripelab.sudarshantechlabs.com">live</a>)</td><td><code>TypeScript</code></td><td align="center"><img src="https://img.shields.io/github/stars/SUDARSHANCHAUDHARI/BarStripeLab?style=flat-square&label=" alt="stars"/></td></tr>
+<tr><td><a href="https://mywindchimes.sudarshantechlabs.com"><b>MyWindChimes</b></a></td><td>Interactive wind chimes from seven Asian countries on handmade paper — photoreal chime tops, a physics-driven curtain of each country's script, crossfading journeys and procedural sound (<a href="https://mywindchimes.sudarshantechlabs.com">live</a>)</td><td><code>Web</code></td><td align="center">🌐</td></tr>
+</table>
+
+<div align="center">
+
+<a href="https://github.com/SUDARSHANCHAUDHARI?tab=repositories"><b>→ See all repositories</b></a>
+
+<br/><br/>
+
+### 🌃 My contribution village
+
+<img src="./assets/img/red-gate.jpg" alt="A red gate swirling open in an abandoned warehouse" width="100%"/>
+
+*Every commit raises another building — rebuilt automatically every day.*
+
+<img src="./profile-3d-contrib/profile-night-view.svg" alt="3D contribution village" width="100%"/>
+
+<br/><br/>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output/snake-dark.svg" />
+  <img alt="Contribution snake" src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output/snake-light.svg" />
+</picture>
+
+<br/><br/>
+
+<a href="https://commit-history.com/SUDARSHANCHAUDHARI"><img src="./profile-3d-contrib/commit-history.svg" alt="All of SUDARSHANCHAUDHARI's GitHub contributions over time" width="100%"/></a>
+
+<img src="./profile-3d-contrib/profile-details.svg" alt="GitHub profile summary" width="100%"/>
+
+</div>
+
+## 🗺️ Dungeon Record
+
+<div align="center">
+
+<img src="./assets/cards/record.svg?v=1" alt="Dungeon record: 411 repositories, 172 public and 239 private, 1 fork" width="100%"/>
+
+</div>
+
+## 👤 Player Profile
+
+<div align="center">
+
+<img src="./assets/cards/profile.svg?v=1" alt="Player profile: Sudarshan Kishor Chaudhari, Senior Quality Engineer, Test Automation specialist and AI systems builder based in Bangkok, Thailand, with 13+ years in software quality engineering; runs SudarshanTechLabs" width="100%"/>
+
+</div>
+
+### ✍️ Random Dev Quote
+
+<div align="center">
+
+<img src="./assets/cards/quote.svg?v=1" alt="System message cycling six dev and QA quotes by Dijkstra, John Johnson, John Ruskin, Kent Beck and Linus Torvalds" width="100%"/>
+
+</div>
+
+<p align="center">
+<img src="./assets/img/red-grin.jpg" alt="Grinning statue of God, glowing red" height="200" align="middle"/>
+&nbsp;&nbsp;<b>Sudarshan's mood after coding for 5 minutes</b>
+</p>
+
+<div align="center">
+
+<img src="./assets/cards/join.svg?v=1" alt="System invitation: join the shadow army — let's connect" width="100%"/>
+
+## 🌐 Socials
+
+<a href="https://sudarshantechlabs.com/"><img src="https://img.shields.io/badge/Website-ff2e4d?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Website"/></a>
+<a href="https://linkedin.com/in/sudarshan-chaudhari"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+<a href="https://github.com/SUDARSHANCHAUDHARI"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/></a>
+<a href="https://www.instagram.com/sudarshanchaudhari/"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram"/></a>
+<a href="https://x.com/SUDARSHANKC"><img src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white" alt="X"/></a>
+<a href="https://www.threads.com/@sudarshanchaudhari"><img src="https://img.shields.io/badge/Threads-000000?style=for-the-badge&logo=threads&logoColor=white" alt="Threads"/></a>
+<a href="mailto:sunny.sudarshan@gmail.com"><img src="https://img.shields.io/badge/Email-e2383f?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/></a>
+<a href="https://ko-fi.com/sudarshanchaudhari"><img src="https://img.shields.io/badge/Ko--fi-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white" alt="Ko-fi"/></a>
+
+<br/><br/>
+
+<img src="./assets/cards/engine.svg?v=1" alt="Red line-art of connected devices around a central screen" width="100%"/>
+
+<br/><br/>
+
+<img src="./assets/img/red-king.jpg" alt="Demon king on his throne before a red army" width="100%"/>
+
+<br/><br/>
+
+<img src="./assets/gifs/girl.gif" alt="Lo-fi coder on a balcony at night" width="100%"/>
+
+<br/><br/>
+
+<h1>Build it, test it, ship it. 🚀</h1>
+
+<img src="./assets/img/arise.jpg" alt="Arise" width="120"/>
+
+<br/><br/>
+
+<img src="https://komarev.com/ghpvc/?username=SUDARSHANCHAUDHARI&color=ff2e4d&style=for-the-badge&label=PROFILE+VIEWS" alt="Profile views"/>
+
+<br/><br/>
+
+<img src="./assets/gifs/dini.gif" alt="Pixel dinosaur running" width="100%"/>
+
+<br/><br/>
+
+<h1><i>The System is watching.</i></h1>
+
+</div>
