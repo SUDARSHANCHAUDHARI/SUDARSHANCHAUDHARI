@@ -98,7 +98,7 @@
 
 *Every commit raises another building — rebuilt automatically every day.*
 
-<img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/profile-night-view.svg?v=2" alt="3D contribution village" width="100%"/>
+<img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/profile-night-view.svg?v=3" alt="3D contribution village" width="100%"/>
 
 <br/><br/>
 
@@ -109,7 +109,7 @@
 
 <br/><br/>
 
-<a href="https://commit-history.com/SUDARSHANCHAUDHARI"><img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/commit-history.svg" alt="All of SUDARSHANCHAUDHARI's GitHub contributions over time" width="100%"/></a>
+<a href="https://commit-history.com/SUDARSHANCHAUDHARI"><img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/commit-history.svg?v=2" alt="All of SUDARSHANCHAUDHARI's GitHub contributions over time" width="100%"/></a>
 
 <img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/profile-details.svg" alt="GitHub profile summary" width="100%"/>
 
