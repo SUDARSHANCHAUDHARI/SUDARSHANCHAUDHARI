@@ -151,13 +151,13 @@
 ## 🌐 Socials
 
 <a href="https://sudarshantechlabs.com/"><img src="https://img.shields.io/badge/Website-ff2e4d?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Website"/></a>
-<a href="https://linkedin.com/in/sudarshan-chaudhari"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
-<a href="https://github.com/SUDARSHANCHAUDHARI"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/></a>
-<a href="https://www.instagram.com/sudarshanchaudhari/"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram"/></a>
-<a href="https://x.com/SUDARSHANKC"><img src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white" alt="X"/></a>
-<a href="https://www.threads.com/@sudarshanchaudhari"><img src="https://img.shields.io/badge/Threads-000000?style=for-the-badge&logo=threads&logoColor=white" alt="Threads"/></a>
-<a href="mailto:sunny.sudarshan@gmail.com"><img src="https://img.shields.io/badge/Email-e2383f?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/></a>
-<a href="https://ko-fi.com/sudarshanchaudhari"><img src="https://img.shields.io/badge/Ko--fi-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white" alt="Ko-fi"/></a>
+<a href="https://linkedin.com/in/sudarshan-chaudhari"><img src="https://img.shields.io/badge/LinkedIn-ff2e4d?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+<a href="https://github.com/SUDARSHANCHAUDHARI"><img src="https://img.shields.io/badge/GitHub-ff2e4d?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/></a>
+<a href="https://www.instagram.com/sudarshanchaudhari/"><img src="https://img.shields.io/badge/Instagram-ff2e4d?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram"/></a>
+<a href="https://x.com/SUDARSHANKC"><img src="https://img.shields.io/badge/X-ff2e4d?style=for-the-badge&logo=x&logoColor=white" alt="X"/></a>
+<a href="https://www.threads.com/@sudarshanchaudhari"><img src="https://img.shields.io/badge/Threads-ff2e4d?style=for-the-badge&logo=threads&logoColor=white" alt="Threads"/></a>
+<a href="mailto:sunny.sudarshan@gmail.com"><img src="https://img.shields.io/badge/Email-ff2e4d?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/></a>
+<a href="https://ko-fi.com/sudarshanchaudhari"><img src="https://img.shields.io/badge/Ko--fi-ff2e4d?style=for-the-badge&logo=ko-fi&logoColor=white" alt="Ko-fi"/></a>
 
 <br/><br/>
 
