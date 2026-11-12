@@ -42,7 +42,9 @@ jobs:
         run: |
           curl -fsSL "https://commit-history.com/embed/${OWNER}?theme=dark" -o /tmp/commit-history.svg
           python3 - <<'PY'
-          import pathlib, re
+          import pathlib, re, sys
+          sys.path.insert(0, "scripts")
+          from fx import add_fx
           src = pathlib.Path("/tmp/commit-history.svg").read_text()
           # drop the "N contributions" total: the streak card is the single source for it
           src = re.sub(r'<text[^>]*>[\d,]+ contributions</text>', "", src)
@@ -50,7 +52,7 @@ jobs:
                            "#30363d": "#3a0d14", "#c9d1d9": "#fff1f2", "#ffd43b": "#ff8a3d"}.items():
               src = src.replace(old, new)
           pathlib.Path("profile-3d-contrib").mkdir(exist_ok=True)
-          pathlib.Path("profile-3d-contrib/commit-history.svg").write_text(src)
+          pathlib.Path("profile-3d-contrib/commit-history.svg").write_text(add_fx(src))
           PY
       - name: Red/black stats charts
         continue-on-error: true # a card-service outage keeps yesterday's charts

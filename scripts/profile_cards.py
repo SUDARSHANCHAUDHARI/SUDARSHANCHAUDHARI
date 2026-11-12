@@ -21,6 +21,8 @@ import urllib.request
 from collections import OrderedDict
 from xml.sax.saxutils import escape
 
+from fx import add_fx
+
 RED, RED2, MUTED, TEXT, BG, PANEL = "#ff2e4d", "#ff6b7d", "#a8828a", "#fff1f2", "#050102", "#140306"
 MONO = "ui-monospace,'SF Mono',Menlo,Consolas,monospace"
 SANS = "'Segoe UI','Helvetica Neue',Arial,sans-serif"
@@ -196,7 +198,7 @@ def summary_cards(user, out):
             print(f"::warning::{name}: blue-dominant colours left: " + " ".join(leftover),
                   file=sys.stderr)
         with open(os.path.join(out, f"{name}.svg"), "w") as f:
-            f.write(svg)
+            f.write(add_fx(svg))
 
 
 # darkhub trophy theme -> red/black
@@ -210,7 +212,7 @@ def trophies(user, out):
     for old, new in TROPHY_RECOLOUR.items():
         svg = re.sub(re.escape(old), new, svg, flags=re.I)
     with open(os.path.join(out, "trophies.svg"), "w") as f:
-        f.write(svg)
+        f.write(add_fx(svg))
 
 
 def main():
@@ -220,9 +222,9 @@ def main():
     trophies(user, out)
     private, live = private_repo_count()
     with open(os.path.join(out, "repos.svg"), "w") as f:
-        f.write(repos_svg(public_repo_count(user), private, live))
+        f.write(add_fx(repos_svg(public_repo_count(user), private, live)))
     with open(os.path.join(out, "weekly.svg"), "w") as f:
-        f.write(weekly_svg(weekly(daily_contributions(user))))
+        f.write(add_fx(weekly_svg(weekly(daily_contributions(user)))))
     print("wrote summary cards, repos.svg and weekly.svg")
 
 

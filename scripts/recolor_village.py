@@ -6,6 +6,8 @@ cards are the single source for those numbers).
 """
 import re, sys, pathlib
 
+from fx import add_fx
+
 PIE = ["#ff2e4d", "#b3122e", "#ff8a3d", "#ff6b7d", "#7a1424", "#ffb3bc"]
 
 # Roof colour per contribution level, dark (no contributions) to bright (most).
@@ -135,7 +137,7 @@ def main(argv):
         svg = re.sub(re.escape(old), new, svg, flags=re.I)
 
     try:
-        p.write_text(svg)
+        p.write_text(add_fx(svg))
     except OSError as e:
         sys.exit(f"recolor_village.py: cannot write {p}: {e}")
 

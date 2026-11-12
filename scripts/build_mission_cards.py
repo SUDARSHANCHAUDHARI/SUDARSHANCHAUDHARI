@@ -31,6 +31,8 @@ import urllib.error
 import urllib.request
 from xml.sax.saxutils import escape
 
+from fx import add_fx
+
 BG, NAME, DESC = "#050102", "#ff2e4d", "#fff1f2"
 PILL, PILL_TEXT, BORDER = "#7a1424", "#ffb3bc", "#3a0d14"
 STAR, HEAD = "#ffb3bc", "#ff6b7d"
@@ -278,17 +280,17 @@ def main(argv):
     fonts = fonts_from()
     counts = star_counts(out, "--stars" in argv[2:])
 
-    out.joinpath("_header.svg").write_text(header_card(fonts))
+    out.joinpath("_header.svg").write_text(add_fx(header_card(fonts)))
     nh_svg, nh_h = narrow_header_card(fonts)
-    out.joinpath("_header-narrow.svg").write_text(nh_svg)
+    out.joinpath("_header-narrow.svg").write_text(add_fx(nh_svg))
     written = [("_header.svg", W, 46), ("_header-narrow.svg", NARROW_W, nh_h)]
     for name, _href, repo, desc, lang in MISSIONS:
         stars = counts.get(name) if repo else None
         wide, _alt, hw = row_card(name, desc, lang, stars, fonts)
         narrow, hn = narrow_card(name, desc, lang, stars, fonts)
         fn, fn_n = f"{slug(name)}.svg", f"{slug(name)}-narrow.svg"
-        out.joinpath(fn).write_text(wide)
-        out.joinpath(fn_n).write_text(narrow)
+        out.joinpath(fn).write_text(add_fx(wide))
+        out.joinpath(fn_n).write_text(add_fx(narrow))
         written += [(fn, W, hw), (fn_n, NARROW_W, hn)]
 
     print(f"build_mission_cards.py: wrote {len(written)} cards to {out}")
