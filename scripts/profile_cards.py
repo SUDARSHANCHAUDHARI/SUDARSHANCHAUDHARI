@@ -35,7 +35,14 @@ def fetch(url, token=None, accept="application/vnd.github+json"):
 
 
 def public_repo_count(user):
-    return json.loads(fetch(f"https://api.github.com/users/{user}", os.environ.get("GITHUB_TOKEN")))["public_repos"]
+    # Forks excluded, so the count matches the 3D village's profile-details card.
+    n, page = 0, 1
+    while True:
+        batch = json.loads(fetch(f"https://api.github.com/users/{user}/repos?type=owner&per_page=100&page={page}", os.environ.get("GITHUB_TOKEN")))
+        n += sum(not r["fork"] for r in batch)
+        if len(batch) < 100:
+            return n
+        page += 1
 
 
 def private_repo_count():
