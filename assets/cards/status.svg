@@ -93,7 +93,7 @@
 </g>
 <line x1="40" y1="452" x2="1240" y2="452" stroke="#ff2e4d" stroke-opacity=".35"/>
 <text x="76" y="486" class="mono" font-size="15" fill="#a8828a" letter-spacing="2">PUBLIC REPOSITORIES BY LANGUAGE</text>
-<text x="1204" y="486" class="mono" font-size="13" fill="#7a5a60" text-anchor="end" letter-spacing="1">173 original repos · checked 2026-11-12</text>
+<text x="1204" y="486" class="mono" font-size="13" fill="#7a5a60" text-anchor="end" letter-spacing="1">snapshot 2026-11-12 · live counts on the Repositories card</text>
 <g class="mono" font-size="15">
 <text x="76" y="521" fill="#fff1f2">HTML</text><rect x="196" y="510" width="347" height="12" rx="3" fill="#ff2e4d" fill-opacity=".07"/><rect class="bar" x="196" y="510" width="347" height="12" rx="3" fill="#ff2e4d" style="animation-delay:0.30s"/><text x="553" y="521" fill="#ff6b7d">44</text>
 <text x="76" y="549" fill="#fff1f2">TypeScript</text><rect x="196" y="538" width="347" height="12" rx="3" fill="#ff2e4d" fill-opacity=".07"/><rect class="bar" x="196" y="538" width="331" height="12" rx="3" fill="#b3122e" style="animation-delay:0.42s"/><text x="553" y="549" fill="#ff6b7d">42</text>

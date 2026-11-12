@@ -56,7 +56,7 @@
 
 <br/><br/>
 
-<img src="./assets/cards/status.svg?v=1" alt="Status window: player ID card and seven abilities" width="100%"/>
+<img src="./assets/cards/status.svg?v=2" alt="Status window: player ID card and seven abilities" width="100%"/>
 
 </div>
 
@@ -186,5 +186,7 @@
 <br/><br/>
 
 <h1><i>The System is watching.</i></h1>
+
+<sub>Solo Leveling artwork and the GIFs belong to their creators (Chugong, DUBU / Redice Studio, D&amp;C Media) and are not covered by this repo's MIT licence.</sub>
 
 </div>
