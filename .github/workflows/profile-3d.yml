@@ -59,6 +59,15 @@ jobs:
           REPO_COUNT_TOKEN: ${{ secrets.REPO_COUNT_TOKEN }}
           OWNER: ${{ github.repository_owner }}
         run: python3 scripts/profile_cards.py "${OWNER}" profile-3d-contrib
+      # Published to output-3d with the other charts rather than committed to main, so the
+      # workflow never writes to the default branch. Yesterday's cards are already in
+      # profile-3d-contrib from the restore step, so a rate-limited run keeps their counts.
+      - name: Mission cards with star counts
+        continue-on-error: true # a rate-limited API must not block publishing the charts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/build_mission_cards.py profile-3d-contrib/missions --stars
+
       - name: Publish to output-3d branch
         uses: crazy-max/ghaction-github-pages@1d6ee9b181a81033a16bd707a1401afa978daab4 # v5.0.0
         with:
