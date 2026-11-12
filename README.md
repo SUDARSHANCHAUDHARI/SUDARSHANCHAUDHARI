@@ -72,7 +72,7 @@
 
 ## ⚔️ S-Rank Missions
 
-<img src="./assets/img/red-blue.jpg" alt="Shadow monarch split between red and blue flames" width="100%"/>
+<img src="./assets/img/red-cerberus.jpg" alt="A hooded hunter facing a three-headed hellhound in a sea of fire" width="100%"/>
 
 <table>
 <tr><th>Mission</th><th>What it is</th><th>Built with</th><th align="center">⭐</th></tr>
