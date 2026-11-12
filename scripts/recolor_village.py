@@ -141,15 +141,20 @@ def main(argv):
 
     print(f"recolor_village.py: {len(roofs)} levels recoloured: "
           + ", ".join(f"{lv}={c}" for lv, c in sorted(roofs.items())))
+    # A leftover blue is reported, not fatal: a donut language colour can be legitimately
+    # blue-dominant, and exiting here would leave the generated blue village for the next
+    # step to publish unchanged.
+    leftover = blue_leftovers(svg)
+    if leftover:
+        print("::warning::recolor_village.py: blue-dominant colours left: "
+              + " ".join(leftover))
+
     problems = []
     if len(set(roofs.values())) < 4:
         problems.append(f"only {len(set(roofs.values()))} distinct roof shades")
     flat = flat_levels(roofs)
     if flat:
         problems.append("roof levels too close to tell apart: " + ", ".join(flat))
-    leftover = blue_leftovers(svg)
-    if leftover:
-        problems.append("blue-dominant colours left: " + " ".join(leftover))
     if problems:
         sys.exit("recolor_village.py: " + "; ".join(problems))
 
