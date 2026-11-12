@@ -2,7 +2,7 @@
 
 # 💫 About Me
 
-<img src="./assets/gifs/mario.gif" alt="Pixel-art coder at a desk" width="100%"/>
+<img src="./assets/gifs/mario.svg" alt="Pixel-art coder at a desk" width="100%"/>
 
 <div align="center">
 
@@ -22,11 +22,11 @@
 
 </div>
 
-<div align="center"><img src="./assets/gifs/deadline.gif" alt="Grim reaper chasing a coder along a deadline progress bar" width="600"/></div>
+<div align="center"><img src="./assets/gifs/deadline.svg" alt="Grim reaper chasing a coder along a deadline progress bar" width="600"/></div>
 
 # 💻 Tech Stack
 
-<img src="./assets/img/red-throne.jpg" alt="Shadow monarch before a throne of skulls under a red moon" width="100%"/>
+<img src="./assets/img/red-throne.svg" alt="Shadow monarch before a throne of skulls under a red moon" width="100%"/>
 
 <div align="center">
 
@@ -40,7 +40,7 @@
 
 # 📊 GitHub Stats
 
-<img src="./assets/img/igris-duel.jpg" alt="Jinwoo clashing blades with Igris, the red knight" width="100%"/>
+<img src="./assets/img/igris-duel.svg" alt="Jinwoo clashing blades with Igris, the red knight" width="100%"/>
 
 <div align="center">
 
@@ -62,7 +62,7 @@
 
 ## 🏆 GitHub Trophies
 
-<img src="./assets/img/red-army.jpg" alt="Shadow soldiers with glowing eyes in red fire" width="100%"/>
+<img src="./assets/img/red-army.svg" alt="Shadow soldiers with glowing eyes in red fire" width="100%"/>
 
 <div align="center">
 
@@ -72,7 +72,7 @@
 
 ## ⚔️ S-Rank Missions
 
-<img src="./assets/img/red-cerberus.jpg" alt="A hooded hunter facing a three-headed hellhound in a sea of fire" width="100%"/>
+<img src="./assets/img/red-cerberus.svg" alt="A hooded hunter facing a three-headed hellhound in a sea of fire" width="100%"/>
 
 <picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/missions/_header-narrow.svg"/><img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/missions/_header.svg" alt="Table header: Mission, what it is, built with, stars." width="100%"/></picture>
 <a href="https://github.com/SUDARSHANCHAUDHARI/OrbiAgents"><picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/missions/orbiagents-narrow.svg"/><img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/missions/orbiagents.svg" alt="OrbiAgents — Visual multi-agent workflow orchestration, execution, and replay — the largest codebase here, with 274 test files Built with TypeScript, star count shown on the card." width="100%"/></picture></a>
@@ -92,7 +92,7 @@
 
 ### 🌃 My contribution village
 
-<img src="./assets/img/red-gate.jpg" alt="A red gate swirling open in an abandoned warehouse" width="100%"/>
+<img src="./assets/img/red-gate.svg" alt="A red gate swirling open in an abandoned warehouse" width="100%"/>
 
 *Every commit raises another building — rebuilt automatically every day.*
 
@@ -138,7 +138,7 @@
 </div>
 
 <p align="center">
-<img src="./assets/img/red-grin.jpg" alt="Grinning statue of God, glowing red" height="200" align="middle"/>
+<img src="./assets/img/red-grin.svg" alt="Grinning statue of God, glowing red" height="200" align="middle"/>
 &nbsp;&nbsp;<b>Sudarshan's mood after coding for 5 minutes</b>
 </p>
 
@@ -159,21 +159,21 @@
 
 <br/><br/>
 
-<img src="./assets/cards/engine.svg?v=1" alt="Red line-art of connected devices around a central screen" width="100%"/>
+<img src="./assets/cards/engine.svg?v=2" alt="Red line-art of connected devices around a central screen" width="100%"/>
 
 <br/><br/>
 
-<img src="./assets/img/red-king.jpg" alt="Demon king on his throne before a red army" width="100%"/>
+<img src="./assets/img/red-king.svg" alt="Demon king on his throne before a red army" width="100%"/>
 
 <br/><br/>
 
-<img src="./assets/gifs/girl.gif" alt="Lo-fi coder on a balcony at night" width="100%"/>
+<img src="./assets/gifs/girl.svg" alt="Lo-fi coder on a balcony at night" width="100%"/>
 
 <br/><br/>
 
 <h1>Build it, test it, ship it. 🚀</h1>
 
-<img src="./assets/img/arise.jpg" alt="Arise" width="120"/>
+<img src="./assets/img/arise.svg" alt="Arise" width="120"/>
 
 <br/><br/>
 
@@ -181,7 +181,7 @@
 
 <br/><br/>
 
-<img src="./assets/gifs/dini.gif" alt="Pixel dinosaur running" width="100%"/>
+<img src="./assets/gifs/dini.svg" alt="Pixel dinosaur running" width="100%"/>
 
 <br/><br/>
 
