@@ -6,19 +6,19 @@
 
 <div align="center">
 
-<img src="./assets/cards/hero.svg?v=2" alt="System window: a new player has awakened — Sudarshan Chaudhari, Senior Quality Engineer, Test Automation Specialist, AI Systems Builder, Android Developer" width="100%"/>
+<img src="./assets/cards/hero.svg?v=3" alt="System window: a new player has awakened — Sudarshan Chaudhari, Senior Quality Engineer, Test Automation Specialist, AI Systems Builder, Android Developer" width="100%"/>
 
 </div>
 
 <div align="center">
 
-<img src="./assets/cards/log.svg?v=3" alt="Player log: building AI-agent tooling and Android apps; open to collaborate on QA automation, AI agents and developer tooling; exploring Rust and Three.js; ask about test automation, release quality and MCP servers; 13+ years in QA" width="100%"/>
+<img src="./assets/cards/log.svg?v=4" alt="Player log: building AI-agent tooling and Android apps; open to collaborate on QA automation, AI agents and developer tooling; exploring Rust and Three.js; ask about test automation, release quality and MCP servers; 13+ years in QA" width="100%"/>
 
 </div>
 
 <div align="center">
 
-<img src="./assets/cards/quest.svg?v=3" alt="Daily quest: Android products, AI-agent systems, QA and release tooling, local-first utilities" width="100%"/>
+<img src="./assets/cards/quest.svg?v=4" alt="Daily quest: Android products, AI-agent systems, QA and release tooling, local-first utilities" width="100%"/>
 
 </div>
 
@@ -28,11 +28,11 @@
 
 <div align="center">
 
-<img src="./assets/cards/skills.svg?v=4" alt="Skills window: six skill areas — QA automation, mobile, AI systems, web platforms, developer tooling, security" width="100%"/>
+<img src="./assets/cards/skills.svg?v=5" alt="Skills window: six skill areas — QA automation, mobile, AI systems, web platforms, developer tooling, security" width="100%"/>
 
 <br/><br/>
 
-<img src="./assets/cards/tools.svg?v=3" alt="Inventory: Kotlin, Jetpack Compose, Android, TypeScript, React, Next.js, Python, Rust, SQLite, Playwright, Selenium, Appium, Postman, Firebase, Cloudflare, GitHub Actions, Git" width="100%"/>
+<img src="./assets/cards/tools.svg?v=4" alt="Inventory: Kotlin, Jetpack Compose, Android, TypeScript, React, Next.js, Python, Rust, SQLite, Playwright, Selenium, Appium, Postman, Firebase, Cloudflare, GitHub Actions, Git" width="100%"/>
 
 </div>
 
@@ -52,7 +52,7 @@
 
 <br/><br/>
 
-<img src="./assets/cards/status.svg?v=3" alt="Status window: player ID card and seven abilities" width="100%"/>
+<img src="./assets/cards/status.svg?v=4" alt="Status window: player ID card and seven abilities" width="100%"/>
 
 </div>
 
@@ -107,7 +107,7 @@
 
 <div align="center">
 
-<img src="./assets/cards/record.svg?v=3" alt="Dungeon record: projects across Android, iOS, macOS, web, Rust, AI systems, QA, cybersecurity and developer tooling" width="100%"/>
+<img src="./assets/cards/record.svg?v=4" alt="Dungeon record: projects across Android, iOS, macOS, web, Rust, AI systems, QA, cybersecurity and developer tooling" width="100%"/>
 
 </div>
 
@@ -115,7 +115,7 @@
 
 <div align="center">
 
-<img src="./assets/cards/profile.svg?v=3" alt="Player profile: Sudarshan Kishor Chaudhari, Senior Quality Engineer, Test Automation specialist and AI systems builder based in Bangkok, Thailand, with 13+ years in software quality engineering; runs SudarshanTechLabs" width="100%"/>
+<img src="./assets/cards/profile.svg?v=4" alt="Player profile: Sudarshan Kishor Chaudhari, Senior Quality Engineer, Test Automation specialist and AI systems builder based in Bangkok, Thailand, with 13+ years in software quality engineering; runs SudarshanTechLabs" width="100%"/>
 
 </div>
 
@@ -123,7 +123,7 @@
 
 <div align="center">
 
-<img src="./assets/cards/quote.svg?v=2" alt="System message cycling six dev and QA quotes by Dijkstra, John Johnson, John Ruskin, Kent Beck and Linus Torvalds" width="100%"/>
+<img src="./assets/cards/quote.svg?v=3" alt="System message cycling six dev and QA quotes by Dijkstra, John Johnson, John Ruskin, Kent Beck and Linus Torvalds" width="100%"/>
 
 </div>
 
@@ -134,7 +134,7 @@
 
 <div align="center">
 
-<img src="./assets/cards/join.svg?v=2" alt="System invitation: join the shadow army — let's connect" width="100%"/>
+<img src="./assets/cards/join.svg?v=3" alt="System invitation: join the shadow army — let's connect" width="100%"/>
 
 ## 🌐 Socials
 
