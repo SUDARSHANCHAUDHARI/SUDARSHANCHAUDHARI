@@ -4,57 +4,37 @@
 
 <img src="./assets/gifs/mario.svg" alt="Pixel-art coder at a desk" width="100%"/>
 
-<div align="center">
-
 <img src="./assets/cards/hero.svg?v=3" alt="System window: a new player has awakened — Sudarshan Chaudhari, Senior Quality Engineer, Test Automation Specialist, AI Systems Builder, Android Developer" width="100%"/>
-
-</div>
-
-<div align="center">
 
 <img src="./assets/cards/log.svg?v=4" alt="Player log: building AI-agent tooling and Android apps; open to collaborate on QA automation, AI agents and developer tooling; exploring Rust and Three.js; ask about test automation, release quality and MCP servers; 13+ years in QA" width="100%"/>
 
-</div>
-
-<div align="center">
-
 <img src="./assets/cards/quest.svg?v=4" alt="Daily quest: Android products, AI-agent systems, QA and release tooling, local-first utilities" width="100%"/>
-
-</div>
 
 <img src="./assets/gifs/deadline.svg?v=2" alt="Grim reaper chasing a coder along a deadline progress bar" width="100%"/>
 
 # 💻 Tech Stack
 
-<div align="center">
-
 <img src="./assets/cards/skills.svg?v=5" alt="Skills window: six skill areas — QA automation, mobile, AI systems, web platforms, developer tooling, security" width="100%"/>
-
-<br/><br/>
 
 <img src="./assets/cards/tools.svg?v=4" alt="Inventory: Kotlin, Jetpack Compose, Android, TypeScript, React, Next.js, Python, Rust, SQLite, Playwright, Selenium, Appium, Postman, Firebase, Cloudflare, GitHub Actions, Git" width="100%"/>
 
-</div>
-
 # 📊 GitHub Stats
 
-<div align="center">
-
+<p align="center">
 <img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/stats.svg" alt="GitHub stats" width="49%"/>
 <img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/repos.svg" alt="Repositories: public, private and total" width="49%"/>
+</p>
 
+<p align="center">
 <img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/most-commit-language.svg" alt="Top languages by commit" width="49%"/>
 <img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/repos-per-language.svg" alt="Top languages by repo" width="49%"/>
+</p>
 
 <img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/streak.svg" alt="Total contributions and streak" width="100%"/>
 
 <img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/weekly.svg" alt="Contributions per week, last 52 weeks" width="100%"/>
 
-<br/><br/>
-
 <img src="./assets/cards/status.svg?v=4" alt="Status window: player ID card and seven abilities" width="100%"/>
-
-</div>
 
 ## 🏆 GitHub Trophies
 
