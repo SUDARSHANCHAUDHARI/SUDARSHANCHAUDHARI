@@ -196,6 +196,35 @@ def underlay(svg, uri, x, y, w, h, opacity=0.3, after=None, base=None, inset=1.5
     return svg[:m.end()] + picture_layer(box, x, y, w, h, opacity, uri, fill) + svg[m.end():]
 
 
+SWEEP_MARK = 'class="fx-sweep"'
+FRAME = re.compile(r'<rect class="frame" x="([\d.]+)" y="([\d.]+)" width="([\d.]+)" height="([\d.]+)" rx="6"[^>]*/>')
+
+
+def sweep(svg):
+    """Return svg with the red light band sweeping across its framed window, on top of the
+    content but inside the frame (add_fx's beam spans the whole SVG, margins included).
+    Unchanged if it already has one."""
+    if SWEEP_MARK in svg:
+        return svg
+    m = FRAME.search(svg)
+    if not m:
+        raise ValueError('no <rect class="frame" ... rx="6"/> to sweep across')
+    end = svg.rfind("</svg>")
+    if end < 0:
+        raise ValueError("no closing </svg>")
+    x, y, w, h = (float(v) for v in m.groups())
+    band = max(w * 0.18, 60)
+    css = (".fx-sweep{animation:fx-sweep 7s cubic-bezier(.4,0,.6,1) infinite}"
+           "@keyframes fx-sweep{0%%{transform:translateX(%.0fpx)}55%%,100%%{transform:translateX(%.0fpx)}}" % (-band, w + band)
+           + "@media (prefers-reduced-motion:reduce){.fx-sweep{animation:none!important}}")
+    layer = (f'<g aria-hidden="true" clip-path="url(#fx-sweep-clip)"><defs><clipPath id="fx-sweep-clip">'
+             f'<rect x="{x:g}" y="{y:g}" width="{w:g}" height="{h:g}" rx="6"/></clipPath>'
+             f'<linearGradient id="fx-sweep-band" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{RED}" stop-opacity="0"/>'
+             f'<stop offset=".5" stop-color="{RED}" stop-opacity=".22"/><stop offset="1" stop-color="{RED}" stop-opacity="0"/></linearGradient>'
+             f'<style>{css}</style></defs><rect {SWEEP_MARK} x="{x:g}" y="{y:g}" width="{band:.1f}" height="{h:g}" fill="url(#fx-sweep-band)"/></g>')
+    return svg[:end] + layer + "\n" + svg[end:]
+
+
 def selftest():
     import xml.etree.ElementTree as ET
     base = '<svg xmlns="http://www.w3.org/2000/svg"\n width="340" height="200" viewBox="0 0 340 200"><rect/></svg>'
@@ -216,6 +245,17 @@ def selftest():
     card = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 300"><rect x="40" y="20" width="1200" height="260" rx="6" fill="url(#panel)"/><text>t</text></svg>'
     bg = backdrop(card, "data:image/gif;base64,R0lGODlhAQABAAAAACw=")
     assert backdrop(bg, "x") == bg, "backdrop is not idempotent"
+    framed = card.replace("<text>", '<rect class="frame" x="40" y="20" width="1200" height="260" rx="6" filter="url(#glow)"/><text>')
+    swept = sweep(framed)
+    assert sweep(swept) == swept and swept.count(SWEEP_MARK) == 1, "sweep is not idempotent"
+    assert swept.index(SWEEP_MARK) > swept.index("<text>") and 'x="40" y="20" width="1200" height="260"' in swept, "sweep not on top, inside the frame"
+    ET.fromstring(swept)
+    try:
+        sweep(card)
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("card without a frame not rejected")
     assert all(c in bg for c in ('class="bg-zoom"', 'class="bg-vig"', 'class="bg-ember"', "prefers-reduced-motion")), "backdrop has no motion"
     assert bg.index("<image") < bg.index("<text"), "backdrop is not behind the text"
     ET.fromstring(bg)
@@ -249,8 +289,10 @@ def main(argv):
         return selftest()
     if argv[1:2] == ["--backdrop"]:
         return main_backdrop(argv[2:])
+    if argv[1:2] == ["--sweep"]:
+        return main_sweep(argv[2:])
     if len(argv) < 2:
-        sys.exit("fx.py: usage: fx.py <file.svg>... | --backdrop <card.svg>... | --selftest")
+        sys.exit("fx.py: usage: fx.py <file.svg>... | --backdrop <card.svg>... | --sweep <card.svg>... | --selftest")
     for name in argv[1:]:
         p = pathlib.Path(name)
         try:
@@ -289,6 +331,27 @@ def main_backdrop(args):
         except OSError as e:
             sys.exit(f"fx.py: cannot write {card}: {e}")
         print(f"fx.py: {card}: backdrop {BACKDROPS[card.stem]} added")
+
+
+def main_sweep(args):
+    # For cards with no build script (hero, quest, status, join); the built cards get theirs from the build.
+    if not args:
+        sys.exit("fx.py: usage: fx.py --sweep <card.svg>...")
+    for name in args:
+        card = pathlib.Path(name)
+        try:
+            svg = card.read_text()
+            out = sweep(svg)
+        except (OSError, ValueError) as e:
+            sys.exit(f"fx.py: {card}: {e}")
+        if out == svg:
+            print(f"fx.py: {card}: already has the sweep")
+            continue
+        try:
+            card.write_text(out)
+        except OSError as e:
+            sys.exit(f"fx.py: cannot write {card}: {e}")
+        print(f"fx.py: {card}: sweep added")
 
 
 if __name__ == "__main__":
