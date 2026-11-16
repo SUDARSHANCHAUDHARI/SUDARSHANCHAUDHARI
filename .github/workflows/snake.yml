@@ -29,6 +29,13 @@ jobs:
             dist/snake-dark.svg?palette=github-dark&color_snake=#ff6b7d&color_dots=#1a0a0d,#4a0f1a,#7a1424,#b3122e,#ff2e4d
             dist/snake-light.svg?color_snake=#ff2e4d&color_dots=#ffd9dd,#ffb3bc,#ff8a9a,#b3122e,#7a1424
 
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          path: repo
+
+      - name: Red frame and sweep
+        run: python3 repo/scripts/fx.py dist/snake-dark.svg dist/snake-light.svg
+
       - name: Push to output branch
         uses: crazy-max/ghaction-github-pages@1d6ee9b181a81033a16bd707a1401afa978daab4 # v5.0.0
         with:
