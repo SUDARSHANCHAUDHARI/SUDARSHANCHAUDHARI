@@ -31,7 +31,7 @@ import urllib.error
 import urllib.request
 from xml.sax.saxutils import escape
 
-from fx import add_fx
+from fx import add_fx, underlay, data_uri, IMG, MISSIONS_IMAGE
 
 BG, NAME, DESC = "#050102", "#ff2e4d", "#fff1f2"
 PILL, PILL_TEXT, BORDER = "#7a1424", "#ffb3bc", "#3a0d14"
@@ -272,6 +272,17 @@ def narrow_card(name, desc, lang, stars, fonts):
     return narrow_shell(h, name, alt, fonts, "\n".join(body)), h
 
 
+def slice_of_picture(svg, name, w, top, total):
+    """The README stacks the cards, so each shows its own band of one picture that runs down
+    the whole table. Decoration only: a miss warns and leaves the card plain."""
+    try:
+        return underlay(svg, data_uri(IMG / (MISSIONS_IMAGE + ".jpg")), 0, -top, w, total, opacity=0.25,
+                        after=rf'<rect width="{w}" height="[\d.]+" rx="6" fill="{BG}"/>')
+    except (OSError, ValueError) as e:
+        print(f"::warning::{name}: background left out: {e}", file=sys.stderr)
+        return svg
+
+
 def main(argv):
     if len(argv) < 2:
         sys.exit("build_mission_cards.py: usage: build_mission_cards.py <missions-dir> [--stars]")
@@ -280,18 +291,22 @@ def main(argv):
     fonts = fonts_from()
     counts = star_counts(out, "--stars" in argv[2:])
 
-    out.joinpath("_header.svg").write_text(add_fx(header_card(fonts)))
     nh_svg, nh_h = narrow_header_card(fonts)
-    out.joinpath("_header-narrow.svg").write_text(add_fx(nh_svg))
-    written = [("_header.svg", W, 46), ("_header-narrow.svg", NARROW_W, nh_h)]
+    wide_cards, narrow_cards = [("_header.svg", header_card(fonts), 46)], [("_header-narrow.svg", nh_svg, nh_h)]
     for name, _href, repo, desc, lang in MISSIONS:
         stars = counts.get(name) if repo else None
         wide, _alt, hw = row_card(name, desc, lang, stars, fonts)
         narrow, hn = narrow_card(name, desc, lang, stars, fonts)
-        fn, fn_n = f"{slug(name)}.svg", f"{slug(name)}-narrow.svg"
-        out.joinpath(fn).write_text(add_fx(wide))
-        out.joinpath(fn_n).write_text(add_fx(narrow))
-        written += [(fn, W, hw), (fn_n, NARROW_W, hn)]
+        wide_cards.append((f"{slug(name)}.svg", wide, hw))
+        narrow_cards.append((f"{slug(name)}-narrow.svg", narrow, hn))
+
+    written = []
+    for cards, w in ((wide_cards, W), (narrow_cards, NARROW_W)):
+        total, top = sum(h for _, _, h in cards), 0
+        for fn, svg, h in cards:
+            out.joinpath(fn).write_text(add_fx(slice_of_picture(svg, fn, w, top, total)))
+            written.append((fn, w, h))
+            top += h
 
     print(f"build_mission_cards.py: wrote {len(written)} cards to {out}")
     for fn, w, h in written:
