@@ -21,7 +21,7 @@ import urllib.request
 from collections import OrderedDict
 from xml.sax.saxutils import escape
 
-from fx import add_fx, underlay, data_uri, IMG, GRID_IMAGE, TROPHY_IMAGE
+from fx import add_fx, underlay, data_uri, IMG, GRID_IMAGE, TROPHY_IMAGE, WEEKLY_IMAGE, STREAK_IMAGE
 
 RED, RED2, MUTED, TEXT, BG, PANEL = "#ff2e4d", "#ff6b7d", "#a8828a", "#fff1f2", "#050102", "#140306"
 MONO = "ui-monospace,'SF Mono',Menlo,Consolas,monospace"
@@ -241,17 +241,41 @@ def trophies(user, out):
         f.write(add_fx(svg))
 
 
+# streak-stats already draws in the red/black theme through these colours
+STREAK_COLOURS = ("background=050102&border=ff2e4d&stroke=3a0d14&ring=ff2e4d&fire=ff2e4d&currStreakNum=fff1f2"
+                  "&sideNums=fff1f2&currStreakLabel=ff6b7d&sideLabels=ff6b7d&dates=a8828a")
+
+
+def streak(user, out):
+    """Copy the streak card so it can carry the picture and the effect layer like the others."""
+    try:
+        svg = fetch(f"https://streak-stats.demolab.com/?user={user}&{STREAK_COLOURS}", accept="image/svg+xml")
+    except OSError as e:
+        print(f"::warning::streak: not refreshed, the last copy stays: {e}", file=sys.stderr)
+        return
+    if "<svg" not in svg[:300]:
+        print("::warning::streak: not an SVG, the last copy stays", file=sys.stderr)
+        return
+    svg = picture(svg, "streak", STREAK_IMAGE, 0, 0, 495, 195, opacity=0.35,
+                  after=r"<rect stroke='[^']*' fill='#050102'[^>]*/>")
+    with open(os.path.join(out, "streak.svg"), "w") as f:
+        f.write(add_fx(svg))
+
+
 def main():
     user, out = sys.argv[1], sys.argv[2]
     os.makedirs(out, exist_ok=True)
     summary_cards(user, out)
     trophies(user, out)
+    streak(user, out)
     private, live = private_repo_count()
     with open(os.path.join(out, "repos.svg"), "w") as f:
         f.write(add_fx(grid_tile(repos_svg(public_repo_count(user), private, live), "repos", r'<rect x="\.5" y="\.5"[^>]*/>')))
+    week = picture(weekly_svg(weekly(daily_contributions(user))), "weekly", WEEKLY_IMAGE, 0, 0, 1000, 280,
+                   opacity=0.3, after=r'<rect x="\.5" y="\.5"[^>]*/>')
     with open(os.path.join(out, "weekly.svg"), "w") as f:
-        f.write(add_fx(weekly_svg(weekly(daily_contributions(user)))))
-    print("wrote summary cards, repos.svg and weekly.svg")
+        f.write(add_fx(week))
+    print("wrote summary cards, streak.svg, repos.svg and weekly.svg")
 
 
 if __name__ == "__main__":

@@ -28,11 +28,11 @@ def size(svg):
     if not root:
         raise ValueError("no <svg> root tag")
     tag = root.group(0)
-    vb = re.search(r'viewBox="\s*([-\d.]+)[\s,]+([-\d.]+)[\s,]+([\d.]+)[\s,]+([\d.]+)\s*"', tag)
+    vb = re.search(r'''viewBox=["']\s*([-\d.]+)[\s,]+([-\d.]+)[\s,]+([\d.]+)[\s,]+([\d.]+)\s*["']''', tag)
     if vb:
         return tuple(float(v) for v in vb.groups())
-    w = re.search(r'\bwidth="([\d.]+)', tag)
-    h = re.search(r'\bheight="([\d.]+)', tag)
+    w = re.search(r'''\bwidth=["']([\d.]+)''', tag)
+    h = re.search(r'''\bheight=["']([\d.]+)''', tag)
     if not (w and h):
         raise ValueError("root <svg> has neither a viewBox nor a numeric width and height")
     return 0.0, 0.0, float(w.group(1)), float(h.group(1))
@@ -125,7 +125,8 @@ IMG = pathlib.Path(__file__).resolve().parent.parent / "assets" / "img"
 # inside cards, so build_image_cards.py skips them.
 BACKDROPS = {"log": "red-gate", "profile": "igris-duel", "tools": "red-king", "skills": "red-throne"}
 GRID_IMAGE, TROPHY_IMAGE = "red-cerberus", "red-army"
-CARD_ONLY = set(BACKDROPS.values()) | {GRID_IMAGE, TROPHY_IMAGE}
+WEEKLY_IMAGE, STREAK_IMAGE, MISSIONS_IMAGE = "shadow-monarch", "sung-rage", "igris-shadow"
+CARD_ONLY = set(BACKDROPS.values()) | {GRID_IMAGE, TROPHY_IMAGE, WEEKLY_IMAGE, STREAK_IMAGE, MISSIONS_IMAGE}
 MIME = {".jpg": "jpeg", ".jpeg": "jpeg", ".png": "png", ".gif": "gif"}
 
 
@@ -233,6 +234,7 @@ def selftest():
     assert once.count(MARK) == 1
     ET.fromstring(once)
     assert size('<svg width="80" height="40"></svg>') == (0, 0, 80, 40)
+    assert size("<svg viewBox='0 0 495 195' width='495px'></svg>") == (0, 0, 495, 195), "single-quoted viewBox not read"
     img = image_svg("data:image/gif;base64,R0lGODlhAQABAAAAACw=", 100, 50, "t", "d & e", glitch=True)
     ET.fromstring(img)
     assert "fx-ember" in img and "fx-ghost" in img and "fx-zoom" in img

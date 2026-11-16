@@ -46,7 +46,7 @@
 <img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/most-commit-language.svg" alt="Top languages by commit" width="49%"/>
 <img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/repos-per-language.svg" alt="Top languages by repo" width="49%"/>
 
-<img src="https://streak-stats.demolab.com/?user=SUDARSHANCHAUDHARI&background=050102&border=ff2e4d&stroke=3a0d14&ring=ff2e4d&fire=ff2e4d&currStreakNum=fff1f2&sideNums=fff1f2&currStreakLabel=ff6b7d&sideLabels=ff6b7d&dates=a8828a" alt="Total contributions and streak" width="99%"/>
+<img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/streak.svg" alt="Total contributions and streak" width="99%"/>
 
 <img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/weekly.svg" alt="Contributions per week, last 52 weeks" width="99%"/>
 
