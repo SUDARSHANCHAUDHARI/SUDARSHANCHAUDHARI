@@ -10,8 +10,6 @@
 
 <img src="./assets/cards/quest.svg?v=4" alt="Daily quest: Android products, AI-agent systems, QA and release tooling, local-first utilities" width="100%"/>
 
-<img src="./assets/gifs/deadline.svg?v=2" alt="Grim reaper chasing a coder along a deadline progress bar" width="100%"/>
-
 # 💻 Tech Stack
 
 <img src="./assets/cards/skills.svg?v=5" alt="Skills window: six skill areas — QA automation, mobile, AI systems, web platforms, developer tooling, security" width="100%"/>
@@ -111,6 +109,8 @@
 <img src="./assets/img/red-grin.svg" alt="Grinning statue of God, glowing red" height="200" align="middle"/>
 &nbsp;&nbsp;<b>Sudarshan's mood after coding for 5 minutes</b>
 </p>
+
+<img src="./assets/gifs/deadline.svg?v=2" alt="Grim reaper chasing a coder along a deadline progress bar" width="100%"/>
 
 <div align="center">
 
