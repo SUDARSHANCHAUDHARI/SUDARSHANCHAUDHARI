@@ -12,7 +12,7 @@
 
 <div align="center">
 
-<img src="./assets/cards/log.svg?v=1" alt="Player log: building AI-agent tooling and Android apps; open to collaborate on QA automation, AI agents and developer tooling; exploring Rust and Three.js; ask about test automation, release quality and MCP servers; 13+ years in QA" width="100%"/>
+<img src="./assets/cards/log.svg?v=2" alt="Player log: building AI-agent tooling and Android apps; open to collaborate on QA automation, AI agents and developer tooling; exploring Rust and Three.js; ask about test automation, release quality and MCP servers; 13+ years in QA" width="100%"/>
 
 </div>
 
@@ -26,21 +26,17 @@
 
 # 💻 Tech Stack
 
-<img src="./assets/img/red-throne.svg" alt="Shadow monarch before a throne of skulls under a red moon" width="100%"/>
-
 <div align="center">
 
-<img src="./assets/cards/skills.svg?v=2" alt="Skills window: six skill areas — QA automation, mobile, AI systems, web platforms, developer tooling, security" width="100%"/>
+<img src="./assets/cards/skills.svg?v=3" alt="Skills window: six skill areas — QA automation, mobile, AI systems, web platforms, developer tooling, security" width="100%"/>
 
 <br/><br/>
 
-<img src="./assets/cards/tools.svg?v=1" alt="Inventory: Kotlin, Jetpack Compose, Android, TypeScript, React, Next.js, Python, Rust, SQLite, Playwright, Selenium, Appium, Postman, Firebase, Cloudflare, GitHub Actions, Git" width="100%"/>
+<img src="./assets/cards/tools.svg?v=2" alt="Inventory: Kotlin, Jetpack Compose, Android, TypeScript, React, Next.js, Python, Rust, SQLite, Playwright, Selenium, Appium, Postman, Firebase, Cloudflare, GitHub Actions, Git" width="100%"/>
 
 </div>
 
 # 📊 GitHub Stats
-
-<img src="./assets/img/igris-duel.svg" alt="Jinwoo clashing blades with Igris, the red knight" width="100%"/>
 
 <div align="center">
 
@@ -62,8 +58,6 @@
 
 ## 🏆 GitHub Trophies
 
-<img src="./assets/img/red-army.svg" alt="Shadow soldiers with glowing eyes in red fire" width="100%"/>
-
 <div align="center">
 
 <img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/trophies.svg" alt="GitHub trophies" width="100%"/>
@@ -71,8 +65,6 @@
 </div>
 
 ## ⚔️ S-Rank Missions
-
-<img src="./assets/img/red-cerberus.svg" alt="A hooded hunter facing a three-headed hellhound in a sea of fire" width="100%"/>
 
 <picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/missions/_header-narrow.svg"/><img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/missions/_header.svg" alt="Table header: Mission, what it is, built with, stars." width="100%"/></picture>
 <a href="https://github.com/SUDARSHANCHAUDHARI/OrbiAgents"><picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/missions/orbiagents-narrow.svg"/><img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/missions/orbiagents.svg" alt="OrbiAgents — Visual multi-agent workflow orchestration, execution, and replay — the largest codebase here, with 274 test files Built with TypeScript, star count shown on the card." width="100%"/></picture></a>
@@ -91,8 +83,6 @@
 <br/><br/>
 
 ### 🌃 My contribution village
-
-<img src="./assets/img/red-gate.svg" alt="A red gate swirling open in an abandoned warehouse" width="100%"/>
 
 *Every commit raises another building — rebuilt automatically every day.*
 
@@ -125,7 +115,7 @@
 
 <div align="center">
 
-<img src="./assets/cards/profile.svg?v=1" alt="Player profile: Sudarshan Kishor Chaudhari, Senior Quality Engineer, Test Automation specialist and AI systems builder based in Bangkok, Thailand, with 13+ years in software quality engineering; runs SudarshanTechLabs" width="100%"/>
+<img src="./assets/cards/profile.svg?v=2" alt="Player profile: Sudarshan Kishor Chaudhari, Senior Quality Engineer, Test Automation specialist and AI systems builder based in Bangkok, Thailand, with 13+ years in software quality engineering; runs SudarshanTechLabs" width="100%"/>
 
 </div>
 
@@ -160,10 +150,6 @@
 <br/><br/>
 
 <img src="./assets/cards/engine.svg?v=2" alt="Red line-art of connected devices around a central screen" width="100%"/>
-
-<br/><br/>
-
-<img src="./assets/img/red-king.svg" alt="Demon king on his throne before a red army" width="100%"/>
 
 <br/><br/>
 

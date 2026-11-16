@@ -21,11 +21,29 @@ import urllib.request
 from collections import OrderedDict
 from xml.sax.saxutils import escape
 
-from fx import add_fx
+from fx import add_fx, underlay, data_uri, IMG, GRID_IMAGE, TROPHY_IMAGE
 
 RED, RED2, MUTED, TEXT, BG, PANEL = "#ff2e4d", "#ff6b7d", "#a8828a", "#fff1f2", "#050102", "#140306"
 MONO = "ui-monospace,'SF Mono',Menlo,Consolas,monospace"
 SANS = "'Segoe UI','Helvetica Neue',Arial,sans-serif"
+
+
+# The 2x2 stats grid in the README shares one picture: (column, row) of each 340x200 card.
+GRID = {"stats": (0, 0), "repos": (1, 0), "most-commit-language": (0, 1), "repos-per-language": (1, 1)}
+
+
+def picture(svg, name, image, *box, **kw):
+    """underlay() that never fails the run: the picture is decoration, the stats are not."""
+    try:
+        return underlay(svg, data_uri(IMG / (image + ".jpg")), *box, **kw)
+    except (OSError, ValueError) as e:
+        print(f"::warning::{name}: background left out: {e}", file=sys.stderr)
+        return svg
+
+
+def grid_tile(svg, name, after):
+    col, row = GRID[name]
+    return picture(svg, name, GRID_IMAGE, -340 * col, -200 * row, 680, 400, after=after)
 
 
 def fetch(url, token=None, accept="application/vnd.github+json"):
@@ -197,6 +215,8 @@ def summary_cards(user, out):
         if leftover:
             print(f"::warning::{name}: blue-dominant colours left: " + " ".join(leftover),
                   file=sys.stderr)
+        if name in GRID:
+            svg = grid_tile(svg, name, r'<rect x="1" y="1"[^>]*></rect>')
         with open(os.path.join(out, f"{name}.svg"), "w") as f:
             f.write(add_fx(svg))
 
@@ -211,6 +231,12 @@ def trophies(user, out):
     assert "<svg" in svg[:200], "trophies: not an SVG"
     for old, new in TROPHY_RECOLOUR.items():
         svg = re.sub(re.escape(old), new, svg, flags=re.I)
+    # see-through trophy tiles, so the picture behind them shows
+    svg, n = re.subn(rf'(fill="{re.escape(BG)}"\s+stroke-opacity="0"\s+)fill-opacity="1"', r'\1fill-opacity=".55"', svg, flags=re.I)
+    if not n:
+        print("::warning::trophies: no tile backgrounds found; the picture stays hidden behind them", file=sys.stderr)
+    # the trophy SVG has no background of its own: paint BG under the picture so light theme stays dark
+    svg = picture(svg, "trophies", TROPHY_IMAGE, 0, 0, 690, 220, opacity=0.4, base=BG, inset=0)
     with open(os.path.join(out, "trophies.svg"), "w") as f:
         f.write(add_fx(svg))
 
@@ -222,7 +248,7 @@ def main():
     trophies(user, out)
     private, live = private_repo_count()
     with open(os.path.join(out, "repos.svg"), "w") as f:
-        f.write(add_fx(repos_svg(public_repo_count(user), private, live)))
+        f.write(add_fx(grid_tile(repos_svg(public_repo_count(user), private, live), "repos", r'<rect x="\.5" y="\.5"[^>]*/>')))
     with open(os.path.join(out, "weekly.svg"), "w") as f:
         f.write(add_fx(weekly_svg(weekly(daily_contributions(user)))))
     print("wrote summary cards, repos.svg and weekly.svg")
