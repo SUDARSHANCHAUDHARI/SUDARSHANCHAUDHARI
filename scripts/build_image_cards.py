@@ -16,6 +16,8 @@ from fx import image_svg, CARD_ONLY
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 GLITCH = {"red-grin", "arise"}
+# x, y, w, h to keep: the deadline GIF is 880x440 with the drawing in a thin middle band
+CROP = {"deadline": (150, 110, 580, 190)}
 TEXT = {  # title, description: kept in step with the README alt text
     "red-grin": ("Red grin", "Grinning statue of God, glowing red"),
     "arise": ("Arise", "Arise"),
@@ -59,7 +61,7 @@ def main():
             sys.exit(f"build_image_cards.py: {src}: {e}")
         uri = f"data:image/{kind};base64," + base64.b64encode(data).decode()
         title, desc = TEXT[src.stem]
-        svg = image_svg(uri, w, h, title, desc, photo=kind == "jpeg", glitch=src.stem in GLITCH)
+        svg = image_svg(uri, w, h, title, desc, photo=kind == "jpeg", glitch=src.stem in GLITCH, crop=CROP.get(src.stem))
         out = src.with_suffix(".svg")
         try:
             out.write_text(svg)

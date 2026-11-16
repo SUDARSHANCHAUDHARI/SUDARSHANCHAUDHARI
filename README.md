@@ -22,7 +22,7 @@
 
 </div>
 
-<img src="./assets/gifs/deadline.svg" alt="Grim reaper chasing a coder along a deadline progress bar" width="100%"/>
+<img src="./assets/gifs/deadline.svg?v=2" alt="Grim reaper chasing a coder along a deadline progress bar" width="100%"/>
 
 # 💻 Tech Stack
 

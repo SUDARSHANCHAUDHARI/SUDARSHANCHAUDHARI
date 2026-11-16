@@ -102,17 +102,20 @@ IMAGE_CSS = (".fx-zoom{transform-box:fill-box;transform-origin:center;animation:
              "91%{opacity:.4;transform:translateX(5px)}94%{opacity:.5;transform:translateX(-3px)}}")
 
 
-def image_svg(data_uri, w, h, title, desc, photo=True, glitch=False):
-    """An image wrapped in an SVG frame with the effect layer: the README shows this instead."""
+def image_svg(data_uri, w, h, title, desc, photo=True, glitch=False, crop=None):
+    """An image wrapped in an SVG frame with the effect layer: the README shows this instead.
+    crop=(x, y, w, h) shows only that part of the image, e.g. to drop empty margins."""
     from xml.sax.saxutils import escape
     zoom = ' class="fx-zoom"' if photo else ""
     ghost = ""
     if glitch:
         ghost = ('<filter id="fx-red"><feColorMatrix values="1 0 0 0 .25  0 0 0 0 0  0 0 0 0 .02  0 0 0 1 0"/></filter>'
                  f'<use href="#fx-img" class="fx-ghost" filter="url(#fx-red)"/>')
-    svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}" role="img" '
+    cx, cy, cw, ch = crop or (0, 0, w, h)
+    at = f'x="{cx}" y="{cy}" ' if crop else ""
+    svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{cx} {cy} {cw} {ch}" width="{cw}" height="{ch}" role="img" '
            f'aria-label="{escape(desc)}">\n<title>{escape(title)}</title>\n<desc>{escape(desc)}</desc>\n'
-           f'<defs><clipPath id="fx-clip"><rect width="{w}" height="{h}" rx="6"/></clipPath><style>{IMAGE_CSS}</style></defs>\n'
+           f'<defs><clipPath id="fx-clip"><rect {at}width="{cw}" height="{ch}" rx="6"/></clipPath><style>{IMAGE_CSS}</style></defs>\n'
            f'<g clip-path="url(#fx-clip)"><image id="fx-img"{zoom} width="{w}" height="{h}" preserveAspectRatio="xMidYMid slice" '
            f'href="{data_uri}"/>{ghost}</g>\n</svg>\n')
     return add_fx(svg, photo=photo)
