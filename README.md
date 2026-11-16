@@ -22,7 +22,7 @@
 
 </div>
 
-<div align="center"><img src="./assets/gifs/deadline.svg" alt="Grim reaper chasing a coder along a deadline progress bar" width="600"/></div>
+<img src="./assets/gifs/deadline.svg" alt="Grim reaper chasing a coder along a deadline progress bar" width="100%"/>
 
 # 💻 Tech Stack
 
@@ -46,9 +46,9 @@
 <img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/most-commit-language.svg" alt="Top languages by commit" width="49%"/>
 <img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/repos-per-language.svg" alt="Top languages by repo" width="49%"/>
 
-<img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/streak.svg" alt="Total contributions and streak" width="99%"/>
+<img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/streak.svg" alt="Total contributions and streak" width="100%"/>
 
-<img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/weekly.svg" alt="Contributions per week, last 52 weeks" width="99%"/>
+<img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/weekly.svg" alt="Contributions per week, last 52 weeks" width="100%"/>
 
 <br/><br/>
 
@@ -92,7 +92,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output/snake-dark.svg" />
-  <img alt="Contribution snake" src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output/snake-light.svg" />
+  <img alt="Contribution snake" src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output/snake-light.svg" width="100%" />
 </picture>
 
 <br/><br/>
