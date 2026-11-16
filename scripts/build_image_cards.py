@@ -12,18 +12,12 @@ import pathlib
 import struct
 import sys
 
-from fx import image_svg
+from fx import image_svg, CARD_ONLY
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 GLITCH = {"red-grin", "arise"}
 TEXT = {  # title, description: kept in step with the README alt text
-    "red-throne": ("Red throne", "Shadow monarch before a throne of skulls under a red moon"),
-    "igris-duel": ("Igris duel", "Jinwoo clashing blades with Igris, the red knight"),
-    "red-army": ("Red army", "Shadow soldiers with glowing eyes in red fire"),
-    "red-cerberus": ("Red cerberus", "A hooded hunter facing a three-headed hellhound in a sea of fire"),
-    "red-gate": ("Red gate", "A red gate swirling open in an abandoned warehouse"),
     "red-grin": ("Red grin", "Grinning statue of God, glowing red"),
-    "red-king": ("Red king", "Demon king on his throne before a red army"),
     "arise": ("Arise", "Arise"),
     "mario": ("Pixel coder", "Pixel-art coder at a desk"),
     "deadline": ("Deadline", "Grim reaper chasing a coder along a deadline progress bar"),
@@ -52,7 +46,7 @@ def dimensions(data, kind):
 
 
 def main():
-    sources = sorted((ROOT / "assets/img").glob("*.jpg")) + sorted((ROOT / "assets/gifs").glob("*.gif"))
+    sources = [p for p in sorted((ROOT / "assets/img").glob("*.jpg")) if p.stem not in CARD_ONLY] + sorted((ROOT / "assets/gifs").glob("*.gif"))
     missing = [p.stem for p in sources if p.stem not in TEXT]
     if missing:
         sys.exit("build_image_cards.py: no title/description for: " + ", ".join(missing))

@@ -10,6 +10,8 @@ import pathlib
 import urllib.request
 from xml.sax.saxutils import escape
 
+from fx import card_backdrop
+
 SIMPLE_ICONS = "16.37.0"
 TOOLS = [("kotlin", "Kotlin", "MOBILE"), ("jetpackcompose", "Jetpack Compose", "MOBILE"), ("android", "Android", "MOBILE"),
          ("typescript", "TypeScript", "WEB"), ("react", "React", "WEB"), ("nextdotjs", "Next.js", "WEB"),
@@ -89,7 +91,7 @@ def main():
 {chr(10).join(tiles)}
 </svg>
 '''
-    (cards / "tools.svg").write_text(svg)
+    (cards / "tools.svg").write_text(card_backdrop("tools", svg))
     print("built tools.svg")
 
 

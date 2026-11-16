@@ -13,6 +13,8 @@ Effects (all red/black, all off under prefers-reduced-motion):
     python3 scripts/fx.py <file.svg>...       add edge + beam in place (idempotent)
     python3 scripts/fx.py --selftest
 """
+import base64
+import functools
 import re
 import sys
 import pathlib
@@ -116,6 +118,65 @@ def image_svg(data_uri, w, h, title, desc, photo=True, glitch=False):
     return add_fx(svg, photo=photo)
 
 
+BG_MARK = 'class="bg"'
+PANEL = re.compile(r'<rect x="([\d.]+)" y="([\d.]+)" width="([\d.]+)" height="([\d.]+)" rx="6" fill="url\(#panel\)"/>')
+IMG = pathlib.Path(__file__).resolve().parent.parent / "assets" / "img"
+# Which picture sits behind which card (assets/img/<name>.jpg). These pictures appear only
+# inside cards, so build_image_cards.py skips them.
+BACKDROPS = {"log": "red-gate", "profile": "igris-duel", "tools": "red-king", "skills": "red-throne"}
+GRID_IMAGE, TROPHY_IMAGE = "red-cerberus", "red-army"
+CARD_ONLY = set(BACKDROPS.values()) | {GRID_IMAGE, TROPHY_IMAGE}
+MIME = {".jpg": "jpeg", ".jpeg": "jpeg", ".png": "png", ".gif": "gif"}
+
+
+@functools.lru_cache(maxsize=None)
+def data_uri(path):
+    """data: URI for an image file, typed from its extension."""
+    p = pathlib.Path(path)
+    kind = MIME.get(p.suffix.lower())
+    if not kind:
+        raise ValueError(f"{p}: unsupported image type {p.suffix!r}")
+    return f"data:image/{kind};base64," + base64.b64encode(p.read_bytes()).decode()
+
+
+def card_backdrop(name, svg):
+    """backdrop() with the picture BACKDROPS assigns to card `name`."""
+    return backdrop(svg, data_uri(IMG / (BACKDROPS[name] + ".jpg")))
+
+
+def backdrop(svg, data_uri, opacity=0.32):
+    """Return svg with the image laid behind its text, just above the card panel; unchanged if it has one."""
+    if BG_MARK in svg:
+        return svg
+    m = PANEL.search(svg)
+    if not m:
+        raise ValueError('no <rect ... fill="url(#panel)"/> to lay the image on')
+    x, y, w, h = m.groups()
+    layer = (f'<g {BG_MARK} aria-hidden="true"><clipPath id="bg-clip"><rect x="{x}" y="{y}" width="{w}" height="{h}" rx="6"/></clipPath>'
+             f'<image x="{x}" y="{y}" width="{w}" height="{h}" preserveAspectRatio="xMidYMid slice" opacity="{opacity}" '
+             f'clip-path="url(#bg-clip)" href="{data_uri}"/></g>')
+    return svg[:m.end()] + layer + svg[m.end():]
+
+
+def underlay(svg, uri, x, y, w, h, opacity=0.3, after=None, base=None, inset=1.5, rx=5):
+    """Return svg with the image placed at x,y,w,h (card units) behind everything drawn after
+    the first match of `after` (the root tag when None); unchanged if it already has one.
+    A negative x/y with a larger w/h shows one tile of a picture spread over several cards.
+    The image is clipped to the card's rounded shape, `inset` inside the edge so the border
+    stays on top; `base` paints a solid colour under it for cards with no background."""
+    if BG_MARK in svg:
+        return svg
+    m = re.search(after, svg) if after else re.search(r"<svg\b[^>]*>", svg)
+    if not m:
+        raise ValueError(f"no anchor for the background: {after or '<svg>'}")
+    x0, y0, cw, ch = size(svg)
+    box = f'x="{x0 + inset:g}" y="{y0 + inset:g}" width="{cw - 2 * inset:g}" height="{ch - 2 * inset:g}" rx="{rx}"'
+    fill = f'<rect {box} fill="{base}"/>' if base else ""
+    layer = (f'<g {BG_MARK} aria-hidden="true" clip-path="url(#bg-clip)"><clipPath id="bg-clip"><rect {box}/></clipPath>{fill}'
+             f'<image x="{x}" y="{y}" width="{w}" height="{h}" preserveAspectRatio="xMidYMid slice" opacity="{opacity}" href="{uri}"/></g>')
+    return svg[:m.end()] + layer + svg[m.end():]
+
+
 def selftest():
     import xml.etree.ElementTree as ET
     base = '<svg xmlns="http://www.w3.org/2000/svg"\n width="340" height="200" viewBox="0 0 340 200"><rect/></svg>'
@@ -133,14 +194,43 @@ def selftest():
         pass
     else:
         raise AssertionError("missing </svg> not rejected")
+    card = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 300"><rect x="40" y="20" width="1200" height="260" rx="6" fill="url(#panel)"/><text>t</text></svg>'
+    bg = backdrop(card, "data:image/gif;base64,R0lGODlhAQABAAAAACw=")
+    assert backdrop(bg, "x") == bg, "backdrop is not idempotent"
+    assert bg.index("<image") < bg.index("<text"), "backdrop is not behind the text"
+    ET.fromstring(bg)
+    try:
+        backdrop("<svg></svg>", "x")
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("card without a panel not rejected")
+    chart = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 200"><rect id="bgr"></rect><text>t</text></svg>'
+    under = underlay(chart, "x", -340, 0, 680, 400, after=r'<rect id="bgr"></rect>')
+    assert under.index("</rect><g " + BG_MARK) > 0 and under.index("<image") < under.index("<text"), "underlay misplaced"
+    assert 'clip-path="url(#bg-clip)"' in under and 'width="337"' in under, "underlay not clipped inside the border"
+    assert underlay(under, "x", 0, 0, 1, 1) == under, "underlay is not idempotent"
+    ET.fromstring(under)
+    based = underlay(chart, "x", 0, 0, 340, 200, base="#050102")
+    assert based.index('fill="#050102"') < based.index("<image"), "base colour not under the image"
+    ET.fromstring(based)
+    assert data_uri(IMG / (GRID_IMAGE + ".jpg")).startswith("data:image/jpeg;base64,")
+    try:
+        data_uri(pathlib.Path(__file__))
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("non-image file not rejected")
     print("fx.py: selftest ok")
 
 
 def main(argv):
     if argv[1:] == ["--selftest"]:
         return selftest()
+    if argv[1:2] == ["--backdrop"]:
+        return main_backdrop(argv[2:])
     if len(argv) < 2:
-        sys.exit("fx.py: usage: fx.py <file.svg>... | --selftest")
+        sys.exit("fx.py: usage: fx.py <file.svg>... | --backdrop <card.svg>... | --selftest")
     for name in argv[1:]:
         p = pathlib.Path(name)
         try:
@@ -156,6 +246,29 @@ def main(argv):
         except OSError as e:
             sys.exit(f"fx.py: cannot write {p}: {e}")
         print(f"fx.py: {p}: effect layer added")
+
+
+def main_backdrop(args):
+    # For cards with no build script (skills.svg); the built cards get theirs from the build.
+    if not args:
+        sys.exit("fx.py: usage: fx.py --backdrop <card.svg>...  (picture from BACKDROPS)")
+    for name in args:
+        card = pathlib.Path(name)
+        if card.stem not in BACKDROPS:
+            sys.exit(f"fx.py: {card}: no picture assigned in BACKDROPS")
+        try:
+            svg = card.read_text()
+            out = card_backdrop(card.stem, svg)
+        except (OSError, ValueError) as e:
+            sys.exit(f"fx.py: {card}: {e}")
+        if out == svg:
+            print(f"fx.py: {card}: already has a backdrop")
+            continue
+        try:
+            card.write_text(out)
+        except OSError as e:
+            sys.exit(f"fx.py: cannot write {card}: {e}")
+        print(f"fx.py: {card}: backdrop {BACKDROPS[card.stem]} added")
 
 
 if __name__ == "__main__":

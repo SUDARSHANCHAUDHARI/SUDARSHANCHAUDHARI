@@ -6,6 +6,8 @@ Reads the embedded @font-face block from hero.svg so every card carries the same
 import sys, re, textwrap, pathlib
 from xml.sax.saxutils import escape
 
+from fx import BACKDROPS, card_backdrop
+
 if len(sys.argv) < 2:
     sys.exit("build_text_cards.py: usage: build_text_cards.py <cards-dir>")
 cards = pathlib.Path(sys.argv[1])
@@ -22,7 +24,7 @@ MONO_PX = 8.1  # Share Tech Mono advance at 15px
 
 
 def frame(name, h, label, right, body, desc, extra_css=""):
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 {h}" width="1280" height="{h}" role="img" aria-label="{escape(desc)}">
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 {h}" width="1280" height="{h}" role="img" aria-label="{escape(desc)}">
 <title>{escape(label.title())}</title>
 <desc>{escape(desc)}</desc>
 <defs>
@@ -54,6 +56,7 @@ def frame(name, h, label, right, body, desc, extra_css=""):
 {body}
 </svg>
 '''
+    return card_backdrop(name, svg) if name in BACKDROPS else svg
 
 
 def para(text, x, y, width_px, size=15, fill=SOFT, lh=24, delay=0.0):
