@@ -38,7 +38,7 @@ def size(svg):
     return 0.0, 0.0, float(w.group(1)), float(h.group(1))
 
 
-def embers(x0, y0, w, h, n=14):
+def embers(x0, y0, w, h, n=14, cls="fx-ember"):
     # fixed spread rather than random, so a rebuild gives a byte-identical file
     dots = []
     for i in range(n):
@@ -47,7 +47,7 @@ def embers(x0, y0, w, h, n=14):
         dur = 6 + (i * 7 % 5)
         delay = -(i * 1.3 % dur)
         fill = EMBER if i % 3 else GLOW
-        dots.append(f'<circle class="fx-ember" cx="{x:.1f}" cy="{y0 + h + 6:.1f}" r="{r:.1f}" fill="{fill}" '
+        dots.append(f'<circle class="{cls}" cx="{x:.1f}" cy="{y0 + h + 6:.1f}" r="{r:.1f}" fill="{fill}" '
                     f'style="animation-duration:{dur}s;animation-delay:{delay:.1f}s"/>')
     return "".join(dots)
 
@@ -144,6 +144,29 @@ def card_backdrop(name, svg):
     return backdrop(svg, data_uri(IMG / (BACKDROPS[name] + ".jpg")))
 
 
+# The standalone photos' motion (slow zoom, pulsing red vignette, rising embers) for a picture
+# behind a card. Own class and id names, so it never clashes with add_fx() on the same card.
+BG_CSS = (".bg-zoom{transform-box:fill-box;transform-origin:center;animation:bg-zoom 18s ease-in-out infinite alternate}"
+          "@keyframes bg-zoom{from{transform:scale(1)}to{transform:scale(1.07)}}"
+          ".bg-vig{animation:bg-vig 4s ease-in-out infinite}@keyframes bg-vig{0%,100%{opacity:.55}50%{opacity:.95}}"
+          ".bg-ember{opacity:0;animation:bg-rise 7s linear infinite}"
+          "@media (prefers-reduced-motion:reduce){.bg-zoom,.bg-vig,.bg-ember{animation:none!important}}")
+
+
+def picture_layer(box, x, y, w, h, opacity, uri, base=""):
+    """The clipped, moving picture: box is the card area as (x, y, w, h); x,y,w,h place the image."""
+    bx, by, bw, bh = (float(v) for v in box[:4])
+    rise = -(bh + 20)
+    css = BG_CSS + ("@keyframes bg-rise{0%%{transform:translateY(0);opacity:0}15%%{opacity:.9}85%%{opacity:.6}"
+                    "100%%{transform:translateY(%.0fpx);opacity:0}}" % rise)
+    shape = f'x="{bx:g}" y="{by:g}" width="{bw:g}" height="{bh:g}" rx="{box[4]}"'
+    return (f'<g {BG_MARK} aria-hidden="true" clip-path="url(#bg-clip)"><defs><clipPath id="bg-clip"><rect {shape}/></clipPath>'
+            '<radialGradient id="bg-vg" cx=".5" cy=".5" r=".75"><stop offset=".55" stop-color="#050102" stop-opacity="0"/>'
+            f'<stop offset="1" stop-color="#3a0008" stop-opacity=".85"/></radialGradient><style>{css}</style></defs>{base}'
+            f'<image class="bg-zoom" x="{x}" y="{y}" width="{w}" height="{h}" preserveAspectRatio="xMidYMid slice" opacity="{opacity}" href="{uri}"/>'
+            f'<rect class="bg-vig" {shape} fill="url(#bg-vg)"/>{embers(bx, by, bw, bh, cls="bg-ember")}</g>')
+
+
 def backdrop(svg, data_uri, opacity=0.32):
     """Return svg with the image laid behind its text, just above the card panel; unchanged if it has one."""
     if BG_MARK in svg:
@@ -152,9 +175,7 @@ def backdrop(svg, data_uri, opacity=0.32):
     if not m:
         raise ValueError('no <rect ... fill="url(#panel)"/> to lay the image on')
     x, y, w, h = m.groups()
-    layer = (f'<g {BG_MARK} aria-hidden="true"><clipPath id="bg-clip"><rect x="{x}" y="{y}" width="{w}" height="{h}" rx="6"/></clipPath>'
-             f'<image x="{x}" y="{y}" width="{w}" height="{h}" preserveAspectRatio="xMidYMid slice" opacity="{opacity}" '
-             f'clip-path="url(#bg-clip)" href="{data_uri}"/></g>')
+    layer = picture_layer((x, y, w, h, 6), x, y, w, h, opacity, data_uri)
     return svg[:m.end()] + layer + svg[m.end():]
 
 
@@ -170,11 +191,9 @@ def underlay(svg, uri, x, y, w, h, opacity=0.3, after=None, base=None, inset=1.5
     if not m:
         raise ValueError(f"no anchor for the background: {after or '<svg>'}")
     x0, y0, cw, ch = size(svg)
-    box = f'x="{x0 + inset:g}" y="{y0 + inset:g}" width="{cw - 2 * inset:g}" height="{ch - 2 * inset:g}" rx="{rx}"'
-    fill = f'<rect {box} fill="{base}"/>' if base else ""
-    layer = (f'<g {BG_MARK} aria-hidden="true" clip-path="url(#bg-clip)"><clipPath id="bg-clip"><rect {box}/></clipPath>{fill}'
-             f'<image x="{x}" y="{y}" width="{w}" height="{h}" preserveAspectRatio="xMidYMid slice" opacity="{opacity}" href="{uri}"/></g>')
-    return svg[:m.end()] + layer + svg[m.end():]
+    box = (x0 + inset, y0 + inset, cw - 2 * inset, ch - 2 * inset, rx)
+    fill = f'<rect x="{box[0]:g}" y="{box[1]:g}" width="{box[2]:g}" height="{box[3]:g}" fill="{base}"/>' if base else ""
+    return svg[:m.end()] + picture_layer(box, x, y, w, h, opacity, uri, fill) + svg[m.end():]
 
 
 def selftest():
@@ -197,6 +216,7 @@ def selftest():
     card = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 300"><rect x="40" y="20" width="1200" height="260" rx="6" fill="url(#panel)"/><text>t</text></svg>'
     bg = backdrop(card, "data:image/gif;base64,R0lGODlhAQABAAAAACw=")
     assert backdrop(bg, "x") == bg, "backdrop is not idempotent"
+    assert all(c in bg for c in ('class="bg-zoom"', 'class="bg-vig"', 'class="bg-ember"', "prefers-reduced-motion")), "backdrop has no motion"
     assert bg.index("<image") < bg.index("<text"), "backdrop is not behind the text"
     ET.fromstring(bg)
     try:
