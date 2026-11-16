@@ -226,6 +226,25 @@ def sweep(svg):
     return svg[:end] + layer + "\n" + svg[end:]
 
 
+ROOT_TAG = re.compile(r"<svg\b[^>]*>", re.S)
+
+
+def fit_to_frame(svg, pad=2):
+    """Return svg with its canvas cropped to the red frame, so the README shows the frame edge
+    to edge with no black margin around it. `pad` keeps the frame stroke and corner marks whole."""
+    m = FRAME.search(svg)
+    if not m:
+        raise ValueError('no <rect class="frame" ... rx="6"/> to fit the canvas to')
+    x, y, w, h = (float(v) for v in m.groups())
+    vb = f"{x - pad:g} {y - pad:g} {w + 2 * pad:g} {h + 2 * pad:g}"
+    root = ROOT_TAG.search(svg)
+    tag = root.group(0)
+    new = re.sub(r'viewBox="[^"]*"', f'viewBox="{vb}"', tag)
+    new = re.sub(r'\bwidth="[\d.]+"', f'width="{w + 2 * pad:g}"', new, count=1)
+    new = re.sub(r'\bheight="[\d.]+"', f'height="{h + 2 * pad:g}"', new, count=1)
+    return svg[:root.start()] + new + svg[root.end():]
+
+
 def selftest():
     import xml.etree.ElementTree as ET
     base = '<svg xmlns="http://www.w3.org/2000/svg"\n width="340" height="200" viewBox="0 0 340 200"><rect/></svg>'
@@ -252,6 +271,9 @@ def selftest():
     assert sweep(swept) == swept and swept.count(SWEEP_MARK) == 1, "sweep is not idempotent"
     assert swept.index(SWEEP_MARK) > swept.index("<text>") and 'x="40" y="20" width="1200" height="260"' in swept, "sweep not on top, inside the frame"
     ET.fromstring(swept)
+    fitted = fit_to_frame(swept.replace('viewBox="0 0 1280 300"', 'viewBox="0 0 1280 300" width="1280" height="300"'))
+    assert 'viewBox="38 18 1204 264" width="1204" height="264"' in fitted, "canvas not fitted to the frame"
+    assert fit_to_frame(fitted) == fitted, "fit_to_frame is not idempotent"
     try:
         sweep(card)
     except ValueError:
@@ -292,9 +314,11 @@ def main(argv):
     if argv[1:2] == ["--backdrop"]:
         return main_backdrop(argv[2:])
     if argv[1:2] == ["--sweep"]:
-        return main_sweep(argv[2:])
+        return main_apply(sweep, "sweep", argv[2:])
+    if argv[1:2] == ["--fit"]:
+        return main_apply(fit_to_frame, "fit", argv[2:])
     if len(argv) < 2:
-        sys.exit("fx.py: usage: fx.py <file.svg>... | --backdrop <card.svg>... | --sweep <card.svg>... | --selftest")
+        sys.exit("fx.py: usage: fx.py <file.svg>... | --backdrop|--sweep|--fit <card.svg>... | --selftest")
     for name in argv[1:]:
         p = pathlib.Path(name)
         try:
@@ -335,25 +359,25 @@ def main_backdrop(args):
         print(f"fx.py: {card}: backdrop {BACKDROPS[card.stem]} added")
 
 
-def main_sweep(args):
-    # For cards with no build script (hero, quest, status, join); the built cards get theirs from the build.
+def main_apply(fn, what, args):
+    # For cards with no build script (hero, quest, status, join, skills); built cards get it from the build.
     if not args:
-        sys.exit("fx.py: usage: fx.py --sweep <card.svg>...")
+        sys.exit(f"fx.py: usage: fx.py --{what} <card.svg>...")
     for name in args:
         card = pathlib.Path(name)
         try:
             svg = card.read_text()
-            out = sweep(svg)
+            out = fn(svg)
         except (OSError, ValueError) as e:
             sys.exit(f"fx.py: {card}: {e}")
         if out == svg:
-            print(f"fx.py: {card}: already has the sweep")
+            print(f"fx.py: {card}: {what} already done")
             continue
         try:
             card.write_text(out)
         except OSError as e:
             sys.exit(f"fx.py: cannot write {card}: {e}")
-        print(f"fx.py: {card}: sweep added")
+        print(f"fx.py: {card}: {what} done")
 
 
 if __name__ == "__main__":

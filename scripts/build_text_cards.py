@@ -6,7 +6,7 @@ Reads the embedded @font-face block from hero.svg so every card carries the same
 import sys, re, textwrap, pathlib
 from xml.sax.saxutils import escape
 
-from fx import BACKDROPS, card_backdrop, sweep
+from fx import BACKDROPS, card_backdrop, sweep, fit_to_frame
 
 if len(sys.argv) < 2:
     sys.exit("build_text_cards.py: usage: build_text_cards.py <cards-dir>")
@@ -56,7 +56,7 @@ def frame(name, h, label, right, body, desc, extra_css=""):
 {body}
 </svg>
 '''
-    return sweep(card_backdrop(name, svg) if name in BACKDROPS else svg)
+    return fit_to_frame(sweep(card_backdrop(name, svg) if name in BACKDROPS else svg))
 
 
 def para(text, x, y, width_px, size=15, fill=SOFT, lh=24, delay=0.0):
