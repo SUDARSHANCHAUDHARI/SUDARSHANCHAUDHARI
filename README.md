@@ -122,16 +122,9 @@
 
 <div align="center">
 
-<a href="https://sudarshantechlabs.com/"><img src="https://img.shields.io/badge/Website-ff2e4d?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Website"/></a>
-<a href="https://linkedin.com/in/sudarshan-chaudhari"><img src="https://img.shields.io/badge/LinkedIn-ff2e4d?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
-<a href="https://github.com/SUDARSHANCHAUDHARI"><img src="https://img.shields.io/badge/GitHub-ff2e4d?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/></a>
-<a href="https://www.instagram.com/sudarshanchaudhari/"><img src="https://img.shields.io/badge/Instagram-ff2e4d?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram"/></a>
-<a href="https://x.com/SUDARSHANKC"><img src="https://img.shields.io/badge/X-ff2e4d?style=for-the-badge&logo=x&logoColor=white" alt="X"/></a>
-<a href="https://www.threads.com/@sudarshanchaudhari"><img src="https://img.shields.io/badge/Threads-ff2e4d?style=for-the-badge&logo=threads&logoColor=white" alt="Threads"/></a>
-<a href="mailto:sunny.sudarshan@gmail.com"><img src="https://img.shields.io/badge/Email-ff2e4d?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/></a>
-<a href="https://ko-fi.com/sudarshanchaudhari"><img src="https://img.shields.io/badge/Ko--fi-ff2e4d?style=for-the-badge&logo=ko-fi&logoColor=white" alt="Ko-fi"/></a>
+<p><a href="https://sudarshantechlabs.com/"><img src="./assets/social/website.svg" alt="Website" width="22%"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://linkedin.com/in/sudarshan-chaudhari"><img src="./assets/social/linkedin.svg" alt="LinkedIn" width="22%"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/SUDARSHANCHAUDHARI"><img src="./assets/social/github.svg" alt="GitHub" width="22%"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.instagram.com/sudarshanchaudhari/"><img src="./assets/social/instagram.svg" alt="Instagram" width="22%"/></a></p>
 
-<br/><br/>
+<p><a href="https://x.com/SUDARSHANKC"><img src="./assets/social/x.svg" alt="X" width="22%"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.threads.com/@sudarshanchaudhari"><img src="./assets/social/threads.svg" alt="Threads" width="22%"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="mailto:sunny.sudarshan@gmail.com"><img src="./assets/social/email.svg" alt="Email" width="22%"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://ko-fi.com/sudarshanchaudhari"><img src="./assets/social/kofi.svg" alt="Ko-fi" width="22%"/></a></p>
 
 <p><img src="./assets/cards/engine.svg?v=2" alt="Red line-art of connected devices around a central screen" width="100%"/></p>
 
