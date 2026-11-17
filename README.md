@@ -34,7 +34,7 @@
 
 <img src="./assets/cards/status.svg?v=4" alt="Status window: player ID card and seven abilities" width="100%"/>
 
-## 🏆 GitHub Trophies
+# 🏆 GitHub Trophies
 
 <div align="center">
 
@@ -42,7 +42,7 @@
 
 </div>
 
-## ⚔️ S-Rank Missions
+# ⚔️ S-Rank Missions
 
 <picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/missions/_header-narrow.svg"/><img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/missions/_header.svg" alt="Table header: Mission, what it is, built with, stars." width="100%"/></picture>
 <a href="https://github.com/SUDARSHANCHAUDHARI/OrbiAgents"><picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/missions/orbiagents-narrow.svg"/><img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/missions/orbiagents.svg" alt="OrbiAgents — Visual multi-agent workflow orchestration, execution, and replay — the largest codebase here, with 274 test files Built with TypeScript, star count shown on the card." width="100%"/></picture></a>
@@ -60,20 +60,20 @@
 
 <br/><br/>
 
-### 🌃 My contribution village
+</div>
+
+# 🌃 My contribution village
+
+<div align="center">
 
 *Every commit raises another building — rebuilt automatically every day.*
 
-<img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/profile-night-view.svg?v=3" alt="3D contribution village" width="100%"/>
+<p><img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/profile-night-view.svg?v=3" alt="3D contribution village" width="100%"/></p>
 
-<br/><br/>
-
-<picture>
+<p><picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output/snake-dark.svg" />
   <img alt="Contribution snake" src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output/snake-light.svg" width="100%" />
-</picture>
-
-<br/><br/>
+</picture></p>
 
 <a href="https://commit-history.com/SUDARSHANCHAUDHARI"><img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/commit-history.svg?v=2" alt="All of SUDARSHANCHAUDHARI's GitHub contributions over time" width="100%"/></a>
 
@@ -81,7 +81,7 @@
 
 </div>
 
-## 🗺️ Dungeon Record
+# 🗺️ Dungeon Record
 
 <div align="center">
 
@@ -89,7 +89,7 @@
 
 </div>
 
-## 👤 Player Profile
+# 👤 Player Profile
 
 <div align="center">
 
@@ -97,7 +97,7 @@
 
 </div>
 
-### ✍️ Random Dev Quote
+# ✍️ Random Dev Quote
 
 <div align="center">
 
@@ -116,7 +116,11 @@
 
 <img src="./assets/cards/join.svg?v=3" alt="System invitation: join the shadow army — let's connect" width="100%"/>
 
-## 🌐 Socials
+</div>
+
+# 🌐 Socials
+
+<div align="center">
 
 <a href="https://sudarshantechlabs.com/"><img src="https://img.shields.io/badge/Website-ff2e4d?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Website"/></a>
 <a href="https://linkedin.com/in/sudarshan-chaudhari"><img src="https://img.shields.io/badge/LinkedIn-ff2e4d?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
@@ -129,9 +133,7 @@
 
 <br/><br/>
 
-<img src="./assets/cards/engine.svg?v=2" alt="Red line-art of connected devices around a central screen" width="100%"/>
-
-<br/><br/>
+<p><img src="./assets/cards/engine.svg?v=2" alt="Red line-art of connected devices around a central screen" width="100%"/></p>
 
 <img src="./assets/gifs/girl.svg" alt="Lo-fi coder on a balcony at night" width="100%"/>
 
