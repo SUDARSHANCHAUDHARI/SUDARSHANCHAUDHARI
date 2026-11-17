@@ -101,12 +101,12 @@
 
 <div align="center">
 
-<img src="./assets/cards/quote.svg?v=3" alt="System message cycling six dev and QA quotes by Dijkstra, John Johnson, John Ruskin, Kent Beck and Linus Torvalds" width="100%"/>
+<p><img src="./assets/cards/quote.svg?v=3" alt="System message cycling six dev and QA quotes by Dijkstra, John Johnson, John Ruskin, Kent Beck and Linus Torvalds" width="100%"/></p>
 
 </div>
 
 <p align="center">
-<img src="./assets/img/red-grin.svg" alt="Grinning statue of God, glowing red" height="200" align="middle"/>
+<img src="./assets/img/red-grin.svg" alt="Grinning statue of God, glowing red" height="200"/>
 &nbsp;&nbsp;<b>Sudarshan's mood after coding for 5 minutes</b>
 </p>
 
