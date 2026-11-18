@@ -110,7 +110,8 @@ cards.joinpath("log-narrow.svg").write_text(frame("log", y + 6, "PLAYER LOG", ""
 
 # 2. Player profile (About + Background, minus the paragraph that repeated "13+ years")
 paras = [
- "I'm Sudarshan Kishor Chaudhari, a Senior Quality Engineer, Test Automation specialist, and AI systems builder based in Bangkok, Thailand.",
+ "I'm Sudarshan Kishor Chaudhari, a Senior Quality Engineer, Test Automation specialist, and AI systems builder based in Bangkok, Thailand. Since 2021 I have worked at ScreenCloud as a Senior Software Automation Test Engineer and Software Developer.",
+ "1st Place, World's Best Tester 2026 (Thailand Qualifier): competed solo and scored 116.9 / 130 against 65 teams, advancing to the Global Final. Certified Software Tester (CSTE).",
  "I have 13+ years of experience in software quality engineering, working across SaaS, fintech, gaming, web, mobile, cloud, and digital signage platforms. My background combines hands-on test automation with QA leadership, test strategy, CI/CD, release quality, production investigation, and cross-platform validation.",
  "Alongside my professional QA career, I run SudarshanTechLabs, my independent engineering and product lab where I design, build, test, and ship software across Android, web, AI, cybersecurity, developer tooling, and cross-platform applications.",
  "My work sits at the intersection of quality engineering, automation, AI, and software development. I approach products with a QA mindset from the beginning: understanding failure modes, designing for testability, automating repetitive work, and building release confidence into the engineering process.",

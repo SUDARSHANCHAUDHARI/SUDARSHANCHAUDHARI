@@ -76,7 +76,7 @@
 
 <div align="center">
 
-<picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/main/assets/cards/profile-narrow.svg"/><img src="./assets/cards/profile.svg" alt="Player profile: Sudarshan Kishor Chaudhari, Senior Quality Engineer, Test Automation specialist and AI systems builder based in Bangkok, Thailand, with 13+ years in software quality engineering; runs SudarshanTechLabs" width="100%"/></picture>
+<picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/main/assets/cards/profile-narrow.svg"/><img src="./assets/cards/profile.svg" alt="Player profile: Sudarshan Kishor Chaudhari, Senior Quality Engineer, Test Automation specialist and AI systems builder based in Bangkok, Thailand; Senior Software Automation Test Engineer and Software Developer at ScreenCloud since 2021; 1st Place, World's Best Tester 2026 Thailand Qualifier; Certified Software Tester (CSTE); 13+ years in software quality engineering; runs SudarshanTechLabs" width="100%"/></picture>
 
 </div>
 
