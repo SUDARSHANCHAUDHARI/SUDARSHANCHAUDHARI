@@ -1,4 +1,4 @@
-"""Build the red/black Inventory card (tools.svg) from simple-icons logos.
+"""Build the red/black Inventory card (tools.svg) and its phone version (tools-narrow.svg) from simple-icons logos.
 
 Usage: python3 scripts/build_inventory_card.py assets/cards
 Reads the embedded @font-face block from hero.svg; fetches each logo from the pinned
@@ -45,7 +45,17 @@ def main():
     if not hero.is_file():
         sys.exit(f"build_inventory_card.py: no such file: {hero}")
     fonts = re.search(r"@font-face\{font-family:'SLOrb'.*?\n", hero.read_text(), re.S).group(0)
-    cols, tw, th, gx, gy, x0, y0 = 6, 182, 118, 14, 14, 76, 88
+    paths = {slug: icon_path(slug) for slug, _, _ in TOOLS}
+    # wide: 6 columns in the 1200 panel; narrow (phone, picked by <picture> in the README): 3 in a 480 panel
+    (cards / "tools.svg").write_text(card(fonts, paths, 1200, 6, 182, 14))
+    (cards / "tools-narrow.svg").write_text(card(fonts, paths, 480, 3, 141, 12))
+    print("built tools.svg, tools-narrow.svg")
+
+
+def card(fonts, paths, pw, cols, tw, gx):
+    th, gy, y0 = 118, gx, 88
+    x0 = 40 + (pw - (cols * tw + (cols - 1) * gx)) // 2  # grid centred in the panel
+    r_edge, cw = 40 + pw, 80 + pw
     rows = -(-len(TOOLS) // cols)
     H = y0 + rows * th + (rows - 1) * gy + 44
     tiles = []
@@ -53,7 +63,7 @@ def main():
         r, c = divmod(i, cols)
         x, y = x0 + c * (tw + gx), y0 + r * (th + gy)
         d = 0.25 + c * 0.12 + r * 0.18
-        path = icon_path(slug)
+        path = paths[slug]
         if path:
             icon = f'<g transform="translate({x+tw/2-18},{y+20}) scale(1.5)"><path d="{path}" fill="{RED}" filter="url(#glow)"/></g>'
         else:
@@ -63,7 +73,7 @@ def main():
                      f'<text x="{x+tw/2}" y="{y+82}" class="mono" font-size="15" fill="{TEXT}" text-anchor="middle">{escape(name)}</text>'
                      f'<text x="{x+tw/2}" y="{y+102}" class="mono" font-size="10" fill="{RED2}" text-anchor="middle" letter-spacing="2">{tag}</text></g>')
     names = ", ".join(n for _, n, _ in TOOLS)
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 {H}" width="1280" height="{H}" role="img" aria-label="Inventory: {names}">
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {cw} {H}" width="{cw}" height="{H}" role="img" aria-label="Inventory: {names}">
 <title>Inventory — Tools</title>
 <desc>Solo Leveling style inventory window with {len(TOOLS)} tools: {names}.</desc>
 <defs>
@@ -80,19 +90,18 @@ def main():
 @keyframes unlock{{to{{opacity:1}}}}
 </style>
 </defs>
-<rect width="1280" height="{H}" fill="#050102"/>
-<rect x="40" y="20" width="1200" height="{H-40}" rx="6" fill="url(#panel)"/>
-<rect class="frame" x="40" y="20" width="1200" height="{H-40}" rx="6" filter="url(#fglow)"/>
-<path class="corner" d="M40 52V20h32M1208 20h32v32M1240 {H-52}v32h-32M72 {H-20}H40v-32"/>
-<rect x="40" y="20" width="1200" height="44" fill="{RED}" fill-opacity=".08"/>
+<rect width="{cw}" height="{H}" fill="#050102"/>
+<rect x="40" y="20" width="{pw}" height="{H-40}" rx="6" fill="url(#panel)"/>
+<rect class="frame" x="40" y="20" width="{pw}" height="{H-40}" rx="6" filter="url(#fglow)"/>
+<path class="corner" d="M40 52V20h32M{r_edge - 32} 20h32v32M{r_edge} {H-52}v32h-32M72 {H-20}H40v-32"/>
+<rect x="40" y="20" width="{pw}" height="44" fill="{RED}" fill-opacity=".08"/>
 <text x="76" y="49" class="mono" font-size="16" fill="{RED2}" letter-spacing="3">⟨ INVENTORY ⟩</text>
-<text x="1204" y="49" class="mono" font-size="14" fill="{MUTED}" text-anchor="end" letter-spacing="2">{len(TOOLS)} ITEMS EQUIPPED</text>
-<line x1="40" y1="64" x2="1240" y2="64" stroke="{RED}" stroke-opacity=".5"/>
+<text x="{r_edge - 36}" y="49" class="mono" font-size="14" fill="{MUTED}" text-anchor="end" letter-spacing="2">{len(TOOLS)} ITEMS EQUIPPED</text>
+<line x1="40" y1="64" x2="{r_edge}" y2="64" stroke="{RED}" stroke-opacity=".5"/>
 {chr(10).join(tiles)}
 </svg>
 '''
-    (cards / "tools.svg").write_text(fit_to_frame(sweep(card_backdrop("tools", svg))))
-    print("built tools.svg")
+    return fit_to_frame(sweep(card_backdrop("tools", svg)))
 
 
 if __name__ == "__main__":

@@ -164,9 +164,9 @@ IMG = pathlib.Path(__file__).resolve().parent.parent / "assets" / "img"
 # Which picture sits behind which card (assets/img/<name>.jpg). These pictures appear only
 # inside cards, so build_image_cards.py skips them.
 BACKDROPS = {"log": "red-gate", "profile": "igris-duel", "tools": "red-king", "skills": "red-throne"}
-GRID_IMAGE, TROPHY_IMAGE = "red-cerberus", "red-army"
+GRID_IMAGE, JOIN_IMAGE = "red-cerberus", "red-army"  # JOIN_IMAGE: behind the Join card's phone version
 WEEKLY_IMAGE, STREAK_IMAGE, MISSIONS_IMAGE = "shadow-monarch", "sung-rage", "igris-shadow"
-CARD_ONLY = set(BACKDROPS.values()) | {GRID_IMAGE, TROPHY_IMAGE, WEEKLY_IMAGE, STREAK_IMAGE, MISSIONS_IMAGE}
+CARD_ONLY = set(BACKDROPS.values()) | {GRID_IMAGE, JOIN_IMAGE, WEEKLY_IMAGE, STREAK_IMAGE, MISSIONS_IMAGE}
 MIME = {".jpg": "jpeg", ".jpeg": "jpeg", ".png": "png", ".gif": "gif"}
 
 

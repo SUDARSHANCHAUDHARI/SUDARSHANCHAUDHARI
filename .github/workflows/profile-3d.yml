@@ -28,6 +28,8 @@ jobs:
           mkdir -p profile-3d-contrib
           git fetch --depth=1 origin output-3d
           git --work-tree=profile-3d-contrib checkout FETCH_HEAD -- .
+          # charts the README no longer shows: keep_history is off, so dropping them here retires them
+          cd profile-3d-contrib && rm -f trophies.svg commit-history.svg profile-details.svg most-commit-language.svg repos-per-language.svg
       - uses: yoshi389111/github-profile-3d-contrib@7d95e7d4cdc028dd1e1cbd957d65f35efb12ae39 # v0.9.3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -35,25 +37,6 @@ jobs:
       - name: Red/black village
         continue-on-error: true # a missing village must not block publishing the charts
         run: python3 scripts/recolor_village.py profile-3d-contrib/profile-night-view.svg
-      - name: Red/black commit-history chart
-        continue-on-error: true # a commit-history.com outage must not block the village
-        env:
-          OWNER: ${{ github.repository_owner }}
-        run: |
-          curl -fsSL "https://commit-history.com/embed/${OWNER}?theme=dark" -o /tmp/commit-history.svg
-          python3 - <<'PY'
-          import pathlib, re, sys
-          sys.path.insert(0, "scripts")
-          from fx import add_fx
-          src = pathlib.Path("/tmp/commit-history.svg").read_text()
-          # drop the "N contributions" total: the streak card is the single source for it
-          src = re.sub(r'<text[^>]*>[\d,]+ contributions</text>', "", src)
-          for old, new in {"#0d1117": "#050102", "#16a34a": "#ff2e4d", "#8b949e": "#a8828a",
-                           "#30363d": "#3a0d14", "#c9d1d9": "#fff1f2", "#ffd43b": "#ff8a3d"}.items():
-              src = src.replace(old, new)
-          pathlib.Path("profile-3d-contrib").mkdir(exist_ok=True)
-          pathlib.Path("profile-3d-contrib/commit-history.svg").write_text(add_fx(src))
-          PY
       - name: Red/black stats charts
         continue-on-error: true # a card-service outage keeps yesterday's charts
         env:
