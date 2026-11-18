@@ -28,8 +28,8 @@ MONO = "ui-monospace,'SF Mono',Menlo,Consolas,monospace"
 SANS = "'Segoe UI','Helvetica Neue',Arial,sans-serif"
 
 
-# The 2x2 stats grid in the README shares one picture: (column, row) of each 340x200 card.
-GRID = {"stats": (0, 0), "repos": (1, 0), "most-commit-language": (0, 1), "repos-per-language": (1, 1)}
+# The stats row in the README shares one picture: column of each 340x200 card.
+GRID = {"stats": 0, "repos": 1}
 
 
 def picture(svg, name, image, *box, **kw):
@@ -42,8 +42,7 @@ def picture(svg, name, image, *box, **kw):
 
 
 def grid_tile(svg, name, after):
-    col, row = GRID[name]
-    return picture(svg, name, GRID_IMAGE, -340 * col, -200 * row, 680, 400, after=after)
+    return picture(svg, name, GRID_IMAGE, -340 * GRID[name], 0, 680, 200, after=after)
 
 
 def fetch(url, token=None, accept="application/vnd.github+json"):
@@ -55,7 +54,7 @@ def fetch(url, token=None, accept="application/vnd.github+json"):
 
 
 def public_repo_count(user):
-    # Forks excluded, so the count matches the 3D village's profile-details card.
+    # Forks excluded, so the count matches the 3D village.
     n, page = 0, 1
     while True:
         batch = json.loads(fetch(f"https://api.github.com/users/{user}/repos?type=owner&per_page=100&page={page}", os.environ.get("GITHUB_TOKEN")))
@@ -164,33 +163,9 @@ def weekly_svg(weeks):
 '''
 
 
-SUMMARY_CARDS = ["stats", "most-commit-language", "repos-per-language", "profile-details"]
-# github_dark theme colours -> red/black; language brand colours go to LANGUAGE_RAMP
+SUMMARY_CARDS = ["stats"]  # the language donuts and profile-details repeated other cards, so the README dropped them
+# github_dark theme colours -> red/black
 RECOLOUR = {"#0d1117": BG, "#2e343b": RED, "#0366d6": RED, "#8b949e": RED, "#77909c": RED2, "#40c463": RED}
-
-# The village donut ramp (PIE in scripts/recolor_village.py), applied to the language
-# swatches in legend order so every donut in the README reads the same way. Brand colours
-# are not kept: the theme is red/black throughout. A card with more languages than the ramp
-# has shades wraps, so two of its languages share a colour.
-LANGUAGE_RAMP = ["#ff2e4d", "#b3122e", "#ff8a3d", "#ff6b7d", "#7a1424", "#ffb3bc"]
-
-
-def recolour_languages(svg):
-    """Map each language swatch colour, in legend order, onto LANGUAGE_RAMP.
-
-    Each language is drawn twice in the same colour, as a legend swatch and a donut slice,
-    so replacing the colour covers both. Returns the SVG and the mapping applied, so the
-    caller can report it rather than assume the substitution happened.
-    """
-    order = []
-    for c in re.findall(r'class="gpsc-item"[^>]*fill="(#[0-9a-fA-F]{6})"', svg):
-        if c.lower() not in order:
-            order.append(c.lower())
-    mapping = {}
-    for i, c in enumerate(order):
-        mapping[c] = LANGUAGE_RAMP[i % len(LANGUAGE_RAMP)]
-        svg = re.sub(re.escape(c), mapping[c], svg, flags=re.I)
-    return svg, mapping
 
 
 def blue_leftovers(svg):
@@ -203,14 +178,8 @@ def summary_cards(user, out):
     for name in SUMMARY_CARDS:
         svg = fetch(f"https://github-profile-summary-cards.vercel.app/api/cards/{name}?username={user}&theme=github_dark", accept="image/svg+xml")
         assert svg.lstrip().startswith("<svg"), f"{name}: not an SVG"
-        # languages first, so a brand colour that collides with a theme key is still read
-        # as a language rather than being flattened to RED by the theme pass
-        svg, languages = recolour_languages(svg)
         for old, new in RECOLOUR.items():
             svg = re.sub(re.escape(old), new, svg, flags=re.I)
-        if languages:
-            print(f"{name}: languages recoloured: "
-                  + ", ".join(f"{k}->{v}" for k, v in languages.items()))
         leftover = blue_leftovers(svg)
         if leftover:
             print(f"::warning::{name}: blue-dominant colours left: " + " ".join(leftover),

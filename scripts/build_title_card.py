@@ -9,6 +9,8 @@ import base64
 import pathlib
 import sys
 
+from fx import calm
+
 
 def main():
     if len(sys.argv) < 3:
@@ -42,7 +44,7 @@ def main():
 <rect class="sweep" x="0" y="188" width="1280" height="2" fill="url(#line)"/>
 </svg>
 '''
-    out.write_text(svg)
+    out.write_text(calm(svg))
     print(f"built {out}")
 
 

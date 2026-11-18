@@ -87,12 +87,48 @@ def layer(x0, y0, w, h, photo=False):
 def add_fx(svg, photo=False):
     """Return svg with the effect layer appended; unchanged if it already has one."""
     if MARK in svg:
-        return svg
+        return calm(svg)
     end = svg.rfind("</svg>")
     if end < 0:
         raise ValueError("no closing </svg>")
     x0, y0, w, h = size(svg)
-    return svg[:end] + layer(x0, y0, w, h, photo) + "\n" + svg[end:]
+    return calm(svg[:end] + layer(x0, y0, w, h, photo) + "\n" + svg[end:])
+
+
+CALM_MARK = 'id="fx-calm"'
+# Under prefers-reduced-motion every animation jumps to its end state once: fade-ins land
+# visible, bars land full, embers land off-card. The light bands (fx-sweep, fx-beam) are
+# hidden, since a band stopped mid-card reads as a smear. Cycling items (hero titles,
+# quotes, flipbook frames) end hidden, so the first one of each set is pinned on instead.
+# PINS: (class, the inline animation-delay its first item is written with).
+PINS = (("title", "0s"), ("q", "0s"), ("fr", "0.00s"), ("ig", "0.00s"))
+CALM_CSS = ("@media (prefers-reduced-motion:reduce){.fx-sweep,.fx-beam{display:none}"
+            "*{animation-duration:1ms!important;animation-delay:0s!important;"
+            "animation-iteration-count:1!important;animation-fill-mode:forwards!important}"
+            + ",".join(f'.{c}[style^="animation-delay:{d}"]' for c, d in PINS)
+            + "{animation:none!important;opacity:1!important}}")
+CALM_BLOCK = re.compile(r"<style " + re.escape(CALM_MARK) + r">(.*?)</style>", re.S)
+
+
+def check_pins(svg):
+    """Raise if a cycling set (a PINS class on elements with an inline animation-delay) has no
+    first item whose delay matches its pin exactly: under reduced motion the whole set would vanish."""
+    for cls, delay in PINS:
+        delays = re.findall(r'<[^>]*\bclass="(?:[^"]* )?' + cls + r'(?: [^"]*)?"[^>]*\bstyle="animation-delay:([^;"]*)', svg)
+        if delays and delay not in delays:
+            raise ValueError(f".{cls}: no item with animation-delay:{delay} to pin (found {delays[:3]})")
+
+
+def calm(svg):
+    """Return svg with the current reduced-motion rule: added if missing, replaced if stale."""
+    check_pins(svg)
+    old = CALM_BLOCK.search(svg)
+    if old:
+        return svg if old.group(1) == CALM_CSS else svg[:old.start(1)] + CALM_CSS + svg[old.end(1):]
+    end = svg.rfind("</svg>")
+    if end < 0:
+        raise ValueError("no closing </svg>")
+    return svg[:end] + f"<style {CALM_MARK}>{CALM_CSS}</style>\n" + svg[end:]
 
 
 IMAGE_CSS = (".fx-zoom{transform-box:fill-box;transform-origin:center;animation:fx-zoom 18s ease-in-out infinite alternate}"
@@ -209,7 +245,7 @@ def sweep(svg):
     content but inside the frame (add_fx's beam spans the whole SVG, margins included).
     Unchanged if it already has one."""
     if SWEEP_MARK in svg:
-        return svg
+        return calm(svg)
     m = FRAME.search(svg)
     if not m:
         raise ValueError('no <rect class="frame" ... rx="6"/> to sweep across')
@@ -226,7 +262,7 @@ def sweep(svg):
              f'<linearGradient id="fx-sweep-band" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{RED}" stop-opacity="0"/>'
              f'<stop offset=".5" stop-color="{RED}" stop-opacity=".22"/><stop offset="1" stop-color="{RED}" stop-opacity="0"/></linearGradient>'
              f'<style>{css}</style></defs><rect {SWEEP_MARK} x="{x:g}" y="{y:g}" width="{band:.1f}" height="{h:g}" fill="url(#fx-sweep-band)"/></g>')
-    return svg[:end] + layer + "\n" + svg[end:]
+    return calm(svg[:end] + layer + "\n" + svg[end:])
 
 
 ROOT_TAG = re.compile(r"<svg\b[^>]*>", re.S)
@@ -301,6 +337,21 @@ def selftest():
     based = underlay(chart, "x", 0, 0, 340, 200, base="#050102")
     assert based.index('fill="#050102"') < based.index("<image"), "base colour not under the image"
     ET.fromstring(based)
+    for out in (once, swept, img):
+        assert out.count(CALM_MARK) == 1 and out.index(CALM_MARK) > out.rindex("<g "), "reduced-motion rule missing or not last"
+        assert calm(out) == out, "calm is not idempotent"
+        ET.fromstring(out)
+    stale = once.replace(CALM_CSS, "@media (prefers-reduced-motion:reduce){}")
+    assert calm(stale) == once, "a stale reduced-motion rule is not replaced"
+    cycling = base.replace("<rect/>", '<text class="mono title" style="animation-delay:0s">a</text>'
+                                      '<text class="title" style="animation-delay:3s">b</text>')
+    assert calm(cycling).count(CALM_MARK) == 1
+    try:
+        calm(cycling.replace("animation-delay:0s", "animation-delay:0.0s"))
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("cycling set with no pinnable first item not rejected")
     assert data_uri(IMG / (GRID_IMAGE + ".jpg")).startswith("data:image/jpeg;base64,")
     try:
         data_uri(pathlib.Path(__file__))
@@ -320,8 +371,10 @@ def main(argv):
         return main_apply(sweep, "sweep", argv[2:])
     if argv[1:2] == ["--fit"]:
         return main_apply(fit_to_frame, "fit", argv[2:])
+    if argv[1:2] == ["--calm"]:
+        return main_apply(calm, "calm", argv[2:])
     if len(argv) < 2:
-        sys.exit("fx.py: usage: fx.py <file.svg>... | --backdrop|--sweep|--fit <card.svg>... | --selftest")
+        sys.exit("fx.py: usage: fx.py <file.svg>... | --backdrop|--sweep|--fit|--calm <card.svg>... | --selftest")
     for name in argv[1:]:
         p = pathlib.Path(name)
         try:
