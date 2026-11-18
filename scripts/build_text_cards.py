@@ -20,7 +20,7 @@ if not fonts:
     sys.exit("build_text_cards.py: no embedded fonts in hero.svg")
 fonts = fonts.group(0)
 
-RED, RED2, PINK, MUTED, TEXT, SOFT = "#ff2e4d", "#ff6b7d", "#ffb3bc", "#a8828a", "#fff1f2", "#e8c9cd"
+RED, RED2, PINK, MUTED, TEXT, SOFT = "#ff2e4d", "#ff6b7d", "#ffb3bc", "#a8828a", "#fff1f2", "#f5e9eb"
 MONO_PX = 8.1  # Share Tech Mono advance at 15px
 
 
@@ -41,7 +41,7 @@ def frame(name, h, label, right, body, desc, extra_css="", pw=WIDE):
 <defs>
 <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a0508" stop-opacity=".96"/><stop offset="1" stop-color="#0d0204" stop-opacity=".96"/></linearGradient>
 <radialGradient id="ember" cx=".85" cy=".2" r=".6"><stop offset="0" stop-color="#8b0000" stop-opacity=".35"/><stop offset="1" stop-color="#8b0000" stop-opacity="0"/></radialGradient>
-<filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="1.8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 <style>
 {fonts}.mono{{font-family:'SLMono',ui-monospace,'SF Mono',Menlo,Consolas,monospace}}
 .sans{{font-family:'SLOrb','Segoe UI','Helvetica Neue',Arial,sans-serif}}

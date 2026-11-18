@@ -64,7 +64,7 @@ def layer(x0, y0, w, h, photo=False):
     ]
     parts = [
         f'<linearGradient id="fx-band" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{RED}" stop-opacity="0"/>'
-        f'<stop offset=".5" stop-color="{RED}" stop-opacity=".22"/><stop offset="1" stop-color="{RED}" stop-opacity="0"/></linearGradient>',
+        f'<stop offset=".5" stop-color="{RED}" stop-opacity=".07"/><stop offset="1" stop-color="{RED}" stop-opacity="0"/></linearGradient>',
     ]
     body = [f'<rect class="fx-beam" x="{x0:.1f}" y="{y0:.1f}" width="{band:.1f}" height="{h:.1f}" fill="url(#fx-band)"/>']
     if photo:
@@ -189,7 +189,7 @@ def card_backdrop(name, svg):
 # behind a card. Own class and id names, so it never clashes with add_fx() on the same card.
 BG_CSS = (".bg-zoom{transform-box:fill-box;transform-origin:center;animation:bg-zoom 18s ease-in-out infinite alternate}"
           "@keyframes bg-zoom{from{transform:scale(1)}to{transform:scale(1.07)}}"
-          ".bg-vig{animation:bg-vig 4s ease-in-out infinite}@keyframes bg-vig{0%,100%{opacity:.55}50%{opacity:.95}}"
+          ".bg-vig{animation:bg-vig 8s ease-in-out infinite}@keyframes bg-vig{0%,100%{opacity:.4}50%{opacity:.55}}"
           ".bg-ember{opacity:0;animation:bg-rise 7s linear infinite}"
           "@media (prefers-reduced-motion:reduce){.bg-zoom,.bg-vig,.bg-ember{animation:none!important}}")
 
@@ -205,6 +205,8 @@ def picture_layer(box, x, y, w, h, opacity, uri, base=""):
             '<radialGradient id="bg-vg" cx=".5" cy=".5" r=".75"><stop offset=".55" stop-color="#050102" stop-opacity="0"/>'
             f'<stop offset="1" stop-color="#3a0008" stop-opacity=".85"/></radialGradient><style>{css}</style></defs>{base}'
             f'<image class="bg-zoom" x="{x}" y="{y}" width="{w}" height="{h}" preserveAspectRatio="xMidYMid slice" opacity="{opacity}" href="{uri}"/>'
+            # dark scrim over the picture so white text on top stays readable
+            f'<rect {shape} fill="#050102" fill-opacity=".55"/>'
             f'<rect class="bg-vig" {shape} fill="url(#bg-vg)"/>{embers(bx, by, bw, bh, cls="bg-ember")}</g>')
 
 
@@ -255,13 +257,13 @@ def sweep(svg):
         raise ValueError("no closing </svg>")
     x, y, w, h = (float(v) for v in m.groups())
     band = max(w * 0.18, 60)
-    css = (".fx-sweep{animation:fx-sweep 7s cubic-bezier(.4,0,.6,1) infinite}"
+    css = (".fx-sweep{animation:fx-sweep 12s cubic-bezier(.4,0,.6,1) infinite}"
            "@keyframes fx-sweep{0%%{transform:translateX(%.0fpx)}55%%,100%%{transform:translateX(%.0fpx)}}" % (-band, w + band)
            + "@media (prefers-reduced-motion:reduce){.fx-sweep{animation:none!important}}")
     layer = (f'<g aria-hidden="true" clip-path="url(#fx-sweep-clip)"><defs><clipPath id="fx-sweep-clip">'
              f'<rect x="{x:g}" y="{y:g}" width="{w:g}" height="{h:g}" rx="6"/></clipPath>'
              f'<linearGradient id="fx-sweep-band" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{RED}" stop-opacity="0"/>'
-             f'<stop offset=".5" stop-color="{RED}" stop-opacity=".22"/><stop offset="1" stop-color="{RED}" stop-opacity="0"/></linearGradient>'
+             f'<stop offset=".5" stop-color="{RED}" stop-opacity=".07"/><stop offset="1" stop-color="{RED}" stop-opacity="0"/></linearGradient>'
              f'<style>{css}</style></defs><rect {SWEEP_MARK} x="{x:g}" y="{y:g}" width="{band:.1f}" height="{h:g}" fill="url(#fx-sweep-band)"/></g>')
     return calm(svg[:end] + layer + "\n" + svg[end:])
 
