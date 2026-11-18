@@ -7,7 +7,7 @@ Reads the embedded @font-face block from hero.svg so every card carries the same
 import sys, re, textwrap, pathlib
 from xml.sax.saxutils import escape
 
-from fx import BACKDROPS, IMG, JOIN_IMAGE, backdrop, card_backdrop, data_uri, sweep, fit_to_frame
+from fx import BACKDROPS, IMG, JOIN_IMAGE, add_embers, backdrop, card_backdrop, data_uri, sweep, fit_to_frame
 
 if len(sys.argv) < 2:
     sys.exit("build_text_cards.py: usage: build_text_cards.py <cards-dir>")
@@ -145,7 +145,7 @@ for pw, x, width, y0, fname in ((WIDE, 76, 1128, 104, "record.svg"), (NARROW, NX
     lh = 24 if pw == WIDE else 22
     s1, y = para(record[0], x, y0, width, fill=TEXT, lh=lh, delay=0.3)
     s2, y = para(record[1], x, y + 10, width, fill=MUTED, lh=lh, delay=0.5)
-    cards.joinpath(fname).write_text(frame("record", y + 14, "DUNGEON RECORD", "CURRENT FOOTPRINT", s1 + "\n" + s2, record_desc, pw=pw))
+    cards.joinpath(fname).write_text(add_embers(frame("record", y + 14, "DUNGEON RECORD", "CURRENT FOOTPRINT", s1 + "\n" + s2, record_desc, pw=pw)))
 
 # 4. System message: six dev and QA quotes, one every 5 s
 quotes = [("Program testing can be used to show the presence of bugs, but never to show their absence.", "Edsger W. Dijkstra"),
@@ -174,7 +174,7 @@ for pw, x0, cx, cols, size, lh, h, fname in ((WIDE, 76, 640, 58, 26, 38, 300, "q
             yy += lh
         g.append(f'<text x="{cx}" y="{yy+14}" class="mono" font-size="{16 if pw == WIDE else 14}" fill="{RED2}" text-anchor="middle" letter-spacing="2">— {escape(who)}</text></g>')
         parts.append("".join(g))
-    cards.joinpath(fname).write_text(frame("quote", h, "SYSTEM", f"{n} MESSAGES · CYCLING", "\n".join(parts), quote_desc, css, pw=pw))
+    cards.joinpath(fname).write_text(add_embers(frame("quote", h, "SYSTEM", f"{n} MESSAGES · CYCLING", "\n".join(parts), quote_desc, css, pw=pw)))
 print("built log, profile, record, quote")
 
 # 5. Phone versions of the hand-made cards (hero, quest, skills, status, join). The wide cards have no

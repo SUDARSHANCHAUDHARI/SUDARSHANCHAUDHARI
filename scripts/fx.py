@@ -39,13 +39,13 @@ def size(svg):
     return 0.0, 0.0, float(w.group(1)), float(h.group(1))
 
 
-def embers(x0, y0, w, h, n=14, cls="fx-ember"):
+def embers(x0, y0, w, h, n=8, cls="fx-ember"):
     # fixed spread rather than random, so a rebuild gives a byte-identical file
     dots = []
     for i in range(n):
         x = x0 + w * ((i * 0.618034) % 1)
-        r = 1.4 + (i % 3) * 0.8
-        dur = 6 + (i * 7 % 5)
+        r = 1.0 + (i % 3) * 0.5
+        dur = 8 + (i * 7 % 5)
         delay = -(i * 1.3 % dur)
         fill = EMBER if i % 3 else GLOW
         dots.append(f'<circle class="{cls}" cx="{x:.1f}" cy="{y0 + h + 6:.1f}" r="{r:.1f}" fill="{fill}" '
@@ -72,7 +72,7 @@ def layer(x0, y0, w, h, photo=False):
             ".fx-vig{animation:fx-vig 4s ease-in-out infinite}",
             "@keyframes fx-vig{0%,100%{opacity:.55}50%{opacity:.95}}",
             ".fx-ember{opacity:0;animation:fx-rise 7s linear infinite}",
-            "@keyframes fx-rise{0%%{transform:translateY(0);opacity:0}15%%{opacity:.9}85%%{opacity:.6}"
+            "@keyframes fx-rise{0%%{transform:translateY(0);opacity:0}15%%{opacity:.5}85%%{opacity:.35}"
             "100%%{transform:translateY(%.0fpx);opacity:0}}" % rise,
         ]
         parts.append('<radialGradient id="fx-vg" cx=".5" cy=".5" r=".75"><stop offset=".55" stop-color="#050102" stop-opacity="0"/>'
@@ -120,8 +120,34 @@ def check_pins(svg):
             raise ValueError(f".{cls}: no item with animation-delay:{delay} to pin (found {delays[:3]})")
 
 
+RED_TEXT = {"#ff2e4d", "#ff6b7d", "#ff8a9b", "#ffb3bc"}
+WHITE = "#fff1f2"
+NAME = re.compile(r"sudarshan|chaudhari", re.I)  # his name keeps its own styling
+TEXT_EL = re.compile(r"<(text|tspan)\b([^>]*)>(.*?)</\1>", re.S)
+FILL = re.compile(r"""fill=(["'])(#[0-9a-fA-F]{6})\1""")
+
+
+def whiten_text(svg):
+    """Return svg with red text drawn white for readability; text naming him is left alone.
+    Covers fill="" on <text>/<tspan> and a CSS class whose fill is red when only text uses it."""
+    def recolor(m):
+        tag, attrs, body = m.groups()
+        if NAME.search(re.sub(r"<[^>]+>", "", body)):
+            return m.group(0)
+        attrs = FILL.sub(lambda f: f'fill={f.group(1)}{WHITE}{f.group(1)}' if f.group(2).lower() in RED_TEXT else f.group(0), attrs)
+        return f"<{tag}{attrs}>{TEXT_EL.sub(recolor, body)}</{tag}>"
+    svg = TEXT_EL.sub(recolor, svg)
+    for cls, col in set(re.findall(r"\.([A-Za-z][\w-]*)\{[^}]*?fill:(#[0-9a-fA-F]{6})", svg)):
+        users = re.findall(r'<(\w+)\b[^>]*\bclass="(?:[^"]* )?' + re.escape(cls) + r'(?: [^"]*)?"', svg)
+        if col.lower() in RED_TEXT and users and all(u in ("text", "tspan") for u in users):
+            svg = re.sub(r"(\." + re.escape(cls) + r"\{[^}]*?fill:)" + re.escape(col), r"\g<1>" + WHITE, svg)
+    return svg
+
+
 def calm(svg):
-    """Return svg with the current reduced-motion rule: added if missing, replaced if stale."""
+    """Return svg with the current reduced-motion rule: added if missing, replaced if stale.
+    Every card passes through here last, so red text is whitened here too."""
+    svg = whiten_text(svg)
     check_pins(svg)
     old = CALM_BLOCK.search(svg)
     if old:
@@ -194,12 +220,43 @@ BG_CSS = (".bg-zoom{transform-box:fill-box;transform-origin:center;animation:bg-
           "@media (prefers-reduced-motion:reduce){.bg-zoom,.bg-vig,.bg-ember{animation:none!important}}")
 
 
+def rise_css(rise):
+    """The bg-ember rise: faint (peak .5) so the dots never compete with the text."""
+    return ("@keyframes bg-rise{0%%{transform:translateY(0);opacity:0}15%%{opacity:.5}85%%{opacity:.35}"
+            "100%%{transform:translateY(%.0fpx);opacity:0}}" % rise)
+
+
+EMBER_MARK = 'class="bg-ember"'
+
+
+def add_embers(svg):
+    """Return svg with the player-log embers rising behind its text (just above the card
+    panel, or on top of a card with no panel); unchanged if it already has embers."""
+    if EMBER_MARK in svg:
+        return svg
+    m = PANEL.search(svg)
+    if m:
+        x, y, w, h = (float(v) for v in m.groups())
+        at = m.end()
+    else:
+        x, y, w, h = size(svg)
+        at = svg.find(f"<style {CALM_MARK}")  # stay before the reduced-motion rule, which must come last
+        at = at if at >= 0 else svg.rfind("</svg>")
+        if at < 0:
+            raise ValueError("no closing </svg>")
+    css = (".bg-ember{opacity:0;animation:bg-rise 7s linear infinite}" + rise_css(-(h + 20))
+           + "@media (prefers-reduced-motion:reduce){.bg-ember{animation:none!important}}")
+    layer = (f'<g aria-hidden="true" clip-path="url(#em-clip)"><defs><clipPath id="em-clip">'
+             f'<rect x="{x:g}" y="{y:g}" width="{w:g}" height="{h:g}" rx="6"/></clipPath><style>{css}</style></defs>'
+             f'{embers(x, y, w, h, cls="bg-ember")}</g>')
+    return svg[:at] + layer + svg[at:]
+
+
 def picture_layer(box, x, y, w, h, opacity, uri, base=""):
     """The clipped, moving picture: box is the card area as (x, y, w, h); x,y,w,h place the image."""
     bx, by, bw, bh = (float(v) for v in box[:4])
     rise = -(bh + 20)
-    css = BG_CSS + ("@keyframes bg-rise{0%%{transform:translateY(0);opacity:0}15%%{opacity:.9}85%%{opacity:.6}"
-                    "100%%{transform:translateY(%.0fpx);opacity:0}}" % rise)
+    css = BG_CSS + rise_css(rise)
     shape = f'x="{bx:g}" y="{by:g}" width="{bw:g}" height="{bh:g}" rx="{box[4]}"'
     return (f'<g {BG_MARK} aria-hidden="true" clip-path="url(#bg-clip)"><defs><clipPath id="bg-clip"><rect {shape}/></clipPath>'
             '<radialGradient id="bg-vg" cx=".5" cy=".5" r=".75"><stop offset=".55" stop-color="#050102" stop-opacity="0"/>'
@@ -379,6 +436,18 @@ def selftest():
         raise AssertionError("card without a frame not rejected")
     assert all(c in bg for c in ('class="bg-zoom"', 'class="bg-vig"', 'class="bg-ember"', "prefers-reduced-motion")), "backdrop has no motion"
     assert bg.index("<image") < bg.index("<text"), "backdrop is not behind the text"
+    w = whiten_text('<svg><style>.tag{fill:#ff6b7d}.bar{fill:#ff2e4d}</style><text fill="#ff6b7d">QA</text>'
+                    '<text fill="#ff2e4d">SUDARSHAN CHAUDHARI</text><text><tspan fill=\'#ffb3bc\'>x</tspan></text>'
+                    '<text class="tag">t</text><rect class="bar" fill="#ff2e4d"/><text fill="#ffb020">gold</text></svg>')
+    assert '<text fill="#fff1f2">QA</text>' in w and "fill='#fff1f2'" in w, "red text not whitened"
+    assert '<text fill="#ff2e4d">SUDARSHAN CHAUDHARI</text>' in w, "his name was recoloured"
+    assert ".tag{fill:#fff1f2}" in w and ".bar{fill:#ff2e4d}" in w and 'rect class="bar" fill="#ff2e4d"' in w, "non-text red changed or text class missed"
+    assert '"#ffb020">gold' in w and whiten_text(w) == w, "non-red text changed or not idempotent"
+    em = add_embers(card)
+    assert add_embers(em) == em and add_embers(bg) == bg, "add_embers is not idempotent"
+    assert em.count(EMBER_MARK) == 8 and em.index(EMBER_MARK) < em.index("<text"), "embers missing or not behind the text"
+    bare = add_embers('<svg viewBox="0 0 100 50"><text>t</text></svg>')
+    assert bare.index(EMBER_MARK) > bare.index("<text") and 'height="50"' in bare, "no-panel card got no embers"
     ET.fromstring(bg)
     try:
         backdrop("<svg></svg>", "x")

@@ -9,7 +9,7 @@ import base64
 import pathlib
 import sys
 
-from fx import calm
+from fx import add_embers, calm
 
 
 def main():
@@ -44,7 +44,7 @@ def main():
 <rect class="sweep" x="0" y="188" width="1280" height="2" fill="url(#line)"/>
 </svg>
 '''
-    out.write_text(calm(svg))
+    out.write_text(calm(add_embers(svg)))
     print(f"built {out}")
 
 

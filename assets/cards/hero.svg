@@ -19,7 +19,7 @@
 .open{transform-origin:640px 210px;animation:open .9s cubic-bezier(.2,.9,.3,1.2) both}
 .fade{opacity:0;animation:fade .8s ease forwards}
 .title{opacity:0;animation:cycle 12s infinite}
-.p{animation:rise linear infinite;opacity:0}
+
 .scan{animation:scan 4s linear infinite}
 .arise{animation:arise 2.4s ease-in-out infinite}
 .caret{animation:blink 1s steps(1) infinite}
@@ -33,7 +33,7 @@
 @keyframes fade{to{opacity:1}}
 @keyframes pulse{0%,100%{stroke-opacity:.55}50%{stroke-opacity:1}}
 @keyframes cycle{0%{opacity:0}3%,22%{opacity:1}25%,100%{opacity:0}}
-@keyframes rise{0%{transform:translateY(0);opacity:0}15%{opacity:.9}100%{transform:translateY(-360px);opacity:0}}
+
 @keyframes scan{from{transform:translateY(0)}to{transform:translateY(360px)}}
 @keyframes arise{0%,100%{opacity:.55}50%{opacity:1}}
 @keyframes blink{50%{opacity:0}}
@@ -46,31 +46,19 @@
 <rect width="1280" height="420" fill="#050102" fill-opacity=".45"/>
 <ellipse cx="1040" cy="250" rx="260" ry="200" fill="url(#aura)"/>
 <g fill="#ff6b7d">
-<circle class="p" cx="120" cy="420" r="2" style="animation-duration:7s;animation-delay:0s"/>
-<circle class="p" cx="260" cy="420" r="1.5" style="animation-duration:9s;animation-delay:1.2s"/>
-<circle class="p" cx="410" cy="420" r="2.5" style="animation-duration:8s;animation-delay:2.4s"/>
-<circle class="p" cx="560" cy="420" r="1.5" style="animation-duration:10s;animation-delay:.6s"/>
-<circle class="p" cx="700" cy="420" r="2" style="animation-duration:7.5s;animation-delay:3.1s"/>
-<circle class="p" cx="850" cy="420" r="1.5" style="animation-duration:9.5s;animation-delay:1.8s"/>
-<circle class="p" cx="980" cy="420" r="2.5" style="animation-duration:8.5s;animation-delay:.3s"/>
-<circle class="p" cx="1110" cy="420" r="2" style="animation-duration:7s;animation-delay:2.9s"/>
-<circle class="p" cx="1200" cy="420" r="1.5" style="animation-duration:9s;animation-delay:4s"/>
 </g>
 <g fill="#ff8a3d">
-<circle class="p" cx="1010" cy="420" r="2" style="animation-duration:6s;animation-delay:.9s"/>
-<circle class="p" cx="1070" cy="420" r="1.5" style="animation-duration:6.5s;animation-delay:2.2s"/>
-<circle class="p" cx="940" cy="420" r="1.5" style="animation-duration:7s;animation-delay:3.6s"/>
 </g>
 <g class="open">
-<rect x="40" y="30" width="1200" height="360" rx="6" fill="url(#panel)"/>
+<rect x="40" y="30" width="1200" height="360" rx="6" fill="url(#panel)"/><g aria-hidden="true" clip-path="url(#em-clip)"><defs><clipPath id="em-clip"><rect x="40" y="30" width="1200" height="360" rx="6"/></clipPath><style>.bg-ember{opacity:0;animation:bg-rise 7s linear infinite}@keyframes bg-rise{0%{transform:translateY(0);opacity:0}15%{opacity:.5}85%{opacity:.35}100%{transform:translateY(-380px);opacity:0}}@media (prefers-reduced-motion:reduce){.bg-ember{animation:none!important}}</style></defs><circle class="bg-ember" cx="40.0" cy="396.0" r="1.0" fill="#ff6b7d" style="animation-duration:8s;animation-delay:-0.0s"/><circle class="bg-ember" cx="781.6" cy="396.0" r="1.5" fill="#ff8a3d" style="animation-duration:10s;animation-delay:-1.3s"/><circle class="bg-ember" cx="323.3" cy="396.0" r="2.0" fill="#ff8a3d" style="animation-duration:12s;animation-delay:-2.6s"/><circle class="bg-ember" cx="1064.9" cy="396.0" r="1.0" fill="#ff6b7d" style="animation-duration:9s;animation-delay:-3.9s"/><circle class="bg-ember" cx="606.6" cy="396.0" r="1.5" fill="#ff8a3d" style="animation-duration:11s;animation-delay:-5.2s"/><circle class="bg-ember" cx="148.2" cy="396.0" r="2.0" fill="#ff8a3d" style="animation-duration:8s;animation-delay:-6.5s"/><circle class="bg-ember" cx="889.8" cy="396.0" r="1.0" fill="#ff6b7d" style="animation-duration:10s;animation-delay:-7.8s"/><circle class="bg-ember" cx="431.5" cy="396.0" r="1.5" fill="#ff8a3d" style="animation-duration:12s;animation-delay:-9.1s"/></g>
 <rect class="frame" x="40" y="30" width="1200" height="360" rx="6" filter="url(#glow)"/>
 <path class="corner" d="M40 62V30h32M1208 30h32v32M1240 358v32h-32M72 390H40v-32"/>
 <rect class="scan" x="42" y="32" width="1196" height="2" fill="#ff6b7d" opacity=".12"/>
 <rect x="40" y="30" width="1200" height="44" fill="#ff2e4d" fill-opacity=".08"/>
-<text x="76" y="59" class="mono" font-size="16" fill="#ff6b7d" letter-spacing="3">⟨ SYSTEM ⟩</text>
+<text x="76" y="59" class="mono" font-size="16" fill="#fff1f2" letter-spacing="3">⟨ SYSTEM ⟩</text>
 <text x="1204" y="59" class="mono" font-size="14" fill="#a8828a" text-anchor="end" letter-spacing="2">NOTIFICATION</text>
 <line x1="40" y1="74" x2="1240" y2="74" stroke="#ff2e4d" stroke-opacity=".5"/>
-<text x="76" y="118" class="mono" font-size="19" fill="#ffb3bc" clip-path="url(#type)">A new Player has awakened.</text>
+<text x="76" y="118" class="mono" font-size="19" fill="#fff1f2" clip-path="url(#type)">A new Player has awakened.</text>
 <g class="type-caret"><rect class="caret" x="348" y="102" width="10" height="20" fill="#ffb3bc"/></g>
 <text x="76" y="186" class="sans fade" font-size="48" font-weight="900" fill="url(#name)" letter-spacing="3" filter="url(#glow)" style="animation-delay:1.6s">SUDARSHAN CHAUDHARI</text>
 <text x="76" y="236" class="mono" font-size="20" fill="#a8828a">TITLE ›</text>
@@ -115,7 +103,7 @@
 </g>
 <rect x="958" y="92" width="248" height="248" rx="6" fill="url(#charfade)"/>
 <rect class="frame" x="954" y="88" width="256" height="256" rx="8" filter="url(#glow)"/>
-<text x="1082" y="330" class="sans g1" font-size="34" font-weight="900" fill="#ff2e4d" text-anchor="middle" letter-spacing="8">ARISE</text>
+<text x="1082" y="330" class="sans g1" font-size="34" font-weight="900" fill="#fff1f2" text-anchor="middle" letter-spacing="8">ARISE</text>
 <text x="1082" y="330" class="sans g2" font-size="34" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="8">ARISE</text>
 <text x="1082" y="330" class="sans arise" font-size="34" font-weight="900" fill="#ffd0b5" text-anchor="middle" letter-spacing="8" filter="url(#glow)">ARISE</text>
 </g>
