@@ -1,5 +1,5 @@
 """Build the four text cards (player log, profile, record, quote) in the red/black System style,
-each with a phone version, plus phone versions of the hand-made hero, quest, skills and status cards.
+each with a phone version, plus phone versions of the hand-made hero, quest, skills, status and join cards.
 
 Usage: python3 scripts/build_text_cards.py assets/cards
 Reads the embedded @font-face block from hero.svg so every card carries the same fonts.
@@ -7,7 +7,7 @@ Reads the embedded @font-face block from hero.svg so every card carries the same
 import sys, re, textwrap, pathlib
 from xml.sax.saxutils import escape
 
-from fx import BACKDROPS, backdrop, card_backdrop, sweep, fit_to_frame
+from fx import BACKDROPS, IMG, JOIN_IMAGE, backdrop, card_backdrop, data_uri, sweep, fit_to_frame
 
 if len(sys.argv) < 2:
     sys.exit("build_text_cards.py: usage: build_text_cards.py <cards-dir>")
@@ -176,8 +176,9 @@ for pw, x0, cx, cols, size, lh, h, fname in ((WIDE, 76, 640, 58, 26, 38, 300, "q
     cards.joinpath(fname).write_text(frame("quote", h, "SYSTEM", f"{n} MESSAGES · CYCLING", "\n".join(parts), quote_desc, css, pw=pw))
 print("built log, profile, record, quote")
 
-# 5. Phone versions of the hand-made cards (hero, quest, skills, status). The wide cards have no
-# build script, so their pictures are read from the wide SVGs and their text is kept in step here.
+# 5. Phone versions of the hand-made cards (hero, quest, skills, status, join). The wide cards have no
+# build script, so their text is kept in step here. Pictures are read from the wide SVGs, except
+# join's backdrop, which is fx.JOIN_IMAGE.
 # To keep phones light, the decorative Igris flipbook (its first frame stays as the backdrop) and the
 # skills side art are left out.
 
@@ -222,7 +223,9 @@ chips = [[("CLASS", "Quality Engineer", 230), ("EXP", "13+ yrs", 134)], [("GUILD
 for row in chips:
     x = NX
     for label, value, w in row:
-        body.append(f'<g class="mono fade" font-size="14" style="animation-delay:1.4s"><rect x="{x}" y="{y}" width="{w}" height="36" rx="4" fill="{RED}" fill-opacity=".08" stroke="{RED}" stroke-opacity=".45"/>'
+        # dark chip under the red tint, so the label reads over the light parts of the backdrop
+        body.append(f'<g class="mono fade" font-size="14" style="animation-delay:1.4s"><rect x="{x}" y="{y}" width="{w}" height="36" rx="4" fill="#140306" fill-opacity=".82"/>'
+                    f'<rect x="{x}" y="{y}" width="{w}" height="36" rx="4" fill="{RED}" fill-opacity=".08" stroke="{RED}" stroke-opacity=".45"/>'
                     f'<text x="{x + 14}" y="{y + 23}" fill="{MUTED}">{label} <tspan fill="{TEXT}">{escape(value)}</tspan></text></g>')
         x += w + 14
     y += 48
@@ -340,4 +343,21 @@ cards.joinpath("status-narrow.svg").write_text(
     backdrop(frame("status", y + 22, "STATUS", "", "\n".join(body),
                    "Status window: player ID card, seven abilities and public repositories by language.", status_css, pw=NARROW),
              pictures("status", r'x="450" y="66"')[0], opacity=0.22))
-print("built hero, quest, skills, status phone versions")
+
+# Join: the invitation, its two lines of text and the YES / NO buttons, over the shadow army
+lines = [(100, "mono fade", 15, PINK, ".3s", "You have received an invitation."),
+         (150, "sans fade", 28, TEXT, ".7s", "JOIN THE"), (184, "sans fade", 28, TEXT, ".7s", "SHADOW ARMY?"),
+         (228, "mono fade", 14, MUTED, "1s", "Collaborate · Hire · Talk QA, Android or AI agents")]
+heading = ' font-weight="900" letter-spacing="3" filter="url(#glow)"'
+body = [f'<text x="{cx}" y="{y}" class="{cls}" font-size="{size}"{heading if cls.startswith("sans") else ""} '
+        f'fill="{fill}" text-anchor="middle" style="animation-delay:{d}">{escape(t)}</text>' for y, cls, size, fill, d, t in lines]
+body.append(f'<g class="mono" font-size="18" text-anchor="middle">'
+            f'<rect class="yes" x="{cx - 140}" y="266" width="128" height="44" rx="4" fill="{RED}" stroke="{RED2}" stroke-width="2"/>'
+            f'<text x="{cx - 76}" y="294" fill="{TEXT}" font-weight="700">YES</text>'
+            f'<rect x="{cx + 12}" y="266" width="128" height="44" rx="4" fill="{RED}" fill-opacity=".05" stroke="{RED}" stroke-opacity=".4"/>'
+            f'<text x="{cx + 76}" y="294" fill="#7a5a60">NO</text></g>')
+join_css = ROW_CSS + ".yes{animation:yes 1.6s ease-in-out infinite}@keyframes yes{0%,100%{fill-opacity:.15}50%{fill-opacity:.45}}\n"
+cards.joinpath("join-narrow.svg").write_text(
+    backdrop(frame("join", 352, "SYSTEM", "", "\n".join(body), "System invitation: join the shadow army — let's connect.", join_css, pw=NARROW),
+             data_uri(IMG / (JOIN_IMAGE + ".jpg")), opacity=0.35))
+print("built hero, quest, skills, status, join phone versions")

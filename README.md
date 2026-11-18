@@ -34,7 +34,7 @@
 
 <picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/main/assets/cards/skills-narrow.svg"/><img src="./assets/cards/skills.svg" alt="Skills window: six skill areas — QA automation, mobile, AI systems, web platforms, developer tooling, security" width="100%"/></picture>
 
-<img src="./assets/cards/tools.svg" alt="Inventory: Kotlin, Jetpack Compose, Android, TypeScript, React, Next.js, Python, Rust, SQLite, Playwright, Selenium, Appium, Postman, Firebase, Cloudflare, GitHub Actions, Git" width="100%"/>
+<picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/main/assets/cards/tools-narrow.svg"/><img src="./assets/cards/tools.svg" alt="Inventory: Kotlin, Jetpack Compose, Android, TypeScript, React, Next.js, Python, Rust, SQLite, Playwright, Selenium, Appium, Postman, Firebase, Cloudflare, GitHub Actions, Git" width="100%"/></picture>
 
 # 📊 GitHub Stats
 
@@ -49,14 +49,6 @@
 
 <picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/main/assets/cards/status-narrow.svg"/><img src="./assets/cards/status.svg" alt="Status window: player ID card and seven abilities" width="100%"/></picture>
 
-# 🏆 GitHub Trophies
-
-<div align="center">
-
-<img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/trophies.svg" alt="GitHub trophies" width="100%"/>
-
-</div>
-
 # 🌃 My contribution village
 
 <div align="center">
@@ -69,8 +61,6 @@
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output/snake-dark.svg" />
   <img alt="Contribution snake" src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output/snake-light.svg" width="100%" />
 </picture></p>
-
-<a href="https://commit-history.com/SUDARSHANCHAUDHARI"><img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/commit-history.svg" alt="All of SUDARSHANCHAUDHARI's GitHub contributions over time" width="100%"/></a>
 
 </div>
 
@@ -107,7 +97,7 @@
 
 <div align="center">
 
-<img src="./assets/cards/join.svg" alt="System invitation: join the shadow army — let's connect" width="100%"/>
+<picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/main/assets/cards/join-narrow.svg"/><img src="./assets/cards/join.svg" alt="System invitation: join the shadow army — let's connect" width="100%"/></picture>
 
 </div>
 

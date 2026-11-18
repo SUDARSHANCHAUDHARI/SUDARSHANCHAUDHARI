@@ -19,9 +19,8 @@ import sys
 import urllib.error
 import urllib.request
 from collections import OrderedDict
-from xml.sax.saxutils import escape
 
-from fx import add_fx, underlay, data_uri, IMG, GRID_IMAGE, TROPHY_IMAGE, WEEKLY_IMAGE, STREAK_IMAGE
+from fx import add_fx, underlay, data_uri, IMG, GRID_IMAGE, WEEKLY_IMAGE, STREAK_IMAGE
 
 RED, RED2, MUTED, TEXT, BG, PANEL = "#ff2e4d", "#ff6b7d", "#a8828a", "#fff1f2", "#050102", "#140306"
 MONO = "ui-monospace,'SF Mono',Menlo,Consolas,monospace"
@@ -190,26 +189,6 @@ def summary_cards(user, out):
             f.write(add_fx(svg))
 
 
-# darkhub trophy theme -> red/black
-TROPHY_RECOLOUR = {"#0d1117": BG, "#ff79c6": RED, "#ffb86c": "#ff8a3d", "#8be9fd": RED2, "#6272a4": "#7a2a35",
-                   "#388bfd": RED, "#178600": RED2, "#8b949e": MUTED, "#ff5555": RED}
-
-
-def trophies(user, out):
-    svg = fetch(f"https://github-trophies.vercel.app/?username={user}&theme=darkhub&no-frame=true&margin-w=6&column=6", accept="image/svg+xml")
-    assert "<svg" in svg[:200], "trophies: not an SVG"
-    for old, new in TROPHY_RECOLOUR.items():
-        svg = re.sub(re.escape(old), new, svg, flags=re.I)
-    # see-through trophy tiles, so the picture behind them shows
-    svg, n = re.subn(rf'(fill="{re.escape(BG)}"\s+stroke-opacity="0"\s+)fill-opacity="1"', r'\1fill-opacity=".55"', svg, flags=re.I)
-    if not n:
-        print("::warning::trophies: no tile backgrounds found; the picture stays hidden behind them", file=sys.stderr)
-    # the trophy SVG has no background of its own: paint BG under the picture so light theme stays dark
-    svg = picture(svg, "trophies", TROPHY_IMAGE, 0, 0, 690, 220, opacity=0.4, base=BG, inset=0)
-    with open(os.path.join(out, "trophies.svg"), "w") as f:
-        f.write(add_fx(svg))
-
-
 # streak-stats already draws in the red/black theme through these colours
 STREAK_COLOURS = ("background=050102&border=ff2e4d&stroke=3a0d14&ring=ff2e4d&fire=ff2e4d&currStreakNum=fff1f2"
                   "&sideNums=fff1f2&currStreakLabel=ff6b7d&sideLabels=ff6b7d&dates=a8828a")
@@ -235,7 +214,6 @@ def main():
     user, out = sys.argv[1], sys.argv[2]
     os.makedirs(out, exist_ok=True)
     summary_cards(user, out)
-    trophies(user, out)
     streak(user, out)
     private, live = private_repo_count()
     with open(os.path.join(out, "repos.svg"), "w") as f:
