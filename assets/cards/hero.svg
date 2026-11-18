@@ -7,7 +7,7 @@
 <linearGradient id="name" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff1f2"/><stop offset=".5" stop-color="#ff6b7d"/><stop offset="1" stop-color="#ff8a3d"/></linearGradient>
 <radialGradient id="aura" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#8b0000" stop-opacity=".55"/><stop offset="1" stop-color="#8b0000" stop-opacity="0"/></radialGradient>
 <filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-<clipPath id="type"><rect x="70" y="96" width="0" height="30"><animate attributeName="width" from="0" to="280" begin="0.6s" dur="1.6s" fill="freeze"/></rect></clipPath>
+<clipPath id="type"><rect class="type-mask" x="70" y="96" width="280" height="30"/></clipPath>
 <clipPath id="charclip"><rect x="958" y="92" width="248" height="248" rx="6"/></clipPath>
 <linearGradient id="charfade" x1="0" y1="0" x2="0" y2="1"><stop offset=".55" stop-color="#0d0204" stop-opacity="0"/><stop offset="1" stop-color="#0d0204" stop-opacity=".95"/></linearGradient>
 <style>
@@ -37,6 +37,8 @@
 @keyframes scan{from{transform:translateY(0)}to{transform:translateY(360px)}}
 @keyframes arise{0%,100%{opacity:.55}50%{opacity:1}}
 @keyframes blink{50%{opacity:0}}
+.type-mask{transform-box:fill-box;transform-origin:left;animation:type 1.6s linear .6s both}@keyframes type{from{transform:scaleX(0)}}
+.type-caret{animation:type-caret 1.6s linear .6s both}@keyframes type-caret{from{transform:translateX(-272px)}}
 </style>
 </defs>
 <rect width="1280" height="420" fill="url(#bg)"/>
@@ -69,7 +71,7 @@
 <text x="1204" y="59" class="mono" font-size="14" fill="#a8828a" text-anchor="end" letter-spacing="2">NOTIFICATION</text>
 <line x1="40" y1="74" x2="1240" y2="74" stroke="#ff2e4d" stroke-opacity=".5"/>
 <text x="76" y="118" class="mono" font-size="19" fill="#ffb3bc" clip-path="url(#type)">A new Player has awakened.</text>
-<rect class="caret" x="76" y="102" width="10" height="20" fill="#ffb3bc"><animate attributeName="x" from="76" to="348" begin="0.6s" dur="1.6s" fill="freeze"/></rect>
+<g class="type-caret"><rect class="caret" x="348" y="102" width="10" height="20" fill="#ffb3bc"/></g>
 <text x="76" y="186" class="sans fade" font-size="48" font-weight="900" fill="url(#name)" letter-spacing="3" filter="url(#glow)" style="animation-delay:1.6s">SUDARSHAN CHAUDHARI</text>
 <text x="76" y="236" class="mono" font-size="20" fill="#a8828a">TITLE ›</text>
 <g class="mono" font-size="20" fill="#fff1f2">
