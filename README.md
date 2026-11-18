@@ -1,14 +1,14 @@
-<img src="./assets/cards/title.svg?v=2" alt="Solo Leveling" width="100%"/>
+<img src="./assets/cards/title.svg" alt="Solo Leveling" width="100%"/>
 
 # 💫 About Me
 
 <img src="./assets/gifs/mario.svg" alt="Pixel-art coder at a desk" width="100%"/>
 
-<picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/main/assets/cards/hero-narrow.svg?v=1"/><img src="./assets/cards/hero.svg?v=4" alt="System window: a new player has awakened — Sudarshan Chaudhari, Senior Quality Engineer, Test Automation Specialist, AI Systems Builder, Android Developer" width="100%"/></picture>
+<picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/main/assets/cards/hero-narrow.svg"/><img src="./assets/cards/hero.svg" alt="System window: a new player has awakened — Sudarshan Chaudhari, Senior Quality Engineer, Test Automation Specialist, AI Systems Builder, Android Developer" width="100%"/></picture>
 
-<picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/main/assets/cards/log-narrow.svg?v=1"/><img src="./assets/cards/log.svg?v=5" alt="Player log: building AI-agent tooling and Android apps; open to collaborate on QA automation, AI agents and developer tooling; exploring Rust and Three.js; ask about test automation, release quality and MCP servers; 13+ years in QA" width="100%"/></picture>
+<picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/main/assets/cards/log-narrow.svg"/><img src="./assets/cards/log.svg" alt="Player log: building AI-agent tooling and Android apps; open to collaborate on QA automation, AI agents and developer tooling; exploring Rust and Three.js; ask about test automation, release quality and MCP servers; 13+ years in QA" width="100%"/></picture>
 
-<picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/main/assets/cards/quest-narrow.svg?v=1"/><img src="./assets/cards/quest.svg?v=5" alt="Daily quest: Android products, AI-agent systems, QA and release tooling, local-first utilities" width="100%"/></picture>
+<picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/main/assets/cards/quest-narrow.svg"/><img src="./assets/cards/quest.svg" alt="Daily quest: Android products, AI-agent systems, QA and release tooling, local-first utilities" width="100%"/></picture>
 
 # ⚔️ S-Rank Missions
 
@@ -32,9 +32,9 @@
 
 # 💻 Tech Stack
 
-<picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/main/assets/cards/skills-narrow.svg?v=1"/><img src="./assets/cards/skills.svg?v=6" alt="Skills window: six skill areas — QA automation, mobile, AI systems, web platforms, developer tooling, security" width="100%"/></picture>
+<picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/main/assets/cards/skills-narrow.svg"/><img src="./assets/cards/skills.svg" alt="Skills window: six skill areas — QA automation, mobile, AI systems, web platforms, developer tooling, security" width="100%"/></picture>
 
-<img src="./assets/cards/tools.svg?v=5" alt="Inventory: Kotlin, Jetpack Compose, Android, TypeScript, React, Next.js, Python, Rust, SQLite, Playwright, Selenium, Appium, Postman, Firebase, Cloudflare, GitHub Actions, Git" width="100%"/>
+<img src="./assets/cards/tools.svg" alt="Inventory: Kotlin, Jetpack Compose, Android, TypeScript, React, Next.js, Python, Rust, SQLite, Playwright, Selenium, Appium, Postman, Firebase, Cloudflare, GitHub Actions, Git" width="100%"/>
 
 # 📊 GitHub Stats
 
@@ -47,7 +47,7 @@
 
 <img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/weekly.svg" alt="Contributions per week, last 52 weeks" width="100%"/>
 
-<picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/main/assets/cards/status-narrow.svg?v=1"/><img src="./assets/cards/status.svg?v=5" alt="Status window: player ID card and seven abilities" width="100%"/></picture>
+<picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/main/assets/cards/status-narrow.svg"/><img src="./assets/cards/status.svg" alt="Status window: player ID card and seven abilities" width="100%"/></picture>
 
 # 🏆 GitHub Trophies
 
@@ -63,14 +63,14 @@
 
 *Every commit raises another building — rebuilt automatically every day.*
 
-<p><img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/profile-night-view.svg?v=3" alt="3D contribution village" width="100%"/></p>
+<p><img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/profile-night-view.svg" alt="3D contribution village" width="100%"/></p>
 
 <p><picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output/snake-dark.svg" />
   <img alt="Contribution snake" src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output/snake-light.svg" width="100%" />
 </picture></p>
 
-<a href="https://commit-history.com/SUDARSHANCHAUDHARI"><img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/commit-history.svg?v=2" alt="All of SUDARSHANCHAUDHARI's GitHub contributions over time" width="100%"/></a>
+<a href="https://commit-history.com/SUDARSHANCHAUDHARI"><img src="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/output-3d/commit-history.svg" alt="All of SUDARSHANCHAUDHARI's GitHub contributions over time" width="100%"/></a>
 
 </div>
 
@@ -78,7 +78,7 @@
 
 <div align="center">
 
-<picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/main/assets/cards/record-narrow.svg?v=1"/><img src="./assets/cards/record.svg?v=5" alt="Dungeon record: projects across Android, iOS, macOS, web, Rust, AI systems, QA, cybersecurity and developer tooling" width="100%"/></picture>
+<picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/main/assets/cards/record-narrow.svg"/><img src="./assets/cards/record.svg" alt="Dungeon record: projects across Android, iOS, macOS, web, Rust, AI systems, QA, cybersecurity and developer tooling" width="100%"/></picture>
 
 </div>
 
@@ -86,7 +86,7 @@
 
 <div align="center">
 
-<picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/main/assets/cards/profile-narrow.svg?v=1"/><img src="./assets/cards/profile.svg?v=5" alt="Player profile: Sudarshan Kishor Chaudhari, Senior Quality Engineer, Test Automation specialist and AI systems builder based in Bangkok, Thailand, with 13+ years in software quality engineering; runs SudarshanTechLabs" width="100%"/></picture>
+<picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/main/assets/cards/profile-narrow.svg"/><img src="./assets/cards/profile.svg" alt="Player profile: Sudarshan Kishor Chaudhari, Senior Quality Engineer, Test Automation specialist and AI systems builder based in Bangkok, Thailand, with 13+ years in software quality engineering; runs SudarshanTechLabs" width="100%"/></picture>
 
 </div>
 
@@ -94,7 +94,7 @@
 
 <div align="center">
 
-<p><picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/main/assets/cards/quote-narrow.svg?v=1"/><img src="./assets/cards/quote.svg?v=4" alt="System message cycling six dev and QA quotes by Dijkstra, John Johnson, John Ruskin, Kent Beck and Linus Torvalds" width="100%"/></picture></p>
+<p><picture><source media="(max-width: 520px)" srcset="https://raw.githubusercontent.com/SUDARSHANCHAUDHARI/SUDARSHANCHAUDHARI/main/assets/cards/quote-narrow.svg"/><img src="./assets/cards/quote.svg" alt="System message cycling six dev and QA quotes by Dijkstra, John Johnson, John Ruskin, Kent Beck and Linus Torvalds" width="100%"/></picture></p>
 
 </div>
 
@@ -103,11 +103,11 @@
 &nbsp;&nbsp;<b>Sudarshan's mood after coding for 5 minutes</b>
 </p>
 
-<img src="./assets/gifs/deadline.svg?v=3" alt="Grim reaper chasing a coder along a deadline progress bar" width="100%"/>
+<img src="./assets/gifs/deadline.svg" alt="Grim reaper chasing a coder along a deadline progress bar" width="100%"/>
 
 <div align="center">
 
-<img src="./assets/cards/join.svg?v=4" alt="System invitation: join the shadow army — let's connect" width="100%"/>
+<img src="./assets/cards/join.svg" alt="System invitation: join the shadow army — let's connect" width="100%"/>
 
 </div>
 
@@ -119,7 +119,7 @@
 
 <p><a href="https://x.com/SUDARSHANKC"><img src="./assets/social/x.svg" alt="X" width="22%"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.threads.com/@sudarshanchaudhari"><img src="./assets/social/threads.svg" alt="Threads" width="22%"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="mailto:sunny.sudarshan@gmail.com"><img src="./assets/social/email.svg" alt="Email" width="22%"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://ko-fi.com/sudarshanchaudhari"><img src="./assets/social/kofi.svg" alt="Ko-fi" width="22%"/></a></p>
 
-<p><img src="./assets/cards/engine.svg?v=3" alt="Red line-art of connected devices around a central screen" width="100%"/></p>
+<p><img src="./assets/cards/engine.svg" alt="Red line-art of connected devices around a central screen" width="100%"/></p>
 
 <img src="./assets/gifs/girl.svg" alt="Lo-fi coder on a balcony at night" width="100%"/>
 
