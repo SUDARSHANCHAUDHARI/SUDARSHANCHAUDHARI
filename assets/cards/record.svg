@@ -19,13 +19,13 @@
 </style>
 </defs>
 <rect width="1280" height="200" fill="#050102"/>
-<rect x="40" y="20" width="1200" height="160" rx="6" fill="url(#panel)"/>
+<rect x="40" y="20" width="1200" height="160" rx="6" fill="url(#panel)"/><g aria-hidden="true" clip-path="url(#em-clip)"><defs><clipPath id="em-clip"><rect x="40" y="20" width="1200" height="160" rx="6"/></clipPath><style>.bg-ember{opacity:0;animation:bg-rise 7s linear infinite}@keyframes bg-rise{0%{transform:translateY(0);opacity:0}15%{opacity:.5}85%{opacity:.35}100%{transform:translateY(-180px);opacity:0}}@media (prefers-reduced-motion:reduce){.bg-ember{animation:none!important}}</style></defs><circle class="bg-ember" cx="40.0" cy="186.0" r="1.0" fill="#ff6b7d" style="animation-duration:8s;animation-delay:-0.0s"/><circle class="bg-ember" cx="781.6" cy="186.0" r="1.5" fill="#ff8a3d" style="animation-duration:10s;animation-delay:-1.3s"/><circle class="bg-ember" cx="323.3" cy="186.0" r="2.0" fill="#ff8a3d" style="animation-duration:12s;animation-delay:-2.6s"/><circle class="bg-ember" cx="1064.9" cy="186.0" r="1.0" fill="#ff6b7d" style="animation-duration:9s;animation-delay:-3.9s"/><circle class="bg-ember" cx="606.6" cy="186.0" r="1.5" fill="#ff8a3d" style="animation-duration:11s;animation-delay:-5.2s"/><circle class="bg-ember" cx="148.2" cy="186.0" r="2.0" fill="#ff8a3d" style="animation-duration:8s;animation-delay:-6.5s"/><circle class="bg-ember" cx="889.8" cy="186.0" r="1.0" fill="#ff6b7d" style="animation-duration:10s;animation-delay:-7.8s"/><circle class="bg-ember" cx="431.5" cy="186.0" r="1.5" fill="#ff8a3d" style="animation-duration:12s;animation-delay:-9.1s"/></g>
 <rect x="40" y="20" width="1200" height="160" rx="6" fill="url(#ember)"/>
 <rect class="scan" x="42" y="66" width="1196" height="2" fill="#ff6b7d" opacity=".12"/>
 <rect class="frame" x="40" y="20" width="1200" height="160" rx="6" filter="url(#glow)"/>
 <path class="corner" d="M40 52V20h32M1208 20h32v32M1240 148v32h-32M72 180H40v-32"/>
 <rect x="40" y="20" width="1200" height="44" fill="#ff2e4d" fill-opacity=".08"/>
-<text x="76" y="49" class="mono" font-size="16" fill="#ff6b7d" letter-spacing="3">⟨ DUNGEON RECORD ⟩</text>
+<text x="76" y="49" class="mono" font-size="16" fill="#fff1f2" letter-spacing="3">⟨ DUNGEON RECORD ⟩</text>
 <text x="1204" y="49" class="mono" font-size="14" fill="#a8828a" text-anchor="end" letter-spacing="2">CURRENT FOOTPRINT</text>
 <line x1="40" y1="64" x2="1240" y2="64" stroke="#ff2e4d" stroke-opacity=".5"/>
 <text class="mono row" x="76" y="104" font-size="15" fill="#fff1f2" style="animation-delay:0.30s">Projects across Android, iOS, macOS, web, Rust, AI systems, QA, cybersecurity, and developer tooling.</text>
