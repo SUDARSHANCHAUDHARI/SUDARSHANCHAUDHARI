@@ -31,10 +31,11 @@ def size(svg):
     vb = re.search(r'''viewBox=["']\s*([-\d.]+)[\s,]+([-\d.]+)[\s,]+([\d.]+)[\s,]+([\d.]+)\s*["']''', tag)
     if vb:
         return tuple(float(v) for v in vb.groups())
-    w = re.search(r'''\bwidth=["']([\d.]+)''', tag)
-    h = re.search(r'''\bheight=["']([\d.]+)''', tag)
+    # plain or px numbers only: a percentage or em size says nothing about the canvas in pixels
+    w = re.search(r'''\bwidth=["']([\d.]+)(?:px)?["']''', tag)
+    h = re.search(r'''\bheight=["']([\d.]+)(?:px)?["']''', tag)
     if not (w and h):
-        raise ValueError("root <svg> has neither a viewBox nor a numeric width and height")
+        raise ValueError("root <svg> has neither a viewBox nor a pixel width and height")
     return 0.0, 0.0, float(w.group(1)), float(h.group(1))
 
 
@@ -268,13 +269,33 @@ def sweep(svg):
 ROOT_TAG = re.compile(r"<svg\b[^>]*>", re.S)
 
 
-def fit_to_frame(svg, pad=2):
-    """Return svg with its canvas cropped to the red frame, so the README shows the frame edge
-    to edge with no black margin around it. `pad` keeps the frame stroke and corner marks whole."""
+FIT_MARK = 'class="fit"'
+LEAD_TEXT = re.compile(r"\s*<title>.*?</title>(?:\s*<desc>.*?</desc>)?", re.S)
+
+
+def fit_to_frame(svg, pad=12, edge=2):
+    """Return svg with its canvas cropped to the red frame, so the README shows the frame with
+    no black margin around it. Everything the card draws is clipped to the frame plus `edge`
+    (the stroke and corner marks); a copy of the glowing frame sits underneath, unclipped, so
+    its blur shows whole in the transparent `pad` margin. Once wrapped, only the canvas is reset."""
     m = FRAME.search(svg)
     if not m:
         raise ValueError('no <rect class="frame" ... rx="6"/> to fit the canvas to')
     x, y, w, h = (float(v) for v in m.groups())
+    # square clip: the corner marks are square and reach `edge` past the frame's rounded corners
+    clip = f'<rect x="{x - edge:g}" y="{y - edge:g}" width="{w + 2 * edge:g}" height="{h + 2 * edge:g}"/>'
+    halo = m.group(0).replace('class="frame"', 'class="frame" aria-hidden="true"', 1)
+    if FIT_MARK not in svg:
+        root, end = ROOT_TAG.search(svg), svg.rfind("</svg>")
+        if end < 0:
+            raise ValueError("no closing </svg>")
+        head = LEAD_TEXT.match(svg, root.end())  # <title>/<desc> stay document-level
+        start = head.end() if head else root.end()
+        svg = (svg[:start] + f'<defs><clipPath id="fit-clip">{clip}</clipPath></defs>' + halo
+               + f'<g {FIT_MARK} clip-path="url(#fit-clip)">' + svg[start:end] + "</g>\n" + svg[end:])
+    else:  # already wrapped: follow a frame that was resized since
+        svg = re.sub(r'(<clipPath id="fit-clip">)<rect\b[^>]*/>', lambda c: c.group(1) + clip, svg, count=1)
+        svg = re.sub(r'<rect class="frame" aria-hidden="true"[^>]*/>', lambda _: halo, svg, count=1)
     vb = f"{x - pad:g} {y - pad:g} {w + 2 * pad:g} {h + 2 * pad:g}"
     root = ROOT_TAG.search(svg)
     tag = root.group(0)
@@ -311,8 +332,43 @@ def selftest():
     assert swept.index(SWEEP_MARK) > swept.index("<text>") and 'x="40" y="20" width="1200" height="260"' in swept, "sweep not on top, inside the frame"
     ET.fromstring(swept)
     fitted = fit_to_frame(swept.replace('viewBox="0 0 1280 300"', 'viewBox="0 0 1280 300" width="1280" height="300"'))
-    assert 'viewBox="38 18 1204 264" width="1204" height="264"' in fitted, "canvas not fitted to the frame"
+    assert 'viewBox="28 8 1224 284" width="1224" height="284"' in fitted, "canvas not fitted to the frame"
     assert fit_to_frame(fitted) == fitted, "fit_to_frame is not idempotent"
+    assert fitted.count(FIT_MARK) == 1 and '<clipPath id="fit-clip"><rect x="38" y="18" width="1204" height="264"/>' in fitted, \
+        "content not clipped square to the frame"
+    titled = fit_to_frame(framed.replace("<rect x=", "<title>T</title><desc>D</desc><rect x=", 1))
+    assert titled.index("</desc>") < titled.index("fit-clip"), "title/desc moved inside the clipped group"
+    halo = fitted.index('class="frame" aria-hidden="true"')
+    assert halo < fitted.index(FIT_MARK) < fitted.index("<text>"), "glow copy not under the clipped content"
+    ET.fromstring(fitted)
+    grown = fit_to_frame(fitted.replace('height="260" rx="6" filter', 'height="300" rx="6" filter'))
+    assert 'viewBox="28 8 1224 324"' in grown and '<rect x="38" y="18" width="1204" height="304"/>' in grown, "re-fit kept a stale clip"
+    assert grown.count('height="300" rx="6" filter') == 2 and grown.count(FIT_MARK) == 1, "re-fit kept a stale glow copy"
+    import struct
+    from build_image_cards import dimensions
+    assert dimensions(b"GIF89a" + struct.pack("<HH", 7, 3) + b"\0" * 3, "gif") == (7, 3), "GIF size misread"
+    jpeg = (b"\xff\xd8" + b"\xff\xe0\x00\x10" + b"\0" * 14             # SOI, then an APP0 segment to skip
+            + b"\xff\xc0\x00\x11\x08" + struct.pack(">HH", 5, 9) + b"\x03" + b"\0" * 9)  # SOF0: 9x5
+    assert dimensions(jpeg, "jpeg") == (9, 5), "JPEG size misread"
+    assert dimensions(jpeg.replace(b"\xff\xc0", b"\xff\xc2"), "jpeg") == (9, 5), "progressive JPEG size misread"
+    for bad, kind in ((b"nope" * 4, "gif"), (b"nope" * 4, "jpeg")):
+        try:
+            dimensions(bad, kind)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError(f"non-{kind} bytes not rejected")
+    cropped = image_svg("data:image/gif;base64,R0lGODlhAQABAAAAACw=", 880, 440, "t", "d", crop=(150, 110, 580, 190))
+    assert 'viewBox="150 110 580 190" width="580" height="190"' in cropped, "crop did not move the canvas"
+    assert '<rect x="150" y="110" width="580" height="190" rx="6"/>' in cropped, "crop clip rect drifted from the canvas"
+    ET.fromstring(cropped)
+    try:
+        size('<svg width="100%" height="50%"></svg>')
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("percentage width read as pixels")
+    assert size('<svg width="80px" height="40px"></svg>') == (0, 0, 80, 40), "px width not read"
     try:
         sweep(card)
     except ValueError:

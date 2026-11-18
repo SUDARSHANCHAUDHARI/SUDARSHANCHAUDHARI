@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="38 18 1204 364" width="1204" height="364" role="img" aria-label="Daily quest: what I build">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="28 8 1224 384" width="1224" height="384" role="img" aria-label="Daily quest: what I build">
 <title>Daily Quest — What I Build</title>
-<desc>Solo Leveling style quest window listing four build areas, each ticking to complete, with Igris, the red knight, at the side.</desc>
+<desc>Solo Leveling style quest window listing four build areas, each ticking to complete, with Igris, the red knight, at the side.</desc><defs><clipPath id="fit-clip"><rect x="38" y="18" width="1204" height="364"/></clipPath></defs><rect class="frame" aria-hidden="true" x="40" y="20" width="1200" height="360" rx="6" filter="url(#glow)"/><g class="fit" clip-path="url(#fit-clip)">
 <defs>
 <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a0508" stop-opacity=".95"/><stop offset="1" stop-color="#0d0204" stop-opacity=".95"/></linearGradient>
 <linearGradient id="sidefade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#140306" stop-opacity="1"/><stop offset=".35" stop-color="#140306" stop-opacity="0"/></linearGradient>
@@ -66,4 +66,5 @@
 <text x="530" y="356" class="mono warn" font-size="14" fill="#ffb020" text-anchor="middle">WARNING: Shipping without tests will result in an appropriate penalty.</text>
 <g aria-hidden="true" clip-path="url(#fx-sweep-clip)"><defs><clipPath id="fx-sweep-clip"><rect x="40" y="20" width="1200" height="360" rx="6"/></clipPath><linearGradient id="fx-sweep-band" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ff2e4d" stop-opacity="0"/><stop offset=".5" stop-color="#ff2e4d" stop-opacity=".22"/><stop offset="1" stop-color="#ff2e4d" stop-opacity="0"/></linearGradient><style>.fx-sweep{animation:fx-sweep 7s cubic-bezier(.4,0,.6,1) infinite}@keyframes fx-sweep{0%{transform:translateX(-216px)}55%,100%{transform:translateX(1416px)}}@media (prefers-reduced-motion:reduce){.fx-sweep{animation:none!important}}</style></defs><rect class="fx-sweep" x="40" y="20" width="216.0" height="360" fill="url(#fx-sweep-band)"/></g>
 <style id="fx-calm">@media (prefers-reduced-motion:reduce){.fx-sweep,.fx-beam{display:none}*{animation-duration:1ms!important;animation-delay:0s!important;animation-iteration-count:1!important;animation-fill-mode:forwards!important}.title[style^="animation-delay:0s"],.q[style^="animation-delay:0s"],.fr[style^="animation-delay:0.00s"],.ig[style^="animation-delay:0.00s"]{animation:none!important;opacity:1!important}}</style>
+</g>
 </svg>
